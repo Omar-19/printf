@@ -107,7 +107,7 @@ int		print_elem(const char *format, va_list elem)
 					++i;
 				ptr->len = str + i + 1 - ptr->str;
 				ptr->flag = 1;
-				if (!ft_paramater_processing(ptr, format))
+				if (!ft_paramater_processing(ptr, elem))
 					ft_error(&head);
 				ptr = ft_lst_push_back(str + ++i, ptr);
 			}
