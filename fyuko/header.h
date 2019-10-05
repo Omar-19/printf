@@ -61,6 +61,7 @@ typedef struct				s_type
 	//uintmax_t				type_uintmax_t;
 }							t_type;
 
+void				ft_write_str(const char *str, size_t len);
 int					read_variable(t_string *str, va_list elem);
 int					ft_param_processing(t_string *str, va_list elem);
 void				ft_error(t_string **lst);

@@ -75,54 +75,51 @@ int		print_elem(const char *str, va_list elem)
 	return (count);
 }*/
 
+void	ft_write_str(const char *str, size_t len)
+{
+	write(1, str, len);
+	write(1, "\n", 1);
+}
 
 int		print_elem(const char *format, va_list elem)
 {
-	t_string	*head;
-	t_string	*ptr;
+	const char	*ptr;
 	const char	*str;
+	size_t		len;
 	int			i;
-	int			f;
 
 	str = format;
+	ptr = str;
 	i = 0;
-	f = 0;
-	head = ft_lst_new(str);
-	// check
-	ptr = head;
 	while(str[i])
 	{
 		if (str[i] == '%')
 		{
-			ptr->len = str + i - ptr->str;
-			if (ptr->len != 0)
-				ptr = ft_lst_push_back(str + ++i, ptr);
+			len = str + i - ptr;
+			if (len != 0)
+			{
+				ft_write_str(ptr, len);
+				ptr = str + ++i;
+			}
+			//	ptr = ft_lst_push_back(str + ++i, ptr);
 			else
-				ptr->str = str + ++i;
+				ptr = str + ++i;
 			if (str[i] == '%')
 				++i;
 			else
 			{
 				while(!(ft_is_conversion(str[i])))
 					++i;
-				ptr->len = str + i + 1 - ptr->str;
-				ptr->flag = 1;
-				if (!ft_paramater_processing(ptr, elem))
-					ft_error(&head);
-				ptr = ft_lst_push_back(str + ++i, ptr);
+				len = str + i + 1 - ptr;
+				ft_write_str(ptr, len);
+				ptr = str + ++i;
 			}
 			continue;
 		}
 		++i;
 	}
-	ptr->len = str + i - ptr->str;
-	ptr = head;
-	while(head)
-	{
-		printf("header = %s, len = %zu, f = %d\n", head->str, head->len, head->flag);
-		head = head->next;
-	}
-	ft_lst_delet(&head);
+	if ((len = str + i - ptr))
+		ft_write_str(ptr, len);
 	return (0);
 }
 
@@ -139,6 +136,7 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	ft_printf("%cmbc%dcm%%", 7);
+	ft_printf("%cmbc%dc%%mal", 7);
+	//ft_printf("mbc%zzd%d", 7);
 	return (0);
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <unistd.h>
 
  /*
 int sum(int n, ...)
@@ -23,9 +24,12 @@ int sum(int n, ...)
  */
 int main(void)
 {	
+	char a[5] = "abcde";
 	//printf("%d \n", sum(4, 1, 2, 3, 4));
-	printf("%hd", (short int)32);
+	//printf("%hd", (short int)32);
 	//printf("%d \n", sum(5, 12, 21, 13, 4, 5));
+	
+	write(1, a, 5);
 	return 0;
 }
 
