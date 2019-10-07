@@ -1,4 +1,47 @@
 #include "header.h"
+
+int		ft_strstr_num(const char *str, const char *to_find, size_t len)
+{
+	//char *str;
+	//char *to_find;
+	const char *a;
+	const char *b;
+
+	//str = (char *)haystack;
+	//to_find = (char *)needle;
+	while (len > 0)
+	{
+		a = str;
+		b = to_find;
+		while (*(a++) == *(b++))
+		{
+			if (*b == '\0')
+				return (1);
+		}
+		++str;
+		--len;
+	}
+	return (0);
+}
+
+int		read_variable(const char *str, size_t len, va_list elem)
+{
+	int var;
+	t_param par;
+	
+	var = va_arg(elem, int);
+	if (ft_strstr_num(str, "hd\0", len))
+		write(1, "--hd--", 6);
+	//write(1, "0", 1);
+	return (1);
+}
+
+int		ft_param_processing(const char *str, size_t len, va_list elem)
+{
+	read_variable(str, len, elem);
+	return (1);
+}
+
 /*
 static int	ft_len(int n)
 {
@@ -40,6 +83,7 @@ char		*ft_nitoa(int n)
 	return (s);
 }*/
 
+/*
 int		read_variable(t_string *str, va_list elem)
 {
 	t_type	var;
@@ -70,7 +114,7 @@ int		ft_param_processing(t_string *str, va_list elem)
 	read_variable(str, elem);
 	return (1);
 }
-
+*/
 //va_arg
 
 /*
@@ -87,8 +131,7 @@ static int	ft_len(int n)
 		i++;
 	}
 	return (i);
-}*/
-​/*
+}
 char		*ft_nitoa(int n)
 {
 	char	*s;
@@ -112,8 +155,7 @@ char		*ft_nitoa(int n)
 	if (flag == 1)
 		s[--len] = '-';
 	return (s);
-}*/
-/*
+}
 char	*param_processing(t_string *str, void *elem)
 {
 	return (0);

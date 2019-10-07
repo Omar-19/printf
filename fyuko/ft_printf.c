@@ -1,5 +1,74 @@
 #include "header.h"
 #include <stdio.h>
+
+void	ft_write_str(const char *str, size_t len)
+{
+	write(1, str, len);
+	write(1, " ", 1);
+}
+
+int		print_elem(const char *format, va_list elem)
+{
+	const char	*ptr;
+	const char	*str;
+	size_t		len;
+	int			i;
+
+	str = format;
+	ptr = str;
+	i = 0;
+	while(str[i])
+	{
+		if (str[i] == '%')
+		{
+			len = str + i - ptr;
+			if (len != 0)
+			{
+				ft_write_str(ptr, len);
+				ptr = str + ++i;
+			}
+			//	ptr = ft_lst_push_back(str + ++i, ptr);
+			else
+				ptr = str + ++i;
+			if (str[i] == '%')
+				++i;
+			else
+			{
+				while(!(ft_is_conversion(str[i])))
+					++i;
+				len = str + i + 1 - ptr;
+				if (!ft_param_processing(ptr, len, elem))
+					return(0);
+				//ft_write_str(ptr, len);
+				ptr = str + ++i;
+			}
+			continue;
+		}
+		++i;
+	}
+	if ((len = str + i - ptr))
+		ft_write_str(ptr, len);
+	return (0);
+}
+
+int		ft_printf(const char *format, ...)
+{
+	va_list	elem;
+	int		result;
+
+	va_start(elem, format);
+	result = print_elem(format, elem);
+	va_end(elem);
+	return (result);
+}
+
+int main()
+{
+	ft_printf("%cmbc%hdc%%mal", 7, 8, 9);
+	//ft_printf("mbc%zzd%d", 7);
+	return (0);
+}
+
 /*
 int		ft_write(const char *str, const size_t num)
 {
@@ -74,69 +143,3 @@ int		print_elem(const char *str, va_list elem)
 	}
 	return (count);
 }*/
-
-void	ft_write_str(const char *str, size_t len)
-{
-	write(1, str, len);
-	write(1, "\n", 1);
-}
-
-int		print_elem(const char *format, va_list elem)
-{
-	const char	*ptr;
-	const char	*str;
-	size_t		len;
-	int			i;
-
-	str = format;
-	ptr = str;
-	i = 0;
-	while(str[i])
-	{
-		if (str[i] == '%')
-		{
-			len = str + i - ptr;
-			if (len != 0)
-			{
-				ft_write_str(ptr, len);
-				ptr = str + ++i;
-			}
-			//	ptr = ft_lst_push_back(str + ++i, ptr);
-			else
-				ptr = str + ++i;
-			if (str[i] == '%')
-				++i;
-			else
-			{
-				while(!(ft_is_conversion(str[i])))
-					++i;
-				len = str + i + 1 - ptr;
-				ft_write_str(ptr, len);
-				ptr = str + ++i;
-			}
-			continue;
-		}
-		++i;
-	}
-	if ((len = str + i - ptr))
-		ft_write_str(ptr, len);
-	return (0);
-}
-
-int		ft_printf(const char *format, ...)
-{
-	va_list	elem;
-	int		result;
-
-	va_start(elem, format);
-	result = print_elem(format, elem);
-	va_end(elem);
-	return (result);
-}
-
-int main()
-{
-	ft_printf("%cmbc%dc%%mal", 7);
-	//ft_printf("mbc%zzd%d", 7);
-	return (0);
-}

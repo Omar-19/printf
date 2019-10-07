@@ -61,12 +61,30 @@ typedef struct				s_type
 	//uintmax_t				type_uintmax_t;
 }							t_type;
 
+union double_d
+{
+	double a;
+	char bytes[8];
+};
+
+
+typedef struct				s_param
+{
+	int precision;
+	char mod[4];
+	//---
+	char flag[4];
+	union double_d doub;
+}							t_param;
+
+
+
+int					ft_strstr_num(const char *str, const char *to_find, size_t len);
 void				ft_write_str(const char *str, size_t len);
-int					read_variable(t_string *str, va_list elem);
-int					ft_param_processing(t_string *str, va_list elem);
+int					read_variable(const char *str, size_t len, va_list elem);
+int					ft_param_processing(const char *str, size_t len, va_list elem);
 void				ft_error(t_string **lst);
 char				*ft_nitoa(int n);
-//char				*param_processing(t_string *str, void *elem);
 int					ft_is_conversion(const char c);
 void				ft_lst_delet(t_string **alst);
 t_string			*ft_lst_new(char const *ptr);
