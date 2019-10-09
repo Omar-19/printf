@@ -3,6 +3,7 @@
 #include <limits.h>
 #include <math.h>
 #include <unistd.h>
+#include <stdlib.h>
 
  /*
 int sum(int n, ...)
@@ -23,24 +24,79 @@ int sum(int n, ...)
 	return result;
 }
  */
+
+static void	ft_abs(long long *value, char **str, int *size, int *flag)
+{
+	*flag = 1;
+	(*str)[0] = '-';
+	(*str)[(*size)--] = '0' - *value % 10;
+	*value /= 10;
+	*value *= -1;
+}
+
+char		*ft_itoa_base(long long value_i, unsigned long long value_u)
+{
+	unsigned long long	value;
+	unsigned long long	val;
+	char			*str;
+	int				size;
+	int				flag;
+
+	flag = 0;
+	size = 0;
+	if (value_i < 0)
+	{
+		++size;
+		flag = 1;
+		val = -value_i;
+	}
+	else if (value_i > 0)
+		val = value_i;
+	else
+		val = value_u;
+	value = val;
+	while (value /= 10)
+		++size;
+	++size;
+	str = (char *)malloc(sizeof(char) * size  + 1);
+	str[size--] = '\0';
+	if (flag == 1)
+		str[0] = '-';
+	while ((size > 0 && flag == 1) || (size >= 0 && flag == 0))
+	{
+		str[size--] = '0' + val % 10;
+		val /= 10;
+	}
+	return (str);
+}
+
 int main(void)
 {	
 	// long long int a;
-	float a = 0.123;
+	//float a = 0.123;
 	double b = 0.123;
+	signed char a = 11;
+	char *str;
+	long long int z = 11;
 
-	int c = 6;
+	/*int c = 6;
 	printf("%d\n", c);
 	b = ULLONG_MAX;
 	printf("%lf\n",b);
-	printf("%llu\n", (unsigned long long int)b);
+	printf("%llu\n", (unsigned long long int)b);*/
 	// printf("%.30f\n", a);
 	// printf("%.30lf\n", b);
 
 	// a = (short int)123457;
 	// //char a[5] = "abcde";
 	// //printf("%d \n", sum(4, 1, 2, 3, 4));
-	// //printf("%hd", (short int)32);
+	//printf("%s", "a");
+	//ft_itoa_base(z);
+	//printf("%s\n", ft_itoa_base(-123));
+	printf("%s\n", ft_itoa_base(0, 18446744073709551615));
+	//printf("%lld\n", -9223372036854775808LL);
+	free(str);
+	//printf("%6.5d\n", 12);
 	// //printf("%d \n", sum(5, 12, 21, 13, 4, 5));
 	// // printf("%lld == %hd", a, (short int)123457);
 	// printf("%Lf", (long double)(pow(2,53) * pow(10,53)));

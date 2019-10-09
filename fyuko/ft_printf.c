@@ -64,8 +64,8 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	ft_printf("%cmbc%hdc%%mal", 7, 8, 9);
-	//ft_printf("mbc%zzd%d", 7);
+	//ft_printf("%cmbc%hdc%%mal", 7, 8, 9);
+	ft_printf("d = %d", 7);
 	return (0);
 }
 

@@ -77,11 +77,11 @@ typedef struct				s_param
 	union double_d doub;
 }							t_param;
 
-
-
+//char				*ft_char_processing(char elem); // не ок тип
+char				*ft_itoa_d(long long int value_i, unsigned long long value_u, int *l);
 int					ft_strstr_num(const char *str, const char *to_find, size_t len);
 void				ft_write_str(const char *str, size_t len);
-int					read_variable(const char *str, size_t len, va_list elem);
+int					read_variable(const char *str, size_t len, va_list elem, int *l);
 int					ft_param_processing(const char *str, size_t len, va_list elem);
 void				ft_error(t_string **lst);
 char				*ft_nitoa(int n);

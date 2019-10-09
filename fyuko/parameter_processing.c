@@ -24,21 +24,60 @@ int		ft_strstr_num(const char *str, const char *to_find, size_t len)
 	return (0);
 }
 
-int		read_variable(const char *str, size_t len, va_list elem)
+/*char	*ft_int_processing(long long int elem)
+{
+	return (NULL);
+}
+
+char	*ft_char_processing(char elem)
+{
+	return (NULL);
+}
+*/
+int		read_variable(const char *str, size_t len, va_list elem, int *l)
 {
 	int var;
-	t_param par;
+	char *ptr;
+	int flag;
 	
+	l = 0;
 	var = va_arg(elem, int);
-	if (ft_strstr_num(str, "hd\0", len))
-		write(1, "--hd--", 6);
+	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
+		ptr = ft_itoa_d(va_arg(elem, signed char), 0, &l);
+	else if (ft_strstr_num(str, "hd\0", len) || ft_strstr_num(str, "hi\0", len))
+		ptr = ft_itoa_d(va_arg(elem, short int), 0, &l);
+	else if (ft_strstr_num(str, "lld\0", len) || ft_strstr_num(str, "lli\0", len))
+		ptr = ft_itoa_d(va_arg(elem, long long int), 0, &l);
+	else if (ft_strstr_num(str, "ld\0", len) || ft_strstr_num(str, "li\0", len))
+		ptr = ft_itoa_d(va_arg(elem, long int), 0, &l);
+	else if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "li\0", len))
+		ptr = ft_itoa_d(va_arg(elem, long int), 0, &l);
+	else if (ft_strstr_num(str, "llu\0", len))
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), &l);
+	else if (ft_strstr_num(str, "lu\0", len))
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), &l);
+	else if (ft_strstr_num(str, "hhu\0", len))
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned char), &l);
+	else if (ft_strstr_num(str, "hu\0", len))
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned short int), &l);
+	else if (ft_strstr_num(str, "u\0", len))
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned short int), &l);
+	else
+	{
+		return (0);
+	}
+		//write(1, "--hd--", 6);
 	//write(1, "0", 1);
 	return (1);
 }
 
 int		ft_param_processing(const char *str, size_t len, va_list elem)
 {
-	read_variable(str, len, elem);
+	int l;
+
+	l = 0;
+	read_variable(str, len, elem, &l);
+	write(1, str, l);
 	return (1);
 }
 
