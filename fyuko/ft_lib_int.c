@@ -9,7 +9,7 @@ static void	ft_abs(long long *value, char **str, int *size, int *flag)
 	*value *= -1;
 }
 
-char		*ft_itoa_d(long long value_i, unsigned long long value_u, int *l)
+char		*ft_itoa_d(long long int value_i, unsigned long long value_u, int *l)
 {
 	unsigned long long	value;
 	unsigned long long	val;
@@ -33,9 +33,9 @@ char		*ft_itoa_d(long long value_i, unsigned long long value_u, int *l)
 	while (value /= 10)
 		++size;
 	++size;
+	*l = size;
 	str = (char *)malloc(sizeof(char) * size  + 1);
 	str[size--] = '\0';
-	*l = size;
 	if (flag == 1)
 		str[0] = '-';
 	while ((size > 0 && flag == 1) || (size >= 0 && flag == 0))

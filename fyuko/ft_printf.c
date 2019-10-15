@@ -4,7 +4,6 @@
 void	ft_write_str(const char *str, size_t len)
 {
 	write(1, str, len);
-	write(1, " ", 1);
 }
 
 int		print_elem(const char *format, va_list elem)
@@ -65,7 +64,11 @@ int		ft_printf(const char *format, ...)
 int main()
 {
 	//ft_printf("%cmbc%hdc%%mal", 7, 8, 9);
-	ft_printf("d = %d", 7);
+	ft_printf("d = %d %% lalala u = %u\n", 7, 429);
+	ft_printf("-----------\n");
+	ft_printf("d = %lld %% lololo lld = %lld\n", 9223372036854775807, -9223372036854775808);
+	ft_printf("-----pepepe------\n");
+	ft_printf("rabotaet: llu = %llu\n", 18446744073709551615);
 	return (0);
 }
 

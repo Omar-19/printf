@@ -12,7 +12,7 @@ typedef struct		s_val
 	char			type;
 	char			length[2];
 }					t_val;
-
+/*
 typedef struct		s_string
 {
 	const char		*str;
@@ -60,7 +60,7 @@ typedef struct				s_type
 	//intmax_t				type_intmax_t;
 	//uintmax_t				type_uintmax_t;
 }							t_type;
-
+*/
 union double_d
 {
 	double a;
@@ -70,11 +70,12 @@ union double_d
 
 typedef struct				s_param
 {
-	int precision;
-	char mod[4];
+	int precision_s;
+	int precision ;
+	//char mod[4];
 	//---
 	char flag[4];
-	union double_d doub;
+	//union double_d doub;
 }							t_param;
 
 //char				*ft_char_processing(char elem); // не ок тип
@@ -83,12 +84,12 @@ int					ft_strstr_num(const char *str, const char *to_find, size_t len);
 void				ft_write_str(const char *str, size_t len);
 int					read_variable(const char *str, size_t len, va_list elem, int *l);
 int					ft_param_processing(const char *str, size_t len, va_list elem);
-void				ft_error(t_string **lst);
+//void				ft_error(t_string **lst);
 char				*ft_nitoa(int n);
 int					ft_is_conversion(const char c);
-void				ft_lst_delet(t_string **alst);
-t_string			*ft_lst_new(char const *ptr);
-t_string			*ft_lst_push_back(char const *ptr, t_string *elem);
+//void				ft_lst_delet(t_string **alst);
+//t_string			*ft_lst_new(char const *ptr);
+//t_string			*ft_lst_push_back(char const *ptr, t_string *elem);
 int					ft_is_valid_param(const char c);
 int					print_elem(const char *str, va_list elem);
 

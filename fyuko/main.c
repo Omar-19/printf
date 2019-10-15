@@ -93,7 +93,7 @@ int main(void)
 	//printf("%s", "a");
 	//ft_itoa_base(z);
 	//printf("%s\n", ft_itoa_base(-123));
-	printf("%s\n", ft_itoa_base(0, 18446744073709551615));
+	printf("%s\n", ft_itoa_base(0, 0));
 	//printf("%lld\n", -9223372036854775808LL);
 	free(str);
 	//printf("%6.5d\n", 12);
