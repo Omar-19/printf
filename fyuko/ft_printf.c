@@ -11,11 +11,14 @@ int		print_elem(const char *format, va_list elem)
 	const char	*ptr;
 	const char	*str;
 	size_t		len;
+	int			res;
 	int			i;
 
 	str = format;
+	res = 0;
 	ptr = str;
 	i = 0;
+	len = 0;
 	while(str[i])
 	{
 		if (str[i] == '%')
@@ -24,21 +27,28 @@ int		print_elem(const char *format, va_list elem)
 			if (len != 0)
 			{
 				ft_write_str(ptr, len);
+				res += len;
 				ptr = str + ++i;
 			}
-			//	ptr = ft_lst_push_back(str + ++i, ptr);
 			else
 				ptr = str + ++i;
 			if (str[i] == '%')
 				++i;
 			else
 			{
+				//printf("i = %d\n", i);
+				//printf("res = %p\n", str);
+				//printf("ptr = %p\n", ptr);
+				//printf("i = %d\n", i);
 				while(!(ft_is_conversion(str[i])))
 					++i;
-				len = str + i + 1 - ptr;
-				if (!ft_param_processing(ptr, len, elem))
-					return(0);
+				//printf("i = %d\n", i);
+				len = str + i - ptr + 1;
+				ft_param_processing(ptr, len, elem);
+				//if (ft_param_processing(ptr, len, elem))
+				//	return(0);
 				//ft_write_str(ptr, len);
+				//printf("i = %d\n", i);
 				ptr = str + ++i;
 			}
 			continue;
@@ -47,7 +57,7 @@ int		print_elem(const char *format, va_list elem)
 	}
 	if ((len = str + i - ptr))
 		ft_write_str(ptr, len);
-	return (0);
+	return (res);
 }
 
 int		ft_printf(const char *format, ...)
@@ -64,11 +74,26 @@ int		ft_printf(const char *format, ...)
 int main()
 {
 	//ft_printf("%cmbc%hdc%%mal", 7, 8, 9);
-	ft_printf("d = %d %% lalala u = %u\n", 7, 429);
-	ft_printf("-----------\n");
-	ft_printf("d = %lld %% lololo lld = %lld\n", 9223372036854775807, -9223372036854775808);
-	ft_printf("-----pepepe------\n");
-	ft_printf("rabotaet: llu = %llu\n", 18446744073709551615);
+	printf("abc% 09.7d def\n", -82);
+	ft_printf("abc% 09.7d def\n", -82);
+	
+	printf("abc% 0*.*d def\n", 5, 7, -123);
+	ft_printf("abc% 0*.*d def\n", 5, 7, -123);
+	
+	printf("abc%01.*d def\n", 4, 5);
+	ft_printf("abc%01.*d def\n", 4, 5);
+	
+	printf("abc%010d def\n", -43);
+	ft_printf("abc%010d def\n", -43);
+	
+	printf("abc% 05.5d def\n", -123456);
+	ft_printf("abc% 05.5d def\n", -123456);
+
+	//ft_printf("%daaa\n");
+	//ft_printf("d = %lld %% lololo lld = %lld\n", 9223372036854775807, -9223372036854775808);
+	//ft_printf("-----pepepe------\n");
+	//ft_printf("rabotaet: llu = %llu\n", 18446744073709551615);
+	//write(1, "\n", 1);
 	return (0);
 }
 

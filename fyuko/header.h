@@ -70,19 +70,25 @@ union double_d
 
 typedef struct				s_param
 {
-	int precision_s;
-	int precision ;
-	//char mod[4];
-	//---
-	char flag[4];
+	//int		prec_param;
+	int		precision ;
+	char	flags[5];
+	int		width;
+	int		len;
+	int		result;
 	//union double_d doub;
 }							t_param;
 
+void				ft_string_processing(t_param *f_p_s, char *str, int flag);
+int					ft_result_len(t_param *f_p_s, int flag);
+int					ft_atoi_n(const char *str, int *j);
+char				*ft_strchr(const char *s, int c);
+void				ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s);
 //char				*ft_char_processing(char elem); // не ок тип
-char				*ft_itoa_d(long long int value_i, unsigned long long value_u, int *l);
+char				*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p_s);
 int					ft_strstr_num(const char *str, const char *to_find, size_t len);
 void				ft_write_str(const char *str, size_t len);
-int					read_variable(const char *str, size_t len, va_list elem, int *l);
+int					read_variable(const char *str, size_t len, va_list elem);
 int					ft_param_processing(const char *str, size_t len, va_list elem);
 //void				ft_error(t_string **lst);
 char				*ft_nitoa(int n);

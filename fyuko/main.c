@@ -24,7 +24,7 @@ int sum(int n, ...)
 	return result;
 }
  */
-
+/*
 static void	ft_abs(long long *value, char **str, int *size, int *flag)
 {
 	*flag = 1;
@@ -79,11 +79,11 @@ int main(void)
 	char *str;
 	long long int z = 11;
 
-	/*int c = 6;
+	int c = 6;
 	printf("%d\n", c);
 	b = ULLONG_MAX;
 	printf("%lf\n",b);
-	printf("%llu\n", (unsigned long long int)b);*/
+	printf("%llu\n", (unsigned long long int)b);
 	// printf("%.30f\n", a);
 	// printf("%.30lf\n", b);
 
@@ -101,7 +101,32 @@ int main(void)
 	// // printf("%lld == %hd", a, (short int)123457);
 	// printf("%Lf", (long double)(pow(2,53) * pow(10,53)));
 	//write(1, a, 5);
+	
 	return 0;
+}*/
+
+int		ft_atoi(const char *str)
+{
+	long	number;
+
+	number = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		if (number < 0 && number < number * 10)
+			return (0);
+		if (number > 0 && number > number * 10)
+			return (-1);
+		number = number * 10 + 1 * (*str - '0');
+		str++;
+	}
+	return (number);
+}
+
+int main()
+{
+	int *l;
+	printf("%d\n", ft_atoi("143.fsg"));
+	return (0);
 }
 
 /*

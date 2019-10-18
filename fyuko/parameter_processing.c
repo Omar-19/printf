@@ -1,87 +1,113 @@
 #include "header.h"
 
-int		ft_strstr_num(const char *str, const char *to_find, size_t len)
+static inline int		ft_is_flag(const char c)
 {
-	//char *str;
-	//char *to_find;
-	const char *a;
-	const char *b;
+	return (!(ft_strchr("#0-+' ", c) == NULL));
+}
 
-	//str = (char *)haystack;
-	//to_find = (char *)needle;
-	while (len > 0)
+int		ft_atoi_n(const char *str, int *j)
+{
+	long	number;
+
+	number = 0;
+	while (*str >= '0' && *str <= '9')
 	{
-		a = str;
-		b = to_find;
-		while (*(a++) == *(b++))
-		{
-			if (*b == '\0')
-				return (1);
-		}
-		++str;
-		--len;
+		++(*j);
+		if (number < 0 && number < number * 10)
+			return (0);
+		if (number > 0 && number > number * 10)
+			return (-1);
+		number = number * 10 + 1 * (*str - '0');
+		str++;
 	}
-	return (0);
+	return (number);
 }
 
-/*char	*ft_int_processing(long long int elem)
+void	ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s)
 {
-	return (NULL);
+	int i;
+	int j;
+
+	i = 0;
+	while (ft_is_flag(*(str + i)) && i < len)
+	{
+		*((*f_p_s).flags + i) = *(str + i);
+		++i;
+	}
+	j = i;
+	while (i < 5)
+		*((*f_p_s).flags + i++) = '\0';
+	i = 0;
+	if (*(str + j) == '*')
+	{
+		(*f_p_s).width = va_arg(elem, int);
+		++j;
+	}
+	else if (*(str + j) >= '0' && *(str + j) <= '9')
+		(*f_p_s).width = ft_atoi_n(str + j, &j);
+	else
+		(*f_p_s).width = 0;
+	if (*(str + j) == '.')
+	{
+		if (*(str + ++j) == '*')
+			(*f_p_s).precision = va_arg(elem, int);
+		else
+			(*f_p_s).precision = ft_atoi_n(str + j, &j);
+	}
+	else
+		(*f_p_s).precision = 0;
 }
 
-char	*ft_char_processing(char elem)
+int		read_variable(const char *str, size_t len, va_list elem)
 {
-	return (NULL);
-}
-*/
-int		read_variable(const char *str, size_t len, va_list elem, int *l)
-{
-	int var;
-	char *ptr;
-	int flag;
-	
-	//*l = 0;
-	//var = va_arg(elem, int);
-	//if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "i\0", len))
-	//	ptr = ft_itoa_d(va_arg(elem, int), 0, l);
+	int		var;
+	char	*ptr;
+	int		flag;
+	// Format placeholder specification
+	t_param				form_place_spc;
+
+	//*l = 5;
+	ft_format_specification_description(str, len, elem, &form_place_spc);
+	//printf("\nform_place_spc.flags = %s\n form_place_spc.width = %d\n form_place_spc.precision = %d\n",
+	//							 form_place_spc.flags, form_place_spc.width, form_place_spc.precision);
 	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
-		ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, l);
+		ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, &form_place_spc);
 	else if (ft_strstr_num(str, "hd\0", len) || ft_strstr_num(str, "hi\0", len))
-		ptr = ft_itoa_d((short int)va_arg(elem, int), 0, l);
+		ptr = ft_itoa_d((short int)va_arg(elem, int), 0, &form_place_spc);
 	else if (ft_strstr_num(str, "lld\0", len) || ft_strstr_num(str, "lli\0", len))
-		ptr = ft_itoa_d(va_arg(elem, long long int), 0, l);
+		ptr = ft_itoa_d(va_arg(elem, long long int), 0, &form_place_spc);
 	else if (ft_strstr_num(str, "ld\0", len) || ft_strstr_num(str, "li\0", len))
-		ptr = ft_itoa_d(va_arg(elem, long int), 0, l);
-	else if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "li\0", len))
-		ptr = ft_itoa_d(va_arg(elem, long int), 0, l);
+		ptr = ft_itoa_d(va_arg(elem, long int), 0, &form_place_spc);
+	else if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "i\0", len))
+		ptr = ft_itoa_d(va_arg(elem, int), 0, &form_place_spc);
 	else if (ft_strstr_num(str, "llu\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), l);
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), &form_place_spc);
 	else if (ft_strstr_num(str, "lu\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), l);
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), &form_place_spc);
 	else if (ft_strstr_num(str, "hhu\0", len))
-		ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), l);
+		ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), &form_place_spc);
 	else if (ft_strstr_num(str, "hu\0", len))
-		ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), l);
+		ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), &form_place_spc);
 	else if (ft_strstr_num(str, "u\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned int), l);
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned int), &form_place_spc);
 	else
 	{
 		return (0);
 	}
 	//write(1, "--hd--", 6);
 	//write(1, "0", 1);
-	write(1, ptr, *l);
-	return (1);
+	write(1, ptr, form_place_spc.result);
+	return (3);
 }
 
 int		ft_param_processing(const char *str, size_t len, va_list elem)
 {
-	int l;
-	char *ptr;
+	int		l;
+	char	*ptr;
+	l = 7;
 
-	l = 0;
-	read_variable(str, len, elem, &l);
-	return (1);
+	l = read_variable(str, len, elem);
+	return (l);
 }
 
 /*
