@@ -1,15 +1,5 @@
 #include "header.h"
 
-int			ft_result_len(t_param *f_p_s, int flag)
-{
-	if ((*f_p_s).precision > (*f_p_s).len)
-		(*f_p_s).len = (*f_p_s).precision + flag;
-	(*f_p_s).result = (*f_p_s).len;
-	if ((*f_p_s).result < (*f_p_s).width)
-		(*f_p_s).result = (*f_p_s).width;
-	return ((*f_p_s).result);
-}
-
 void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 {
 	int i;

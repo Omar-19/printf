@@ -113,6 +113,38 @@ int		read_variable_char(const char *str, size_t len, va_list elem)
 	return (0);
 }
 
+int		read_variable_float(const char *str, size_t len, va_list elem, t_param *form_place_spc)
+{
+	char			*ptr;
+	t_double		d;
+	char			*l;
+	int				sign;
+
+	if ((*form_place_spc).precision == 0)
+		(*form_place_spc).precision = 6;
+	if (ft_strstr_num(str, "Lf\0", len))
+	{
+		d.numld = va_arg(elem, long double);
+		ptr = float_ld(d, (*form_place_spc).precision, &sign);
+	}
+	else if (ft_strstr_num(str, "lf\0", len))
+	{
+		d.numd = va_arg(elem, double);
+		ptr = float_d(d, (*form_place_spc).precision, &sign);
+	}
+	else if (ft_strstr_num(str, "f\0", len))
+	{
+		d.numf = (float)va_arg(elem, double);
+		ptr = float_f(d, (*form_place_spc).precision, &sign);
+	}
+	else
+		return (0);
+	(*form_place_spc).len = ft_strlen(ptr);
+	ft_result_len(form_place_spc, 0);
+	write(1, ptr, (*form_place_spc).len);
+	return ((*form_place_spc).result);
+}
+
 int		ft_param_processing(const char *str, size_t len, va_list elem)
 {
 	int		l;
@@ -125,6 +157,8 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 	if ((l = read_variable_int(str, len, elem, &form_place_spc)))
 		return (l);
 	else if ((l = read_variable_char(str, len, elem)))
+		return (l);
+	else if ((l = read_variable_float(str, len, elem, &form_place_spc)))
 		return (l);
 	return (0);
 }
