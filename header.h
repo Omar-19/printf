@@ -22,6 +22,8 @@ typedef struct				s_param
 	int		result;
 }							t_param;
 
+size_t				ft_strlen(const char *s);
+int					read_variable_char(const char *str, size_t len, va_list elem);
 void				ft_string_processing(t_param *f_p_s, char *str, int flag);
 int					ft_result_len(t_param *f_p_s, int flag);
 int					ft_atoi_n(const char *str, int *j);

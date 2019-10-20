@@ -25,16 +25,22 @@ void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 	{
 		if ((i == 0 || (i == 1 && str[0] != '-')) && flag == 1 && f)
 			str[i] = '-';
+		//else if ((i == 0 || (i == 1 && str[0] != '+')) && flag == 3 && f && flag != 1)
+		//	str[i] = '+';
 		else if (f == 0)
 			str[i] = ' ';
 		else
 			str[i] = '0';
 		++i;
 	}
-	if (!f)
+	if (!f && flag == 1)
 		str[--i] = '-';
+	// else if (!f && flag == 3)
+	// 	str[--i] = '+';
 	if((i == 0 && flag == 1) || (i == 1 && flag == 1 && str[0] != '-'))
 		str[i] = '-';
+	// else if((i == 0 && flag == 3) || (i == 1 && flag == 3 && str[0] != '+'))
+	// 	str[i] = '+';
 }
 
 char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p_s)
@@ -52,6 +58,11 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 		flag = 1;
 		val[0] = -value_i;
 	}
+	// else if (ft_strchr((*f_p_s).flags, '+'))
+	// {
+	// 	flag = 3;
+	//  	++size;
+	// }
 	else if (value_i > 0)
 		val[0] = value_i;
 	else

@@ -60,9 +60,7 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 
 int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc)
 {
-	int		var;
 	char	*ptr;
-	int		flag;
 	
 	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
 		ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc);
@@ -89,7 +87,30 @@ int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_
 		return (0);
 	}
 	write(1, ptr, (*form_place_spc).result);
+	free(ptr);
 	return ((*form_place_spc).result);
+}
+
+int		read_variable_char(const char *str, size_t len, va_list elem)
+{
+	char	*ptr;
+	char 	s;
+	size_t	res;
+
+	if (ft_strstr_num(str, "c\0", len))
+	{
+		s = (char)va_arg(elem, int);
+		write(1, &s, 1);
+		return (1);
+	}
+	else if (ft_strstr_num(str, "s\0", len))
+	{
+		ptr = va_arg(elem, char *);
+		res = ft_strlen(ptr);
+		write(1, ptr, res);
+		return (res);
+	}
+	return (0);
 }
 
 int		ft_param_processing(const char *str, size_t len, va_list elem)
@@ -102,6 +123,8 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 	ft_format_specification_description(str, len, elem, &form_place_spc);
 
 	if ((l = read_variable_int(str, len, elem, &form_place_spc)))
+		return (l);
+	else if ((l = read_variable_char(str, len, elem)))
 		return (l);
 	return (0);
 }
