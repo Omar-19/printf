@@ -58,16 +58,14 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 		(*f_p_s).precision = 0;
 }
 
-int		read_variable(const char *str, size_t len, va_list elem)
+int		read_variable_int(const char *str, size_t len, va_list elem)
 {
 	int		var;
 	char	*ptr;
 	int		flag;
-	// Format placeholder specification
-	t_param				form_place_spc;
-
-	//*l = 5;
-	ft_format_specification_description(str, len, elem, &form_place_spc);
+	
+	//t_param				form_place_spc;
+	//ft_format_specification_description(str, len, elem, &form_place_spc);
 	//printf("\nform_place_spc.flags = %s\n form_place_spc.width = %d\n form_place_spc.precision = %d\n",
 	//							 form_place_spc.flags, form_place_spc.width, form_place_spc.precision);
 	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
@@ -104,10 +102,16 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 {
 	int		l;
 	char	*ptr;
-	l = 7;
+	// Format placeholder specification
+	t_param	form_place_spc;
 
-	l = read_variable(str, len, elem);
-	return (l);
+	ft_format_specification_description(str, len, elem, &form_place_spc);
+
+	//исправить аргументы функции rvi передавать указатель на структуру (чтоб не перезаполнять каждый раз)
+	if (l = read_variable_int(str, len, elem, &form_place_spc))
+		return (l);
+	else if (l = read_variable_int(str, len, elem))
+		return (l);
 }
 
 /*

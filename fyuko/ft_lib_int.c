@@ -28,18 +28,20 @@ void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 		f = 1;
 	//printf("len = %d\n", (*f_p_s).len);
 	//printf("size = %d\n", (*f_p_s).result - i);
+	if (ft_strchr((*f_p_s).flags, ' ') && (*f_p_s).width == (*f_p_s).result)//&& (*f_p_s).precision + flag != (*f_p_s).result)
+		str[i++] = ' ';
 	while ((*f_p_s).result - i > (*f_p_s).len - flag)
 	{
 		//printf("--------%c\n", '-');
 		//printf("i = %d\n", i);
 		//printf("\n--------%c\n", '-');
 		//printf("\n%d != %d\n", (*f_p_s).precision, (*f_p_s).result);
-		if (i == 0 && ft_strchr((*f_p_s).flags, ' ') && (*f_p_s).width == (*f_p_s).result)//&& (*f_p_s).precision + flag != (*f_p_s).result)
+		/*if (i == 0 && ft_strchr((*f_p_s).flags, ' ') && (*f_p_s).width == (*f_p_s).result)//&& (*f_p_s).precision + flag != (*f_p_s).result)
 		{
 			//printf("\n--------%c\n", '-');
 			str[i] = ' ';
-		}
-		else if ((i == 0 || (i == 1 && str[0] != '-')) && flag == 1)
+		}*/
+		if ((i == 0 || (i == 1 && str[0] != '-')) && flag == 1 && f)
 			str[i] = '-';
 		else if (f == 0)
 			str[i] = ' ';
@@ -47,6 +49,8 @@ void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 			str[i] = '0';
 		++i;
 	}
+	if (!f)
+		str[--i] = '-';
 	if((i == 0 && flag == 1) || (i == 1 && flag == 1 && str[0] != '-'))
 		str[i] = '-';
 }

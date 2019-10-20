@@ -76,18 +76,30 @@ int main()
 	//ft_printf("%cmbc%hdc%%mal", 7, 8, 9);
 	printf("abc% 09.7d def\n", -82);
 	ft_printf("abc% 09.7d def\n", -82);
-	
+
 	printf("abc% 0*.*d def\n", 5, 7, -123);
 	ft_printf("abc% 0*.*d def\n", 5, 7, -123);
-	
+
 	printf("abc%01.*d def\n", 4, 5);
 	ft_printf("abc%01.*d def\n", 4, 5);
-	
+
 	printf("abc%010d def\n", -43);
 	ft_printf("abc%010d def\n", -43);
-	
+
 	printf("abc% 05.5d def\n", -123456);
 	ft_printf("abc% 05.5d def\n", -123456);
+
+	printf("abc% 10d def\n", -123456);
+	ft_printf("abc% 10d def\n", -123456);
+
+	printf("abc% .10d def\n", -123456);
+	ft_printf("abc% .10d def\n", -123456);
+
+	printf("abc% .10d def\n", -123456);
+	ft_printf("abc% .10d def\n", -123456);
+
+	printf("abc%d def\n", -123456);
+	ft_printf("abc%d def\n", -123456);
 
 	//ft_printf("%daaa\n");
 	//ft_printf("d = %lld %% lololo lld = %lld\n", 9223372036854775807, -9223372036854775808);
