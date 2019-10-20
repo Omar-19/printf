@@ -1,9 +1,53 @@
+#include "header.h"
 #include <stdio.h>
-#include <stdarg.h>
+/*#include <stdarg.h>
 #include <limits.h>
 #include <math.h>
 #include <unistd.h>
 #include <stdlib.h>
+*/
+
+int main()
+{
+	/*ft_printf("%d mbc hd = %hd c %%%dmal\n", 7, 8, 9);*/
+	
+	printf("res %d\n", printf("%d\n", 0));
+	printf("res %d\n\n", ft_printf("%d\n", 0));
+
+	printf("res %d\n", printf("abc% 09.7d def\n", -82));
+	printf("res %d\n\n", ft_printf("abc% 09.7d def\n", -82));
+
+	printf("res %d\n", printf("abc% 0*.*d def\n", 5, 7, -123));
+	printf("res %d\n\n", ft_printf("abc% 0*.*d def\n", 5, 7, -123));
+
+	printf("res %d\n", printf("abc%01.*d def\n", 4, 5));
+	printf("res %d\n\n", ft_printf("abc%01.*d def\n", 4, 5));
+
+	printf("res %d\n", printf("abc%010d def\n", -43));
+	printf("res %d\n\n", ft_printf("abc%010d def\n", -43));
+
+	printf("res %d\n", printf("abc% 05.5d def\n", -123456));
+	printf("res %d\n\n", ft_printf("abc% 05.5d def\n", -123456));
+
+	printf("res %d\n", printf("abc% 10d def\n", -123456));
+	printf("res %d\n\n", ft_printf("abc% 10d def\n", -123456));
+
+	printf("res %d\n", printf("abc% .10d def\n", -123456));
+	printf("res %d\n\n", ft_printf("abc% .10d def\n", -123456));
+
+	printf("res %d\n", printf("abc% .10d def\n", -123456));
+	printf("res %d\n\n", ft_printf("abc% .10d def\n", -123456));
+
+	printf("res %d\n", printf("abc%d def\n", -123456));
+	printf("res %d\n\n", ft_printf("abc%d def\n", -123456));
+
+	//ft_printf("%daaa\n");
+	//ft_printf("d = %lld %% lololo lld = %lld\n", 9223372036854775807, -9223372036854775808);
+	//ft_printf("-----pepepe------\n");
+	//ft_printf("rabotaet: llu = %llu\n", 18446744073709551615);
+	//write(1, "\n", 1);
+	return (0);
+}
 
  /*
 int sum(int n, ...)
@@ -104,30 +148,6 @@ int main(void)
 	
 	return 0;
 }*/
-
-int		ft_atoi(const char *str)
-{
-	long	number;
-
-	number = 0;
-	while (*str >= '0' && *str <= '9')
-	{
-		if (number < 0 && number < number * 10)
-			return (0);
-		if (number > 0 && number > number * 10)
-			return (-1);
-		number = number * 10 + 1 * (*str - '0');
-		str++;
-	}
-	return (number);
-}
-
-int main()
-{
-	int *l;
-	printf("%d\n", ft_atoi("143.fsg"));
-	return (0);
-}
 
 /*
 int main()

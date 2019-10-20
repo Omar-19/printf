@@ -1,8 +1,5 @@
 #include "header.h"
 
-// жобавить полное описание:
-// %[флаги][ширина][.точность][размер]тип
-
 int		ft_is_conversion(const char c)
 {
 	return (!(ft_strchr("diuoxXfFeEgGaAcsSpn", c) == NULL));
