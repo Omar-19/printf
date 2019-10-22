@@ -6,7 +6,7 @@
 /*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/23 00:56:16 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/23 00:58:36 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,12 @@ int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_
 	{
 		a = va_arg(elem, long long);
 		ptr = hex_int(&a, 32);
+		(*form_place_spc).result = strlen(ptr);
+	}
+	else if (ft_strstr_num(str, "o\0", len))
+	{
+		a = va_arg(elem, long long);
+		ptr = octa_int(&a);
 		(*form_place_spc).result = strlen(ptr);
 	}
 	else
