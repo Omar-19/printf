@@ -6,7 +6,7 @@
 /*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/23 00:32:50 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/23 00:56:16 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc)
 {
 	char	*ptr;
+	long long a;
 
 	ptr = NULL;
 	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
@@ -95,6 +96,18 @@ int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_
 		ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc);
 	else if (ft_strstr_num(str, "u\0", len))
 		ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc);
+	else if (ft_strstr_num(str, "x\0", len))
+	{
+		a = va_arg(elem, long long);
+		ptr = hex_int(&a, 0);
+		(*form_place_spc).result = strlen(ptr);
+	}
+	else if (ft_strstr_num(str, "X\0", len))
+	{
+		a = va_arg(elem, long long);
+		ptr = hex_int(&a, 32);
+		(*form_place_spc).result = strlen(ptr);
+	}
 	else
 		return (0);
 	write(1, ptr, (*form_place_spc).result);

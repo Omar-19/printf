@@ -6,7 +6,7 @@
 /*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:35:29 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/23 00:29:20 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/23 00:56:05 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,9 @@ int		main()
 // 	test_func(printf("%-.7f\n", 0.1), ft_printf("%-.7f\n", 0.1));
 
 // 	test_func(printf("%10f\n", 0.1), ft_printf("%10f\n", 0.1));
-	char *s = "f";
-	test_func(printf("%p\n", s), ft_printf("%p\n", s));
+	// char *s = "f";
+	// test_func(printf("%p\n", s), ft_printf("%p\n", s));
+	printf("%X\n", 11);
+	ft_printf("%X\n", 11);
 	return (0);
 }
