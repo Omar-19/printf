@@ -2,8 +2,13 @@
 
 int			ft_result_len(t_param *f_p_s, int flag)
 {
+	int f;
+
+	f = 0;
+	if (flag)
+		f = 1;
 	if ((*f_p_s).precision > (*f_p_s).len)
-		(*f_p_s).len = (*f_p_s).precision + flag;
+		(*f_p_s).len = (*f_p_s).precision + f;
 	(*f_p_s).result = (*f_p_s).len;
 	if ((*f_p_s).result < (*f_p_s).width)
 		(*f_p_s).result = (*f_p_s).width;
