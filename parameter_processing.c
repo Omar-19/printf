@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parameter_processing.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/22 14:35:41 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/10/23 00:32:50 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_
 int		read_variable_char(const char *str, size_t len, va_list elem)
 {
 	char	*ptr;
+	char	*r1;
 	char 	s;
 	size_t	res;
 
@@ -120,6 +121,14 @@ int		read_variable_char(const char *str, size_t len, va_list elem)
 		ptr = va_arg(elem, char *);
 		res = ft_strlen(ptr);
 		write(1, ptr, res);
+		return (res);
+	}
+	else if (ft_strstr_num(str, "p\0", len))
+	{
+		ptr = va_arg(elem, char *);
+		r1 = point_hex(&ptr);
+		res = ft_strlen(r1);
+		write(1, r1, res);
 		return (res);
 	}
 	return (0);
