@@ -27,7 +27,7 @@
 # define RETF(x) (((*(uint32_t*)(&x) >> 23) & (uint32_t)0xFF)  - 127)
 # define RETD(x) (((*(uint64_t *)(&d.numd) >> 52) & 0x7FF) - 1023)
 # define RETLD(x) (((*(__uint128_t*)(&d.numld) >> 64) & 0x7FFF) - 16383)
-
+// strcmp(s, "000") == 0 ? c = '0' : 0;
 typedef union	u_double
 {
 	long double		numld;
@@ -41,6 +41,14 @@ typedef struct	s_val
 	char	length[2];
 }				t_val;
 
+typedef struct	s_intp
+{
+	unsigned long long	val[2];
+	char				*str;
+	int					size;
+	int					flag;
+}				t_intp;
+
 typedef struct	s_param
 {
 	int		precision ;
@@ -50,7 +58,11 @@ typedef struct	s_param
 	int		result;
 }				t_param;
 
-char			*ft_strnew_space(int size);
+char			hex_intc(char *s, int p);
+char			*point_hex(void *a);
+char			octa_intc(char *s);
+char			*octa_int(void *a);
+char			*ft_strnew_null(int size);
 int				ft_only_space(char *str);
 int				read_variable_float(const char *str, size_t len, va_list elem, t_param *form_place_spc);
 int				ft_printf(const char *format, ...);
@@ -78,7 +90,7 @@ char			*del1_one(uint64_t *tmp, int deg, int ndb, int t);
 char			*mastos(int *a, int t);
 void			toone(uint64_t *tmp, int min, int m1);
 char			*cr_sdc(uint64_t *a, int min, size_t m1);
-char			*hex_int(void *a, int typ, int p, int sd);
+char			*hex_int(void *a, int p);
 char			*get_val(char *s);
 char			*main_p(char **s, int pos);
 char			*float_f(t_double d, int prs, int *sign);
@@ -106,8 +118,9 @@ void			ft_string_processing(t_param *f_p_s, char *str, int flag);
 int				ft_result_len(t_param *f_p_s, int flag);
 int				ft_atoi_n(const char *str, int *j);
 char			*ft_strchr(const char *s, int c);
+void			itoa_flag_handling(long long int value_i, unsigned long long value_u, t_param **f_p_s, t_intp *par);
 void			ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s);
-char			*ft_itoa_d_flagmin(long long int value_i, unsigned long long value_u, t_param *f_p_s);
+char			*ft_itoa_d_flagmin(t_intp *par, t_param **f_p_s);
 char			*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p_s);
 int				ft_strstr_num(const char *str, const char *to_find, size_t len);
 void			ft_write_str(const char *str, size_t len);

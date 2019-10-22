@@ -12,7 +12,7 @@
 
 #include "header.h"
 
-char		*ft_strnew_space(int size)
+char		*ft_strnew_null(int size)
 {
 	char	*ptr;
 	int		i;
@@ -21,7 +21,7 @@ char		*ft_strnew_space(int size)
 	if (!(ptr = (char *)malloc(sizeof(char) * size + 1)))
 		return (NULL);
 	while (i <= size)
-		ptr[i++] = ' ';
+		ptr[i++] = '0';
 	ptr[i] = '\0';
 	return (ptr);
 }
@@ -44,7 +44,6 @@ int			ft_result_len(t_param *f_p_s, int flag)
 	int f;
 
 	f = 0;
-	//-----------
 	if (flag)
 		f = 1;
 	if ((*f_p_s).precision > (*f_p_s).len)
@@ -102,62 +101,57 @@ size_t	ft_strlen(const char *s)
 }
 
 
-char		*ft_itoa_d_flagmin(long long int value_i, unsigned long long value_u, t_param *f_p_s)
-{
-	unsigned long long	val[2];
-	char				*str;
-	int					size;
-	int					flag;
+// char		*ft_itoa_d_flagmin(long long int value_i, unsigned long long value_u, t_param *f_p_s)
+// {
+// 	unsigned long long	val[2];
+// 	char				*str;
+// 	int					size;
+// 	int					flag;
 
-	flag = 0;
-	size = 0;
+// 	flag = 0;
+// 	size = 0;
 
-	if (ft_strchr((*f_p_s).flags, '+'))
-	{
-		flag = 3;
-		++size;
-	}
-	if (value_i < 0)
-	{
-		if (flag != 3)
-			++size;
-		flag = 1;
-		val[0] = -value_i;
-	}
-	else if (value_i > 0)
-		val[0] = value_i;
-	else
-		val[0] = value_u;
-	val[1] = val[0];
-	while (val[1] /= 10)
-		++size;
-	++size;
-	(*f_p_s).len = size;
-	size = ft_result_len(f_p_s, flag);
-	str = ft_strnew_space(size);
-	str[size--] = '\0';
-	if (flag == 3)
-		str[0] = '+';
-	if (flag == 1)
-		str[0] = '-';
-	size = (*f_p_s).len--;
-	//printf("\nx%sx\n", str);
-	while (val[0] != 0)
-	{
-		//printf("\n%s\n", "------------------------------");
-		str[(*f_p_s).len--] = '0' + val[0] % 10;
-		val[0] /= 10;
-	}
-	//printf("\nsize == (*f_p_s).len + 1 : %d == %d\n", size, (*f_p_s).len + 1);
-	if (size == (*f_p_s).len + 1)
-	{
-		//++size;
-		str[1] = '0';
-		//printf("\nstr[0] = %c str[1] = %c\n", str[0], str[1]);
-		//printf("\n===================%s\n", str);
-	}
-	//printf("===%s\n", str);
-	//while(str[size] != '\0')
-	//	str[size++] = ' ';
-	return (str);
-}
+// 	if (ft_strchr((*f_p_s).flags, '+'))
+// 	{
+// 		flag = 3;
+// 		++size;
+// 	}
+// 	if (value_i < 0)
+// 	{
+// 		if (flag != 3)
+// 			++size;
+// 		flag = 1;
+// 		val[0] = -value_i;
+// 	}
+// 	else if (value_i > 0)
+// 		val[0] = value_i;
+// 	else
+// 		val[0] = value_u;
+// 	val[1] = val[0];
+// 	while (val[1] /= 10)
+// 		++size;
+// 	++size;
+// 	(*f_p_s).len = size;
+// 	size = ft_result_len(f_p_s, flag);
+// 	str = ft_strnew_space(size);
+// 	str[size--] = '\0';
+// 	if (flag == 3)
+// 		str[0] = '+';
+// 	if (flag == 1)
+// 		str[0] = '-';
+// 	size = (*f_p_s).len--;
+// 	//printf("\nx%sx\n", str);
+// 	while (val[0] != 0)
+// 	{
+// 		//printf("\n%s\n", "------------------------------");
+// 		str[(*f_p_s).len--] = '0' + val[0] % 10;
+// 		val[0] /= 10;
+// 	}
+// 	//printf("\nsize == (*f_p_s).len + 1 : %d == %d\n", size, (*f_p_s).len + 1);
+// 	if (size == (*f_p_s).len + 1)
+// 		str[size - 1] = '0';
+// 	//if ((*f_p_s).precision != 0)
+// 	//while(str[size] != '\0')
+// 	//	str[size++] = ' ';
+// 	return (str);
+// }

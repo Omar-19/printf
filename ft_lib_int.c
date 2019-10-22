@@ -49,52 +49,71 @@ void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 		str[i] = '+';
 }
 
-char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p_s)
+void		itoa_flag_handling(long long int value_i, unsigned long long value_u, t_param **f_p_s, t_intp *par)
 {
-	unsigned long long	val[2];
-	char				*str;
-	int					size;
-	int					flag;
-	int					flag_pl;
-
-	flag = 0;
-	size = 0;
-	flag_pl = 0;
-	if (ft_strchr((*f_p_s).flags, '-'))
-		return (ft_itoa_d_flagmin(value_i, value_u, f_p_s));
-	//--------------------------------
-	if (ft_strchr((*f_p_s).flags, '+'))
+	par->flag = 0;
+	par->size = 0;
+	if (ft_strchr((**f_p_s).flags, '+'))
 	{
-		flag = 3;
-		++size;
+		par->flag = 3;
+		++par->size;
 	}
 	if (value_i < 0)
 	{
-		if (flag != 3)
-			++size;
-		flag = 1;
-		val[0] = -value_i;
+		if (par->flag != 3)
+			++par->size;
+		par->flag = 1;
+		par->val[0] = -value_i;
 	}
 	else if (value_i > 0)
-		val[0] = value_i;
+		par->val[0] = value_i;
 	else
-		val[0] = value_u;
-	val[1] = val[0];
-	while (val[1] /= 10)
-		++size;
-	++size;
-	(*f_p_s).len = size;
-	size = ft_result_len(f_p_s, flag);
-	//------------------------------
-	str = (char *)malloc(sizeof(char) * size + 1);
-	str[size--] = '\0';
-	ft_string_processing(f_p_s, str, flag);
-	while (((*f_p_s).len > 1 && flag == 1) || ((*f_p_s).len > 1 && flag == 3)
-		|| ((*f_p_s).len >= 1 && flag == 0))
+		par->val[0] = value_u;
+}
+
+char		*ft_itoa_d_flagmin(t_intp *par, t_param **f_p_s)
+{
+	(*par).str = ft_strnew_null((*par).size);
+	(*par).str[(*par).size--] = '\0';
+	if ((*par).flag == 3)
+		(*par).str[0] = '+';
+	if ((*par).flag == 1)
+		(*par).str[0] = '-';
+	(*par).size = (**f_p_s).len--;
+	while ((*par).val[0] != 0)
 	{
-		str[size--] = '0' + val[0] % 10;
-		val[0] /= 10;
+		(*par).str[(**f_p_s).len--] = '0' + (*par).val[0] % 10;
+		(*par).val[0] /= 10;
+	}
+	if ((*par).size == (**f_p_s).len + 1)
+		(*par).str[(*par).size - 1] = '0';
+	while((*par).str[(*par).size] != '\0')
+		(*par).str[(*par).size++] = ' ';
+	return((*par).str);
+}
+
+char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p_s)
+{
+	t_intp	par;
+
+	itoa_flag_handling(value_i, value_u, &f_p_s, &par);
+	par.val[1] = par.val[0];
+	while (par.val[1] /= 10)
+		++par.size;
+	++par.size;
+	(*f_p_s).len = par.size;
+	par.size = ft_result_len(f_p_s, par.flag);
+	if (ft_strchr((*f_p_s).flags, '-'))
+		return (ft_itoa_d_flagmin(&par, &f_p_s));
+	par.str = (char *)malloc(sizeof(char) * par.size + 1);
+	par.str[par.size--] = '\0';
+	ft_string_processing(f_p_s, par.str, par.flag);
+	while (((*f_p_s).len > 1 && par.flag == 1) || ((*f_p_s).len > 1 && par.flag == 3)
+		|| ((*f_p_s).len >= 1 && par.flag == 0))
+	{
+		par.str[par.size--] = '0' + par.val[0] % 10;
+		par.val[0] /= 10;
 		--(*f_p_s).len;
 	}
-	return (str);
+	return (par.str);
 }

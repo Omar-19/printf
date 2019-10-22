@@ -35,14 +35,39 @@ char	hex_intc(char *s, int p)
 	return (c);
 }
 
-char	*hex_int(void *a, int typ, int p, int sd)
+char	*point_hex(void *a)
+{
+	char	res[13];
+	char	buf[5];
+	int		j;
+	int		i;
+
+	i = 31;
+	j = 2;
+	memset(res, '0', 13);
+	res[0] = '0';
+	res[1] = 'x';
+	res[2] = '1';
+	while (i >= 0)
+	{
+		buf[3 - (i % 4)] = ((*(__uint128_t *)a >> i) & 1) + '0';
+		buf[4] = '\0';
+		if (!(i % 4))
+			res[++j] = hex_intc(buf, 0);
+		i--;
+	}
+	res[++j] = 0;
+	return (strdup(res));
+}
+
+char	*hex_int(void *a, int p)
 {
 	char	res[17];
 	char	buf[5];
 	int		j;
 	int		i;
 
-	i = typ - 1;
+	i = 63;
 	j = -1;
 	memset(res, '0', 17);
 	while (i >= 0)
@@ -51,13 +76,12 @@ char	*hex_int(void *a, int typ, int p, int sd)
 		buf[4] = '\0';
 		if (!(i % 4))
 			res[++j] = hex_intc(buf, p);
-		--i;
+		i--;
 	}
 	res[++j] = 0;
 	j = 0;
-	if (sd)
-		while (res[j] == '0')
-			++j;
+	while (res[j] == '0')
+		j++;
 	return (strdup(res + j));
 }
 
@@ -77,14 +101,14 @@ char	octa_intc(char *s)
 	return (c);
 }
 
-char	*octa_int(void *a, int typ)
+char	*octa_int(void *a)
 {
 	char	res[17];
 	char	buf[4];
 	int		j;
 	int		i;
 
-	i = typ - 1;
+	i = 63;
 	j = -1;
 	memset(res, '0', 17);
 	while (i >= 0)
@@ -93,11 +117,11 @@ char	*octa_int(void *a, int typ)
 		buf[3] = '\0';
 		if (!(i % 3))
 			res[++j] = octa_intc(buf);
-		--i;
+		i--;
 	}
 	res[++j] = 0;
 	j = 0;
 	while (res[j] == '0')
-		++j;
+		j++;
 	return (strdup(res + j));
 }

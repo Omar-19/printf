@@ -73,7 +73,8 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc)
 {
 	char	*ptr;
-	
+
+	ptr = NULL;
 	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
 		ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc);
 	else if (ft_strstr_num(str, "hd\0", len) || ft_strstr_num(str, "hi\0", len))
@@ -95,11 +96,10 @@ int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_
 	else if (ft_strstr_num(str, "u\0", len))
 		ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc);
 	else
-	{
 		return (0);
-	}
 	write(1, ptr, (*form_place_spc).result);
-	free(ptr);
+	if (!ptr)
+		free(ptr);
 	return ((*form_place_spc).result);
 }
 
@@ -132,6 +132,7 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 	char			*l;
 	int				sign;
 
+	ptr = NULL;
 	if ((*form_place_spc).precision == 0)
 		(*form_place_spc).precision = 6;
 	if (ft_strstr_num(str, "Lf\0", len))
@@ -153,8 +154,9 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 		return (0);
 	(*form_place_spc).len = ft_strlen(ptr);
 	ft_result_len(form_place_spc, 0);
-	//printf("-----------res = %d str = %s\n", (*form_place_spc).len, ptr);
 	write(1, ptr, (*form_place_spc).len);
+	if (!ptr)
+		free(ptr);
 	return ((*form_place_spc).len);
 }
 
