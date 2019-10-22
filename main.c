@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 16:23:50 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/20 18:12:48 by btheia           ###   ########.fr       */
+/*   Created: 2019/10/22 14:35:29 by fyuko             #+#    #+#             */
+/*   Updated: 2019/10/22 14:35:32 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,13 @@ char	*float_c(va_list a, int prs, char *type)
 
 int		main()
 {
-	// printf("%f\n", printf("-% +2f\n", 0.123456));
+	printf("%d\n", printf("%f\n", 0.123456));
+	printf("%d\n", ft_printf("%f\n", 0.123456));
 	// printf("%d\n", printf("---%+5d\n", 10));
 	// printf("%d\n", ft_printf("---%+5d\n", 10));
 	// printf("%d\n", printf("---%5d\n", -10));
 	// printf("%d\n", ft_printf("---%5d\n", -10));
-	printf("--------------------- %d\n", printf("abc%+010d def\n", 43));
+	/*printf("--------------------- %d\n", printf("abc%+010d def\n", 43));
 	printf("--------------------- %d\n\n", ft_printf("abc%+010d def\n", 43));
 
 	printf("--------------------- %d\n", printf("abc% +05.5d def\n", 123456));
@@ -149,7 +150,9 @@ int		main()
 	
 	printf("--------------------- %d\n", printf("%c --- %s\n", 'a', "qawa!"));
 	printf("--------------------- %d\n\n", ft_printf("%c --- %s\n", 'a', "qawa!"));
-	
+	*/
+	/*printf("--------------------- %d\n", printf("%s\n", "*"));
+	printf("--------------------- %d\n\n", ft_printf("%s\n", "*"));*/
 	return (0);
 	//ft_printf("d %s\n", "f");
 }
