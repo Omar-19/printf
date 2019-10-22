@@ -30,7 +30,7 @@ int		check_c(char *s)
 	{
 		if (s[i] != '0')
 			return (1);
-		i++;
+		++i;
 	}
 	return (0);
 }
@@ -44,8 +44,6 @@ void	okrug1(char **d, int t)
 	s = *d;
 	point = strchr(s, '.');
 	i = point - s + t + 1;
-	// printf("dsrot %s\n", s);
-	// printf("tt %c\n", s[i]);
 	if (check_c(point + 1) == 1 && s[i] >= '5')
 	{
 		while (--i >= 0)

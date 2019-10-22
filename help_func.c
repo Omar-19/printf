@@ -14,6 +14,8 @@
 
 int			ft_only_space(char *str)
 {
+	if (*str == '\0')
+		return (0);
 	while (*str != '\0')
 	{
 		if (*str != ' ')
@@ -36,7 +38,7 @@ int			ft_result_len(t_param *f_p_s, int flag)
 	(*f_p_s).result = (*f_p_s).len;
 	if ((*f_p_s).result < (*f_p_s).width)
 		(*f_p_s).result = (*f_p_s).width;
-	if (ft_only_space((*f_p_s).flags))
+	if (ft_only_space((*f_p_s).flags) && (*f_p_s).width == 0 && (*f_p_s).precision == 0)
 		++(*f_p_s).result;
 	return ((*f_p_s).result);
 }

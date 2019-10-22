@@ -49,7 +49,7 @@ char	*mastos(int *a, int t)
 	while (i < t)
 	{
 		res[i] = a[i] + '0';
-		i++;
+		++i;
 	}
 	return (res);
 }

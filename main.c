@@ -85,16 +85,19 @@ char	*float_c(va_list a, int prs, char *type)
 
 int		main()
 {
-	//printf("%d\n", printf("%f\n", 0.1234567));
-	//printf("%d\n", ft_printf("%f\n", 0.1234567));
+	printf("%d\n", printf("%f\n", 0.1234567));
+	printf("%d\n", ft_printf("%f\n", 0.1234567));
 
 	printf("%d\n", printf("%+d\n", -10));
 	printf("%d\n", ft_printf("%+d\n", -10));
-	// printf("%d\n", printf("---%+5d\n", 10));
-	// printf("%d\n", ft_printf("---%+5d\n", 10));
-	// printf("%d\n", printf("---%5d\n", -10));
-	// printf("%d\n", ft_printf("---%5d\n", -10));
-	/*printf("--------------------- %d\n", printf("abc%+010d def\n", 43));
+	
+	printf("%d\n", printf("---%+5d\n", 10));
+	printf("%d\n", ft_printf("---%+5d\n", 10));
+	
+	printf("%d\n", printf("---%5d\n", -10));
+	printf("%d\n", ft_printf("---%5d\n", -10));
+	
+	printf("--------------------- %d\n", printf("abc%+010d def\n", 43));
 	printf("--------------------- %d\n\n", ft_printf("abc%+010d def\n", 43));
 
 	printf("--------------------- %d\n", printf("abc% +05.5d def\n", 123456));
@@ -153,9 +156,10 @@ int		main()
 	
 	printf("--------------------- %d\n", printf("%c --- %s\n", 'a', "qawa!"));
 	printf("--------------------- %d\n\n", ft_printf("%c --- %s\n", 'a', "qawa!"));
-	*/
-	/*printf("--------------------- %d\n", printf("%s\n", "*"));
-	printf("--------------------- %d\n\n", ft_printf("%s\n", "*"));*/
+	
+	printf("--------------------- %d\n", printf("%s\n", "*"));
+	printf("--------------------- %d\n\n", ft_printf("%s\n", "*"));
+
 	return (0);
 	//ft_printf("d %s\n", "f");
 }

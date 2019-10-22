@@ -19,7 +19,7 @@ int		raz(__uint128_t num)
 	res = 0;
 	while (num)
 	{
-		res++;
+		++res;
 		num /= 10;
 	}
 	return (res);
@@ -41,7 +41,7 @@ char	*ft_uint64toa(uint64_t a, int d)
 	{
 		result[ras] = num % 10 + '0';
 		num /= 10;
-		ras--;
+		--ras;
 	}
 	return (result);
 }

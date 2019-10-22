@@ -51,13 +51,13 @@ char	*hex_int(void *a, int typ, int p, int sd)
 		buf[4] = '\0';
 		if (!(i % 4))
 			res[++j] = hex_intc(buf, p);
-		i--;
+		--i;
 	}
 	res[++j] = 0;
 	j = 0;
 	if (sd)
 		while (res[j] == '0')
-			j++;
+			++j;
 	return (strdup(res + j));
 }
 
@@ -93,11 +93,11 @@ char	*octa_int(void *a, int typ)
 		buf[3] = '\0';
 		if (!(i % 3))
 			res[++j] = octa_intc(buf);
-		i--;
+		--i;
 	}
 	res[++j] = 0;
 	j = 0;
 	while (res[j] == '0')
-		j++;
+		++j;
 	return (strdup(res + j));
 }

@@ -153,8 +153,9 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 		return (0);
 	(*form_place_spc).len = ft_strlen(ptr);
 	ft_result_len(form_place_spc, 0);
+	//printf("-----------res = %d str = %s\n", (*form_place_spc).len, ptr);
 	write(1, ptr, (*form_place_spc).len);
-	return ((*form_place_spc).result);
+	return ((*form_place_spc).len);
 }
 
 int		ft_param_processing(const char *str, size_t len, va_list elem)

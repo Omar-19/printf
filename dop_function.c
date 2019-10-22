@@ -22,8 +22,8 @@ void	ret_byties_float(t_double d, int *a, int type, char *l)
 	while (j >= 0)
 	{
 		l[k] = ((*(__uint128_t *)(&d.numld) >> j) & 1) + '0';
-		k++;
-		j--;
+		++k;
+		--j;
 	}
 	l[type + 1] = 0;
 	(l[0] == '1') ? *a = 1 : 0;

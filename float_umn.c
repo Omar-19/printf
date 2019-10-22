@@ -15,7 +15,7 @@
 void	break_umn(uint64_t *tmp, int pos, int *min, __uint128_t s)
 {
 	tmp[pos] = s;
-	(*min)--;
+	--(*min);
 }
 
 int		help_umn(uint64_t *tmp, int pos, __uint128_t f, __uint128_t *s)

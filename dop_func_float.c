@@ -30,6 +30,8 @@ char	*main_c(char *s)
 	size_t	m1;
 	int		n1;
 
+	if (strcmp(s, "0") == 0)
+		return (strdup(s));
 	max_deg = strlen(s) - 1;
 	n1 = max_deg / 10 + 1;
 	m1 = (n1 * 3) / 19 + 1;
@@ -44,7 +46,7 @@ void	toone(uint64_t *tmp, int min, int m1)
 	while (i < m1)
 	{
 		tmp[i] = 0;
-		i++;
+		++i;
 	}
 }
 
@@ -58,7 +60,7 @@ char	*cr_sdc(uint64_t *a, int min, size_t m1)
 	while (min < m1)
 	{
 		strcat(res, ft_uint64toa(a[min], 1));
-		min++;
+		++min;
 	}
 	return (res);
 }
