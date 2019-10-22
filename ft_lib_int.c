@@ -59,11 +59,6 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 	flag = 0;
 	size = 0;
 
-	//if (ft_strchr((*f_p_s).flags, '+'))
-	//{
-	//	++size;
-	//	flag = 3;
-	//}
 	if (ft_strchr((*f_p_s).flags, '+'))
 	{
 		flag = 3;
@@ -76,11 +71,6 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 		flag = 1;
 		val[0] = -value_i;
 	}
-	// else if (ft_strchr((*f_p_s).flags, '+'))
-	// {
-	// 	flag = 3;
-	// 	++size;
-	// }
 	else if (value_i > 0)
 		val[0] = value_i;
 	else
@@ -101,5 +91,6 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 		val[0] /= 10;
 		--(*f_p_s).len;
 	}
+	
 	return (str);
 }

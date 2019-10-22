@@ -85,8 +85,11 @@ char	*float_c(va_list a, int prs, char *type)
 
 int		main()
 {
-	printf("%d\n", printf("%f\n", 0.123456));
-	printf("%d\n", ft_printf("%f\n", 0.123456));
+	//printf("%d\n", printf("%f\n", 0.1234567));
+	//printf("%d\n", ft_printf("%f\n", 0.1234567));
+
+	printf("%d\n", printf("%+d\n", -10));
+	printf("%d\n", ft_printf("%+d\n", -10));
 	// printf("%d\n", printf("---%+5d\n", 10));
 	// printf("%d\n", ft_printf("---%+5d\n", 10));
 	// printf("%d\n", printf("---%5d\n", -10));
