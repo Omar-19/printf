@@ -14,6 +14,8 @@
 
 void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 {
+	// i = ij[0]
+	// int ij[2];
 	int i;
 	int f;
 	int fl;
@@ -73,7 +75,7 @@ void		itoa_flag_handling(long long int value_i, unsigned long long value_u, t_pa
 
 char		*ft_itoa_d_flagmin(t_intp *par, t_param **f_p_s)
 {
-	(*par).str = ft_strnew_null((*par).size);
+	(*par).str = ft_strnew_char((*par).size, '0');
 	(*par).str[(*par).size--] = '\0';
 	if ((*par).flag == 3)
 		(*par).str[0] = '+';

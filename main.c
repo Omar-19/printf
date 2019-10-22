@@ -86,63 +86,63 @@ char	*float_c(va_list a, int prs, char *type)
 static void test_func(int a, int b)
 {
 	if (a == b)
-		printf("-------------------------------------------------%s\n", "OK");
+		printf("%d-------------------------------------------------%s\n", a, "OK");
 	else
-		printf("-------------------------------------------------%s\n", "FAIL");
+		printf("(sist)%d != %d-------------------------------------------------%s\n", a, b, "FAIL");
 }
 
 int		main()
 {
-	// test_func(printf("%f\n", 0.1234567), ft_printf("%f\n", 0.1234567));
+	test_func(printf("%f\n", 0.1234567), ft_printf("%f\n", 0.1234567));
 
-	// test_func(printf("%+d\n", -10), ft_printf("%+d\n", -10));
+	test_func(printf("%+d\n", -10), ft_printf("%+d\n", -10));
 
-	// test_func(printf("---%+5d\n", 10), ft_printf("---%+5d\n", 10));
+	test_func(printf("---%+5d\n", 10), ft_printf("---%+5d\n", 10));
 
-	// test_func(printf("%-10dd\n", -10), ft_printf("%-10dd\n", -10));
+	test_func(printf("%-10dd\n", -10), ft_printf("%-10dd\n", -10));
 
-	// test_func(printf("abc%-+010d def\n", 43), ft_printf("abc%-+010d def\n", 43));
+	test_func(printf("abc%-+010d def\n", 43), ft_printf("abc%-+010d def\n", 43));
 
-	// test_func(printf("abc% -+05.5d def\n", 123456), ft_printf("abc% -+05.5d def\n", 123456));
+	test_func(printf("abc% -+05.5d def\n", 123456), ft_printf("abc% -+05.5d def\n", 123456));
 
-	// test_func(printf("abc% -+10d def\n", -123456), ft_printf("abc% -+10d def\n", -123456));
+	test_func(printf("abc% -+10d def\n", -123456), ft_printf("abc% -+10d def\n", -123456));
 
-	// test_func(printf("abc%-+10d def\n", 123456), ft_printf("abc%-+10d def\n", 123456));
+	test_func(printf("abc%-+10d def\n", 123456), ft_printf("abc%-+10d def\n", 123456));
 
-	// test_func(printf("abc%-+.10d def\n", 123456), ft_printf("abc%-+.10d def\n", 123456));
+	test_func(printf("abc%-+.10d def\n", 123456), ft_printf("abc%-+.10d def\n", 123456));
 
-	// test_func(printf("abc%-+d def\n", 0), ft_printf("abc%-+d def\n", 0));
+	test_func(printf("abc%-+d def\n", 0), ft_printf("abc%-+d def\n", 0));
 
-	// test_func(printf("abc% -+.10d def\n", -123456), ft_printf("abc% -+.10d def\n", -123456));
+	test_func(printf("abc% -+.10d def\n", -123456), ft_printf("abc% -+.10d def\n", -123456));
 
-	// test_func(printf("abc%-+d def\n", 123456), ft_printf("abc%-+d def\n", 123456));
+	test_func(printf("abc%-+d def\n", 123456), ft_printf("abc%-+d def\n", 123456));
 
-	// test_func(printf("%c %c %c %%%%%% %s = %-ld c %%%dmal\n", 'a', 'b', 'c', "def", -92233720368775808, 7),
-	// 				ft_printf("%c %c %c %%%%%% %s = %-ld c %%%dmal\n", 'a', 'b', 'c', "def", -92233720368775808, 7));
+	test_func(printf("%c %c %c %%%%%% %s = %-ld c %%%dmal\n", 'a', 'b', 'c', "def", -92233720368775808, 7),
+					ft_printf("%c %c %c %%%%%% %s = %-ld c %%%dmal\n", 'a', 'b', 'c', "def", -92233720368775808, 7));
 
-	// test_func(printf("%-+6d\n", 0), ft_printf("%-+6d\n", 0));
+	test_func(printf("%-+6d\n", 0), ft_printf("%-+6d\n", 0));
 
-	// test_func(printf("abc% -09.7d def\n", -82), ft_printf("abc% -09.7d def\n", -82));
+	test_func(printf("abc% -09.7d def\n", -82), ft_printf("abc% -09.7d def\n", -82));
 
-	// test_func(printf("abc% 0*.*d def\n", 5, 7, -123), ft_printf("abc% 0*.*d def\n", 5, 7, -123));
+	test_func(printf("abc% 0*.*d def\n", 5, 7, -123), ft_printf("abc% 0*.*d def\n", 5, 7, -123));
 
-	// test_func(printf("abc%01.*d def\n", 4, 5), ft_printf("abc%01.*d def\n", 4, 5));
+	test_func(printf("abc%01.*d def\n", 4, 5), ft_printf("abc%01.*d def\n", 4, 5));
 
-	// test_func(printf("abc%010d def\n", -43), ft_printf("abc%010d def\n", -43));
+	test_func(printf("abc%010d def\n", -43), ft_printf("abc%010d def\n", -43));
 
-	// test_func(printf("abc% 05.5d def\n", -123456), ft_printf("abc% 05.5d def\n", -123456));
+	test_func(printf("abc% 05.5d def\n", -123456), ft_printf("abc% 05.5d def\n", -123456));
 
-	// test_func(printf("abc% 10d def\n", -123456), ft_printf("abc% 10d def\n", -123456));
+	test_func(printf("abc% 10d def\n", -123456), ft_printf("abc% 10d def\n", -123456));
 
-	// test_func(printf("abc% .10d def\n", -123456), ft_printf("abc% .10d def\n", -123456));
+	test_func(printf("abc% .10d def\n", -123456), ft_printf("abc% .10d def\n", -123456));
 
-	// test_func(printf("%s\n", "qwert"), ft_printf("%s\n", "qwert"));
+	test_func(printf("%s\n", "qwert"), ft_printf("%s\n", "qwert"));
 
-	// test_func(printf("%c\n", 'a'), ft_printf("%c\n", 'a'));
+	test_func(printf("%c\n", 'a'), ft_printf("%c\n", 'a'));
 
-	// test_func(printf("%c --- %s\n", 'a', "qawa!"), ft_printf("%c --- %s\n", 'a', "qawa!"));
+	test_func(printf("%c --- %s\n", 'a', "qawa!"), ft_printf("%c --- %s\n", 'a', "qawa!"));
 
-	// test_func(printf("%s\n", "*"), ft_printf("%s\n", "*"));
+	test_func(printf("%s\n", "*"), ft_printf("%s\n", "*"));
 
 	test_func(printf("%f\n", 0.1234567), ft_printf("%f\n", 0.1234567));
 
@@ -150,13 +150,15 @@ int		main()
 
 	test_func(printf("% +f\n", 0.1234567), ft_printf("% +f\n", 0.1234567));
 
-	test_func(printf("%010f\n", 0.123), ft_printf("%010f\n", 0.123));
+	test_func(printf("%+010f\n", 0.123), ft_printf("%+010f\n", 0.123));
 
 	test_func(printf("%+.7f\n", -0.12), ft_printf("%+.7f\n", -0.12));
-
+//
 	test_func(printf("%-7f\n", 0.1), ft_printf("%-7f\n", 0.1));
-
+//
 	test_func(printf("%-.7f\n", 0.1), ft_printf("%-.7f\n", 0.1));
+
+	test_func(printf("%10f\n", 0.1), ft_printf("%10f\n", 0.1));
 
 	return (0);
 }

@@ -27,7 +27,7 @@
 # define RETF(x) (((*(uint32_t*)(&x) >> 23) & (uint32_t)0xFF)  - 127)
 # define RETD(x) (((*(uint64_t *)(&d.numd) >> 52) & 0x7FF) - 1023)
 # define RETLD(x) (((*(__uint128_t*)(&d.numld) >> 64) & 0x7FFF) - 16383)
-// strcmp(s, "000") == 0 ? c = '0' : 0;
+
 typedef union	u_double
 {
 	long double		numld;
@@ -58,14 +58,14 @@ typedef struct	s_param
 	int		result;
 }				t_param;
 
+void			ft_write_tail(t_param *f_p_s, char c);
 char			hex_intc(char *s, int p);
 char			*point_hex(void *a);
 char			octa_intc(char *s);
 char			*octa_int(void *a);
-char			*ft_strnew_null(int size);
+char			*ft_strnew_char(int size, char c);
 int				ft_only_space(char *str);
 int				read_variable_float(const char *str, size_t len, va_list elem, t_param *form_place_spc);
-int				ft_printf(const char *format, ...);
 char			*ft_ltoa_base(long long num, int base);
 char			*ft_strnew(size_t size);
 char			*arrayreverse(char *s);
@@ -129,7 +129,6 @@ int				ft_param_processing(const char *str, size_t len, va_list elem);
 char			*ft_nitoa(int n);
 int				ft_is_conversion(const char c);
 int				ft_is_valid_param(const char c);
-void			ft_write_str(const char *str, size_t len);
 int				print_elem(const char *format, va_list elem);
 int				ft_printf(const char *format, ...);
 

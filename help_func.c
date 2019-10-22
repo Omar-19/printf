@@ -12,7 +12,7 @@
 
 #include "header.h"
 
-char		*ft_strnew_null(int size)
+char		*ft_strnew_char(int size, char c)
 {
 	char	*ptr;
 	int		i;
@@ -21,10 +21,75 @@ char		*ft_strnew_null(int size)
 	if (!(ptr = (char *)malloc(sizeof(char) * size + 1)))
 		return (NULL);
 	while (i <= size)
-		ptr[i++] = '0';
+		ptr[i++] = c;
 	ptr[i] = '\0';
 	return (ptr);
 }
+
+char	*ft_strchr(const char *s, int c)
+{
+	char *ptr;
+
+	ptr = (char *)s;
+	while (*ptr != '\0' || (*ptr == '\0' && c == '\0'))
+	{
+		if (*ptr == c)
+			return (ptr);
+		ptr++;
+	}
+	return (NULL);
+}
+
+// Доделать это говно:
+// void		ft_write_tail(t_param *f_p_s, char c)
+// {
+// 	int		i[2];
+// 	char	*str;
+// 	int		len;
+
+// 	i[1] = 0;
+// 	i[0] = f_p_s->result - f_p_s->len + 1;
+// 	if (c == '-' && ft_strnew_char(i[0], '+'))
+// 		if(--i[0] == 0)
+// 			return ;
+// 	(ft_strchr((*f_p_s).flags, '0') != NULL) ? (str = ft_strnew_char(i[0], '0')) : (str = ft_strnew_char(i[0], ' '));
+// 	str[i[0]--] = '\0';
+// 	if (str[i[0]] == '0')
+// 	{
+// 		if (ft_strchr((*f_p_s).flags, ' '))
+// 			if ((str[i[1]] = ' ') && (i[1] + 1 != i[0]))
+// 				++i[1];
+// 		if (ft_strchr((*f_p_s).flags, '+'))
+// 		{
+// 			if (c == '-')
+// 				str[i[1]++] = '-';
+// 			else
+// 				str[i[1]++] = '+';
+// 		}
+// 		len = ft_strlen(str);
+// 		write(1, str, len);
+// 		f_p_s->result += len;
+// 		return ;
+// 	}
+// 	else
+// 	{
+// 		if (ft_strchr((*f_p_s).flags, '+'))
+// 		{
+// 			if (c == '-')
+// 				str[i[0]--] = '-';
+// 			else
+// 				str[i[0]--] = '+';
+// 		}
+// 		len = ft_strlen(str);
+// 		write(1, str, len);
+// 		f_p_s->result += len;
+// 		return ;
+// 	}
+// 	//len = ft_strlen(str) - 1;
+// 	//write(1, str, len);
+// 	//f_p_s->result += len;
+// 	printf("---------------------------result = %d str = x%sx\n", f_p_s->result, str);
+// }
 
 int			ft_only_space(char *str)
 {
@@ -54,20 +119,6 @@ int			ft_result_len(t_param *f_p_s, int flag)
 	if (ft_only_space((*f_p_s).flags) && (*f_p_s).width == 0 && (*f_p_s).precision == 0)
 		++(*f_p_s).result;
 	return ((*f_p_s).result);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	char *ptr;
-
-	ptr = (char *)s;
-	while (*ptr != '\0' || (*ptr == '\0' && c == '\0'))
-	{
-		if (*ptr == c)
-			return (ptr);
-		ptr++;
-	}
-	return (NULL);
 }
 
 int		ft_strstr_num(const char *str, const char *to_find, size_t len)

@@ -154,10 +154,11 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 		return (0);
 	(*form_place_spc).len = ft_strlen(ptr);
 	ft_result_len(form_place_spc, 0);
+	//ft_write_tail(form_place_spc, *ptr);
 	write(1, ptr, (*form_place_spc).len);
 	if (!ptr)
 		free(ptr);
-	return ((*form_place_spc).len);
+	return ((*form_place_spc).result);
 }
 
 int		ft_param_processing(const char *str, size_t len, va_list elem)
