@@ -50,6 +50,7 @@ typedef struct	s_param
 	int		result;
 }				t_param;
 
+char			*ft_strnew_space(int size);
 int				ft_only_space(char *str);
 int				read_variable_float(const char *str, size_t len, va_list elem, t_param *form_place_spc);
 int				ft_printf(const char *format, ...);
@@ -106,6 +107,7 @@ int				ft_result_len(t_param *f_p_s, int flag);
 int				ft_atoi_n(const char *str, int *j);
 char			*ft_strchr(const char *s, int c);
 void			ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s);
+char			*ft_itoa_d_flagmin(long long int value_i, unsigned long long value_u, t_param *f_p_s);
 char			*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p_s);
 int				ft_strstr_num(const char *str, const char *to_find, size_t len);
 void			ft_write_str(const char *str, size_t len);

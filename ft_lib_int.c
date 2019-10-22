@@ -55,10 +55,14 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 	char				*str;
 	int					size;
 	int					flag;
+	int					flag_pl;
 
 	flag = 0;
 	size = 0;
-
+	flag_pl = 0;
+	if (ft_strchr((*f_p_s).flags, '-'))
+		return (ft_itoa_d_flagmin(value_i, value_u, f_p_s));
+	//--------------------------------
 	if (ft_strchr((*f_p_s).flags, '+'))
 	{
 		flag = 3;
@@ -81,6 +85,7 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 	++size;
 	(*f_p_s).len = size;
 	size = ft_result_len(f_p_s, flag);
+	//------------------------------
 	str = (char *)malloc(sizeof(char) * size + 1);
 	str[size--] = '\0';
 	ft_string_processing(f_p_s, str, flag);
@@ -91,6 +96,5 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 		val[0] /= 10;
 		--(*f_p_s).len;
 	}
-	
 	return (str);
 }

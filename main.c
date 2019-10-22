@@ -85,80 +85,85 @@ char	*float_c(va_list a, int prs, char *type)
 
 int		main()
 {
-	printf("%d\n", printf("%f\n", 0.1234567));
-	printf("%d\n", ft_printf("%f\n", 0.1234567));
+	// printf("%d\n", printf("%f\n", 0.1234567));
+	// printf("%d\n", ft_printf("%f\n", 0.1234567));
 
-	printf("%d\n", printf("%+d\n", -10));
-	printf("%d\n", ft_printf("%+d\n", -10));
+	// printf("%d\n", printf("%+d\n", -10));
+	// printf("%d\n", ft_printf("%+d\n", -10));
 	
-	printf("%d\n", printf("---%+5d\n", 10));
-	printf("%d\n", ft_printf("---%+5d\n", 10));
+	// printf("%d\n", printf("---%+5d\n", 10));
+	// printf("%d\n", ft_printf("---%+5d\n", 10));
 	
-	printf("%d\n", printf("---%5d\n", -10));
-	printf("%d\n", ft_printf("---%5d\n", -10));
+	// printf("%d\n", printf("%-10dd\n", -10));
+	// printf("%d\n", ft_printf("%-10dd\n", -10));
 	
-	printf("--------------------- %d\n", printf("abc%+010d def\n", 43));
-	printf("--------------------- %d\n\n", ft_printf("abc%+010d def\n", 43));
+	// printf("--------------------- %d\n", printf("abc%-+010d def\n", 43));
+	// printf("--------------------- %d\n\n", ft_printf("abc%-+010d def\n", 43));
 
-	printf("--------------------- %d\n", printf("abc% +05.5d def\n", 123456));
-	printf("--------------------- %d\n\n", ft_printf("abc% +05.5d def\n", 123456));
+	// printf("--------------------- %d\n", printf("abc% -+05.5d def\n", 123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc% -+05.5d def\n", 123456));
 
-	printf("--------------------- %d\n", printf("abc% +10d def\n", -123456));
-	printf("--------------------- %d\n\n", ft_printf("abc% +10d def\n", -123456));
+	// printf("--------------------- %d\n", printf("abc% -+10d def\n", -123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc% -+10d def\n", -123456));
+	//printf("--------------------- %d\n", printf("abc%-+10d def\n", 123456));
+	//printf("--------------------- %d\n\n", ft_printf("abc%-+10d def\n", 123456));
 
-	printf("--------------------- %d\n", printf("abc% +.10d def\n", 123456));
-	printf("--------------------- %d\n\n", ft_printf("abc% +.10d def\n", 123456));
+	//printf("--------------------- %d\n", printf("abc%-+.10d def\n", 123456));
+	//printf("--------------------- %d\n\n", ft_printf("abc%-+.10d def\n", 123456));
 
-	printf("--------------------- %d\n", printf("abc% +.10d def\n", -123456));
-	printf("--------------------- %d\n\n", ft_printf("abc% +.10d def\n", -123456));
+	printf("--------------------- %d\n", printf("abc%-+d def\n", 0));
+	printf("--------------------- %d\n\n", ft_printf("abc%-+d def\n", 0));
 
-	printf("--------------------- %d\n", printf("abc%+d def\n", 123456));
-	printf("--------------------- %d\n\n", ft_printf("abc%+d def\n", 123456));
+	// printf("--------------------- %d\n", printf("abc% -+.10d def\n", -123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc% -+.10d def\n", -123456));
 
-	printf("--------------------- %d\n", printf("%c %c %c %%%%%% %s = %ld c %%%dmal\n", 'a', 'b', 'c', "def", -92233720368775808, 7));
-	printf("--------------------- %d\n\n", ft_printf("%c %c %c %%%%%% %s = %ld c %%%dmal\n", 'a', 'b', 'c', "def", -92233720368775808, 7));
+	// printf("--------------------- %d\n", printf("abc%-+d def\n", 123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc%-+d def\n", 123456));
+
+	// printf("--------------------- %d\n", printf("%c %c %c %%%%%% %s = %-ld c %%%dmal\n", 'a', 'b', 'c', "def", -92233720368775808, 7));
+	// printf("--------------------- %d\n\n", ft_printf("%c %c %c %%%%%% %s = %-ld c %%%dmal\n", 'a', 'b', 'c', "def", -92233720368775808, 7));
 	
-	printf("--------------------- %d\n", printf("%d\n", 0));
-	printf("--------------------- %d\n\n", ft_printf("%d\n", 0));
+	// printf("--------------------- %d\n", printf("%-+6d\n", 0));
+	// printf("--------------------- %d\n\n", ft_printf("%-+6d\n", 0));
 	
-	printf("--------------------- %d\n", printf("abc% 09.7d def\n", -82));
-	printf("--------------------- %d\n\n", ft_printf("abc% 09.7d def\n", -82));
+	// printf("--------------------- %d\n", printf("abc% -09.7d def\n", -82));
+	// printf("--------------------- %d\n\n", ft_printf("abc% -09.7d def\n", -82));
 	
-	printf("--------------------- %d\n", printf("abc% 0*.*d def\n", 5, 7, -123));
-	printf("--------------------- %d\n\n", ft_printf("abc% 0*.*d def\n", 5, 7, -123));
+	// printf("--------------------- %d\n", printf("abc% 0*.*d def\n", 5, 7, -123));
+	// printf("--------------------- %d\n\n", ft_printf("abc% 0*.*d def\n", 5, 7, -123));
 	
-	printf("--------------------- %d\n", printf("abc%01.*d def\n", 4, 5));
-	printf("--------------------- %d\n\n", ft_printf("abc%01.*d def\n", 4, 5));
+	// printf("--------------------- %d\n", printf("abc%01.*d def\n", 4, 5));
+	// printf("--------------------- %d\n\n", ft_printf("abc%01.*d def\n", 4, 5));
 	
-	printf("--------------------- %d\n", printf("abc%010d def\n", -43));
-	printf("--------------------- %d\n\n", ft_printf("abc%010d def\n", -43));
+	// printf("--------------------- %d\n", printf("abc%010d def\n", -43));
+	// printf("--------------------- %d\n\n", ft_printf("abc%010d def\n", -43));
 	
-	printf("--------------------- %d\n", printf("abc% 05.5d def\n", -123456));
-	printf("--------------------- %d\n\n", ft_printf("abc% 05.5d def\n", -123456));
+	// printf("--------------------- %d\n", printf("abc% 05.5d def\n", -123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc% 05.5d def\n", -123456));
 	
-	printf("--------------------- %d\n", printf("abc% 10d def\n", -123456));
-	printf("--------------------- %d\n\n", ft_printf("abc% 10d def\n", -123456));
+	// printf("--------------------- %d\n", printf("abc% 10d def\n", -123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc% 10d def\n", -123456));
 	
-	printf("--------------------- %d\n", printf("abc% .10d def\n", -123456));
-	printf("--------------------- %d\n\n", ft_printf("abc% .10d def\n", -123456));
+	// printf("--------------------- %d\n", printf("abc% .10d def\n", -123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc% .10d def\n", -123456));
 	
-	printf("--------------------- %d\n", printf("abc% .10d def\n", -123456));
-	printf("--------------------- %d\n\n", ft_printf("abc% .10d def\n", -123456));
+	// printf("--------------------- %d\n", printf("abc% .10d def\n", -123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc% .10d def\n", -123456));
 	
-	printf("--------------------- %d\n", printf("abc%d def\n", -123456));
-	printf("--------------------- %d\n\n", ft_printf("abc%d def\n", -123456));
+	// printf("--------------------- %d\n", printf("abc%d def\n", -123456));
+	// printf("--------------------- %d\n\n", ft_printf("abc%d def\n", -123456));
 	
-	printf("--------------------- %d\n", printf("%c\n", 'a'));
-	printf("--------------------- %d\n\n", ft_printf("%c\n", 'a'));
+	// printf("--------------------- %d\n", printf("%c\n", 'a'));
+	// printf("--------------------- %d\n\n", ft_printf("%c\n", 'a'));
 	
-	printf("--------------------- %d\n", printf("%s\n", "qwert"));
-	printf("--------------------- %d\n\n", ft_printf("%s\n", "qwert"));
+	// printf("--------------------- %d\n", printf("%s\n", "qwert"));
+	// printf("--------------------- %d\n\n", ft_printf("%s\n", "qwert"));
 	
-	printf("--------------------- %d\n", printf("%c --- %s\n", 'a', "qawa!"));
-	printf("--------------------- %d\n\n", ft_printf("%c --- %s\n", 'a', "qawa!"));
+	// printf("--------------------- %d\n", printf("%c --- %s\n", 'a', "qawa!"));
+	// printf("--------------------- %d\n\n", ft_printf("%c --- %s\n", 'a', "qawa!"));
 	
-	printf("--------------------- %d\n", printf("%s\n", "*"));
-	printf("--------------------- %d\n\n", ft_printf("%s\n", "*"));
+	// printf("--------------------- %d\n", printf("%s\n", "*"));
+	// printf("--------------------- %d\n\n", ft_printf("%s\n", "*"));
 
 	return (0);
 	//ft_printf("d %s\n", "f");
