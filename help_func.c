@@ -40,67 +40,6 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-// Доделать это говно:
-void		ft_write_tail(t_param *f_p_s, char c)
-{
-	int		i[2];
-	char	*str;
-	int		len;
-
-	if (f_p_s->len == f_p_s->result)
-	{
-		if (ft_strchr((*f_p_s).flags, '+') && c != '-')
-			write(1, "+", 1);
-		else if (ft_strchr((*f_p_s).flags, ' '))
-			write(1, " ", 1);
-		if (!(ft_strchr((*f_p_s).flags, '+') && c == '-'))
-			++f_p_s->result;
-		return ;
-	}
-	i[1] = 0;
-	i[0] = f_p_s->result - f_p_s->len;
-	/*if (c == '-' && ft_strnew_char(i[0], '+'))
-		if(--i[0] == 0)
-			return ;
-	(ft_strchr((*f_p_s).flags, '0') != NULL) ? (str = ft_strnew_char(i[0], '0')) : (str = ft_strnew_char(i[0], ' '));
-	str[i[0]--] = '\0';
-	if (str[i[0]] == '0')
-	{
-		if (ft_strchr((*f_p_s).flags, ' '))
-			if ((str[i[1]] = ' ') && (i[1] + 1 != i[0]))
-				++i[1];
-		if (ft_strchr((*f_p_s).flags, '+'))
-		{
-			if (c == '-')
-				str[i[1]++] = '-';
-			else
-				str[i[1]++] = '+';
-		}
-		len = ft_strlen(str);
-		write(1, str, len);
-		f_p_s->result += len;
-		return ;
-	}
-	else
-	{
-		if (ft_strchr((*f_p_s).flags, '+'))
-		{
-			if (c == '-')
-				str[i[0]--] = '-';
-			else
-				str[i[0]--] = '+';
-		}
-		len = ft_strlen(str);
-		write(1, str, len);
-		f_p_s->result += len;
-		return ;
-	}*/
-	//len = ft_strlen(str) - 1;
-	//write(1, str, len);
-	//f_p_s->result += len;
-	//printf("---------------------------result = %d str = x%sx\n", f_p_s->result, str);
-}
-
 int			ft_only_space(char *str)
 {
 	if (*str == '\0')

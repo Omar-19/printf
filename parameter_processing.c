@@ -17,20 +17,6 @@ static inline int		ft_is_flag(const char c)
 	return (!(ft_strchr("#0-+' ", c) == NULL));
 }
 
-void					ft_dop_flag(t_param *f_p_s)
-{
-	int i;
-
-	i = 0;
-	if (!(ft_strchr((*f_p_s).flags, '+')))
-	{
-		while (*(f_p_s->flags) != '\0')
-			(f_p_s->flags)[i];
-		*(f_p_s->flags) = '+';
-		*(++(f_p_s->flags)) = '\0';
-	}
-}
-
 int		ft_atoi_n(const char *str, int *j)
 {
 	long	number;
@@ -44,7 +30,7 @@ int		ft_atoi_n(const char *str, int *j)
 		if (number > 0 && number > number * 10)
 			return (-1);
 		number = number * 10 + 1 * (*str - '0');
-		str++;
+		++str;
 	}
 	return (number);
 }
@@ -57,13 +43,22 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 	i = 0;
 	while (ft_is_flag(*(str + i)) && i < len)
 	{
-		*((*f_p_s).flags + i) = *(str + i);
+		if (i == 0 || !ft_strchr((*f_p_s).flags, *(str + i)))
+		{
+			*((*f_p_s).flags + i) = *(str + i);
+			*((*f_p_s).flags + i + 1) = '\0';
+		}
 		++i;
 	}
 	j = i;
-	while (i < 5)
-		*((*f_p_s).flags + i++) = '\0';
 	i = 0;
+	if (ft_strchr((*f_p_s).flags, '+'))
+		while ((*f_p_s).flags[i] != '\0')
+		{
+			if ((*f_p_s).flags[i] == ' ')
+				(*f_p_s).flags[i] = '+';
+			++i;
+		}
 	if (*(str + j) == '*')
 	{
 		(*f_p_s).width = va_arg(elem, int);
@@ -196,8 +191,11 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 		return (0);
 	(*form_place_spc).len = ft_strlen(ptr);
 	ft_result_len(form_place_spc, 0);
-	ft_write_tail(form_place_spc, *ptr);
-	write(1, ptr, (*form_place_spc).len);
+	//printf("\nFLAG = |%s|\n", form_place_spc->flags);
+	ft_flag_correction_1(&form_place_spc);
+	//printf("\nFLAG = |%s|\n", form_place_spc->flags);
+	ft_write_tail(form_place_spc, *ptr, ptr);
+	//write(1, ptr, (*form_place_spc).len);
 	if (!ptr)
 		free(ptr);
 	return ((*form_place_spc).result);
@@ -211,6 +209,8 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 	t_param	form_place_spc;
 
 	ft_format_specification_description(str, len, elem, &form_place_spc);
+	// если ебнется, то тут:
+	//ft_flag_correction_1(&form_place_spc);
 
 	if ((l = read_variable_int(str, len, elem, &form_place_spc)))
 		return (l);

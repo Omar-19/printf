@@ -12,6 +12,27 @@
 
 #include "header.h"
 
+void		ft_flag_correction(t_param **f_p_s)
+{
+	int i;
+
+	i = 0;
+	if (!(ft_strchr((**f_p_s).flags, '+')))
+	{
+		while ((**f_p_s).flags[i] != '\0')
+			++i;
+		(**f_p_s).flags[i++] = '+';
+		(**f_p_s).flags[i] = '\0';
+		i = 0;
+		while ((**f_p_s).flags[i] != '\0')
+		{
+			if ((**f_p_s).flags[i] == ' ')
+				(**f_p_s).flags[i] = '+';
+			++i;
+		}
+	}
+}
+
 void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 {
 	int i;
@@ -96,6 +117,8 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 {
 	t_intp	par;
 
+	//if (value_i < 0)
+	//	ft_flag_correction(&f_p_s);
 	itoa_flag_handling(value_i, value_u, &f_p_s, &par);
 	par.val[1] = par.val[0];
 	while (par.val[1] /= 10)
