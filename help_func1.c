@@ -41,3 +41,24 @@ size_t	ft_strlen(const char *s)
 		++i;
 	return (i);
 }
+
+void	ft_flag_correction(t_param **f_p_s)
+{
+	int i;
+
+	i = 0;
+	if (!(ft_strchr((**f_p_s).flags, '+')))
+	{
+		while ((**f_p_s).flags[i] != '\0')
+			++i;
+		(**f_p_s).flags[i++] = '+';
+		(**f_p_s).flags[i] = '\0';
+		i = 0;
+		while ((**f_p_s).flags[i] != '\0')
+		{
+			if ((**f_p_s).flags[i] == ' ')
+				(**f_p_s).flags[i] = '+';
+			++i;
+		}
+	}
+}

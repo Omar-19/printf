@@ -30,7 +30,7 @@ int		ft_result_len(t_param *f_p_s, int flag)
 	return ((*f_p_s).result);
 }
 
-void		ft_flag_correction_1(t_param **f_p_s)
+void	ft_flag_correction_1(t_param **f_p_s)
 {
 	int i;
 
@@ -46,7 +46,7 @@ void		ft_flag_correction_1(t_param **f_p_s)
 	}
 }
 
-char		*ft_strnew_char(int size, char c)
+char	*ft_strnew_char(int size, char c)
 {
 	char	*ptr;
 	int		i;
@@ -60,7 +60,7 @@ char		*ft_strnew_char(int size, char c)
 	return (ptr);
 }
 
-char		*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	char *ptr;
 
@@ -74,7 +74,7 @@ char		*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int			ft_only_space(char *str)
+int		ft_only_space(char *str)
 {
 	if (*str == '\0')
 		return (0);

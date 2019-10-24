@@ -12,34 +12,14 @@
 
 #include "header.h"
 
-void		ft_flag_correction(t_param **f_p_s)
-{
-	int i;
-
-	i = 0;
-	if (!(ft_strchr((**f_p_s).flags, '+')))
-	{
-		while ((**f_p_s).flags[i] != '\0')
-			++i;
-		(**f_p_s).flags[i++] = '+';
-		(**f_p_s).flags[i] = '\0';
-		i = 0;
-		while ((**f_p_s).flags[i] != '\0')
-		{
-			if ((**f_p_s).flags[i] == ' ')
-				(**f_p_s).flags[i] = '+';
-			++i;
-		}
-	}
-}
-
 void		ft_string_processing1(t_param *f_p_s, int *i, int flag, char *str)
 {
 	while ((*f_p_s).result - i[0] > (*f_p_s).len - i[2])
 	{
 		if ((i[0] == 0 || (i[0] == 1 && str[0] != '-')) && flag == 1 && i[1])
 			str[i[0]] = '-';
-		else if ((i[0] == 0 || (i[0] == 1 && str[0] != '+')) && flag == 3 && i[1])
+		else if ((i[0] == 0 || (i[0] == 1 && str[0] != '+'))
+			&& flag == 3 && i[1])
 			str[i[0]] = '+';
 		else if (i[1] == 0)
 			str[i[0]] = ' ';
@@ -67,13 +47,15 @@ void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 		str[--i[0]] = '-';
 	else if (!i[1] && flag == 3)
 		str[--i[0]] = '+';
-	if((i[0] == 0 && flag == 1) || (i[0] == 1 && flag == 1 && str[0] != '-'))
+	if ((i[0] == 0 && flag == 1) || (i[0] == 1 && flag == 1 && str[0] != '-'))
 		str[i[0]] = '-';
-	else if((i[0] == 0 && flag == 3) || (i[0] == 1 && flag == 3 && str[0] != '+'))
+	else if ((i[0] == 0 && flag == 3) ||
+		(i[0] == 1 && flag == 3 && str[0] != '+'))
 		str[i[0]] = '+';
 }
 
-void		itoa_flag_handling(long long int value_i, unsigned long long value_u, t_param **f_p_s, t_intp *par)
+void		itoa_flag_handling(long long int value_i,
+	unsigned long long value_u, t_param **f_p_s, t_intp *par)
 {
 	par->flag = 0;
 	par->size = 0;
@@ -111,12 +93,13 @@ char		*ft_itoa_d_flagmin(t_intp *par, t_param **f_p_s)
 	}
 	if ((*par).size == (**f_p_s).len + 1)
 		(*par).str[(*par).size - 1] = '0';
-	while((*par).str[(*par).size] != '\0')
+	while ((*par).str[(*par).size] != '\0')
 		(*par).str[(*par).size++] = ' ';
-	return((*par).str);
+	return ((*par).str);
 }
 
-char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p_s)
+char		*ft_itoa_d(long long int value_i,
+	unsigned long long value_u, t_param *f_p_s)
 {
 	t_intp	par;
 
@@ -132,7 +115,8 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 	par.str = (char *)malloc(sizeof(char) * par.size + 1);
 	par.str[par.size--] = '\0';
 	ft_string_processing(f_p_s, par.str, par.flag);
-	while (((*f_p_s).len > 1 && par.flag == 1) || ((*f_p_s).len > 1 && par.flag == 3)
+	while (((*f_p_s).len > 1 && par.flag == 1) ||
+		((*f_p_s).len > 1 && par.flag == 3)
 		|| ((*f_p_s).len >= 1 && par.flag == 0))
 	{
 		par.str[par.size--] = '0' + par.val[0] % 10;
