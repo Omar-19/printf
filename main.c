@@ -158,12 +158,27 @@ int		main()
 // //
 // 	test_func(printf("%-.7f\n", 0.1), ft_printf("%-.7f\n", 0.1));
 
-// 	test_func(printf("%10f\n", 0.1), ft_printf("%10f\n", 0.1));
+//	test_func(printf("x%10fx\n", 0.1), ft_printf("x%10fx\n", 0.1));
+
+//	test_func(printf("x%-10fx\n", 0.1), ft_printf("x%10fx\n", 0.1));
+
+//test_func(printf("x%+fx\n", 0.1), ft_printf("x%+fx\n", 0.1));
+
+//test_func(printf("x% fx\n", 0.1), ft_printf("x% fx\n", 0.1));
+
+//test_func(printf("x%+fx\n", 0.1), ft_printf("x% +fx\n", 0.1));
+
+//test_func(printf("x%+fx\n", -0.1), ft_printf("x%+fx\n", -0.1));
+
+test_func(printf("x% 011fx\n", -0.1), ft_printf("x% 011fx\n", -0.1));
+
+test_func(printf("x% 011dx\n", -1), ft_printf("x% 011dx\n", -1));
+
 	// char *s = "f";
 	// test_func(printf("%p\n", s), ft_printf("%p\n", s));
 	// printf("%X\n", 11);
 	// ft_printf("%X\n", 11);
-	printf("%o\n", 112);
-	ft_printf("%o\n", 112);
+	// printf("%o\n", 112);
+	// ft_printf("%o\n", 112);
 	return (0);
 }

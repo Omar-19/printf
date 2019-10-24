@@ -17,6 +17,20 @@ static inline int		ft_is_flag(const char c)
 	return (!(ft_strchr("#0-+' ", c) == NULL));
 }
 
+void					ft_dop_flag(t_param *f_p_s)
+{
+	int i;
+
+	i = 0;
+	if (!(ft_strchr((*f_p_s).flags, '+')))
+	{
+		while (*(f_p_s->flags) != '\0')
+			(f_p_s->flags)[i];
+		*(f_p_s->flags) = '+';
+		*(++(f_p_s->flags)) = '\0';
+	}
+}
+
 int		ft_atoi_n(const char *str, int *j)
 {
 	long	number;
@@ -182,7 +196,7 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 		return (0);
 	(*form_place_spc).len = ft_strlen(ptr);
 	ft_result_len(form_place_spc, 0);
-	//ft_write_tail(form_place_spc, *ptr);
+	ft_write_tail(form_place_spc, *ptr);
 	write(1, ptr, (*form_place_spc).len);
 	if (!ptr)
 		free(ptr);

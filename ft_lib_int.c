@@ -14,8 +14,6 @@
 
 void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 {
-	// i = ij[0]
-	// int ij[2];
 	int i;
 	int f;
 	int fl;
