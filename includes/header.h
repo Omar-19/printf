@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/20 18:08:15 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/24 17:33:53 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stddef.h>
 # include <float.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # define MY_LONG_MIN (-0x7fffffffffffffffL-1)
 # define RAZR (__uint128_t)10000000000000000000UL
 # define RETF(x) (((*(uint32_t*)(&x) >> 23) & (uint32_t)0xFF)  - 127)
