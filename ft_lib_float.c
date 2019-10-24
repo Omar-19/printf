@@ -12,22 +12,6 @@
 
 #include "header.h"
 
-void		ft_flag_correction_1(t_param **f_p_s)
-{
-	int i;
-
-	if (ft_strchr((**f_p_s).flags, '-'))
-	{
-		i = 0;
-		while ((**f_p_s).flags[i] != '\0')
-		{
-			if ((**f_p_s).flags[i] == '0')
-				(**f_p_s).flags[i] = '-';
-			++i;
-		}
-	}
-}
-
 void		ft_write_min(char *str, int i, char *ptr, t_param *f_p_s)
 {
 	if (ptr[0] == '-')
@@ -67,7 +51,7 @@ void		ft_write1(t_param *f_p_s, char c, char *ptr)
 	}
 	write(1, ptr, (*f_p_s).len);
 }
-// (c == '-') ? (str[0] = '-') : (str[0] = '+');
+
 void		ft_write2(t_param *f_p_s, char c, char *ptr, int i)
 {
 	char *str;
@@ -92,7 +76,7 @@ void		ft_write2(t_param *f_p_s, char c, char *ptr, int i)
 	write(1, ptr, (*f_p_s).len);
 	free(str);
 }
-//(c == '-') ? (str[i - 1] = ' ') : (str[i - 1] = '+');
+
 void		ft_write3(t_param *f_p_s, char c, char *ptr, int i)
 {
 	char *str;

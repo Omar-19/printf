@@ -58,6 +58,7 @@ typedef struct	s_param
 	int		result;
 }				t_param;
 
+void			ft_string_processing1(t_param *f_p_s, int i[3], int flag, char *str);
 void			ft_write1(t_param *f_p_s, char c, char *ptr);
 void			ft_write2(t_param *f_p_s, char c, char *ptr, int i);
 void			ft_write_min(char *str, int i, char *ptr, t_param *f_p_s);

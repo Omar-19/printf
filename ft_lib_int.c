@@ -33,41 +33,44 @@ void		ft_flag_correction(t_param **f_p_s)
 	}
 }
 
+void		ft_string_processing1(t_param *f_p_s, int *i, int flag, char *str)
+{
+	while ((*f_p_s).result - i[0] > (*f_p_s).len - i[2])
+	{
+		if ((i[0] == 0 || (i[0] == 1 && str[0] != '-')) && flag == 1 && i[1])
+			str[i[0]] = '-';
+		else if ((i[0] == 0 || (i[0] == 1 && str[0] != '+')) && flag == 3 && i[1])
+			str[i[0]] = '+';
+		else if (i[1] == 0)
+			str[i[0]] = ' ';
+		else
+			str[i[0]] = '0';
+		++i[0];
+	}
+}
+
 void		ft_string_processing(t_param *f_p_s, char *str, int flag)
 {
-	int i;
-	int f;
-	int fl;
+	int i[3];
 
-	fl = 0;
-	i = 0;
-	f = 0;
+	i[2] = 0;
+	i[0] = 0;
+	i[1] = 0;
 	if (flag)
-		fl = 1;
+		i[2] = 1;
 	if (ft_strchr((*f_p_s).flags, '0'))
-		f = 1;
+		i[1] = 1;
 	if (ft_strchr((*f_p_s).flags, ' ') && (*f_p_s).width == (*f_p_s).result)
-		str[i++] = ' ';
-	while ((*f_p_s).result - i > (*f_p_s).len - fl)
-	{
-		if ((i == 0 || (i == 1 && str[0] != '-')) && flag == 1 && f)
-			str[i] = '-';
-		else if ((i == 0 || (i == 1 && str[0] != '+')) && flag == 3 && f)
-			str[i] = '+';
-		else if (f == 0)
-			str[i] = ' ';
-		else
-			str[i] = '0';
-		++i;
-	}
-	if (!f && flag == 1)
-		str[--i] = '-';
-	else if (!f && flag == 3)
-		str[--i] = '+';
-	if((i == 0 && flag == 1) || (i == 1 && flag == 1 && str[0] != '-'))
-		str[i] = '-';
-	else if((i == 0 && flag == 3) || (i == 1 && flag == 3 && str[0] != '+'))
-		str[i] = '+';
+		str[i[0]++] = ' ';
+	ft_string_processing1(f_p_s, i, flag, str);
+	if (!i[1] && flag == 1)
+		str[--i[0]] = '-';
+	else if (!i[1] && flag == 3)
+		str[--i[0]] = '+';
+	if((i[0] == 0 && flag == 1) || (i[0] == 1 && flag == 1 && str[0] != '-'))
+		str[i[0]] = '-';
+	else if((i[0] == 0 && flag == 3) || (i[0] == 1 && flag == 3 && str[0] != '+'))
+		str[i[0]] = '+';
 }
 
 void		itoa_flag_handling(long long int value_i, unsigned long long value_u, t_param **f_p_s, t_intp *par)
@@ -117,8 +120,6 @@ char		*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p
 {
 	t_intp	par;
 
-	//if (value_i < 0)
-	//	ft_flag_correction(&f_p_s);
 	itoa_flag_handling(value_i, value_u, &f_p_s, &par);
 	par.val[1] = par.val[0];
 	while (par.val[1] /= 10)
