@@ -15,7 +15,7 @@
 void		ft_flag_correction_1(t_param **f_p_s)
 {
 	int i;
-	
+
 	if (ft_strchr((**f_p_s).flags, '-'))
 	{
 		i = 0;
@@ -28,9 +28,8 @@ void		ft_flag_correction_1(t_param **f_p_s)
 	}
 }
 
-void        ft_write_min(char *str, int i, char *ptr, t_param *f_p_s)
+void		ft_write_min(char *str, int i, char *ptr, t_param *f_p_s)
 {
-
 	if (ptr[0] == '-')
 	{
 		write(1, ptr, (*f_p_s).len);
@@ -42,7 +41,7 @@ void        ft_write_min(char *str, int i, char *ptr, t_param *f_p_s)
 		write(1, ptr, (*f_p_s).len);
 		write(1, str, i - 1);
 	}
-    else
+	else
 	{
 		if (ft_strchr((*f_p_s).flags, ' '))
 		{
@@ -54,61 +53,82 @@ void        ft_write_min(char *str, int i, char *ptr, t_param *f_p_s)
 	}
 }
 
+void		ft_write1(t_param *f_p_s, char c, char *ptr)
+{
+	if (ft_strchr((*f_p_s).flags, '+') && c != '-')
+	{
+		++f_p_s->result;
+		write(1, "+", 1);
+	}
+	else if (ft_strchr((*f_p_s).flags, ' '))
+	{
+		++f_p_s->result;
+		write(1, " ", 1);
+	}
+	write(1, ptr, (*f_p_s).len);
+}
+// (c == '-') ? (str[0] = '-') : (str[0] = '+');
+void		ft_write2(t_param *f_p_s, char c, char *ptr, int i)
+{
+	char *str;
+
+	if (c == '-')
+	{
+		++i;
+		--f_p_s->len;
+		++ptr;
+	}
+	str = ft_strnew_char(i, '0');
+	if (ft_strchr((*f_p_s).flags, '+'))
+	{
+		if (c == '-')
+			str[0] = '-';
+		else
+			str[0] = '+';
+	}
+	else if (ft_strchr((*f_p_s).flags, ' '))
+		str[0] = ' ';
+	write(1, str, i);
+	write(1, ptr, (*f_p_s).len);
+	free(str);
+}
+//(c == '-') ? (str[i - 1] = ' ') : (str[i - 1] = '+');
+void		ft_write3(t_param *f_p_s, char c, char *ptr, int i)
+{
+	char *str;
+
+	str = ft_strnew_char(i, ' ');
+	if (ft_strchr((*f_p_s).flags, '+'))
+	{
+		if (c == '-')
+			str[i - 1] = ' ';
+		else
+			str[i - 1] = '+';
+	}
+	if (ft_strchr((*f_p_s).flags, '-'))
+		ft_write_min(str, i, ptr, f_p_s);
+	else
+	{
+		write(1, str, i);
+		write(1, ptr, (*f_p_s).len);
+	}
+	free(str);
+}
+
 void		ft_write_tail(t_param *f_p_s, char c, char *ptr)
 {
 	int		i;
-	char	*str;
-	int		l;
 
 	if (f_p_s->len == f_p_s->result)
 	{
-		if (ft_strchr((*f_p_s).flags, '+') && c != '-')
-		{
-			++f_p_s->result;
-			write(1, "+", 1);
-		}
-		else if (ft_strchr((*f_p_s).flags, ' '))
-		{
-			++f_p_s->result;
-			write(1, " ", 1);
-		}
-		//if (!(ft_strchr((*f_p_s).flags, '+') && c == '-'))
-		//	++f_p_s->result;
-		write(1, ptr, (*f_p_s).len);
-		//printf("\nlen = %d\n", (*f_p_s).len);
+		ft_write1(f_p_s, c, ptr);
 		return ;
 	}
 	i = f_p_s->result - f_p_s->len;
 	if (c == '-')
 		ft_flag_correction(&f_p_s);
 	if (ft_strchr((*f_p_s).flags, '0'))
-	{
-		if (c == '-')
-		{
-			++i;
-			--f_p_s->len;
-			++ptr;
-		}
-		str = ft_strnew_char(i, '0');
-		if (ft_strchr((*f_p_s).flags, '+'))
-			(c == '-') ? (str[0] = '-') : (str[0] = '+');
-		else if (ft_strchr((*f_p_s).flags, ' '))
-			str[0] = ' ';
-
-		write(1, str, i);
-		write(1, ptr, (*f_p_s).len);
-	}
+		ft_write2(f_p_s, c, ptr, i);
 	else
-	{
-		str = ft_strnew_char(i, ' ');
-		if (ft_strchr((*f_p_s).flags, '+'))
-			(c == '-') ? (str[i - 1] = ' ') : (str[i - 1] = '+');
-        if (ft_strchr((*f_p_s).flags, '-'))
-            ft_write_min(str, i, ptr, f_p_s);
-        else
-		{
-            write(1, str, i);
-		    write(1, ptr, (*f_p_s).len);
-        }
-	}
+		ft_write3(f_p_s, c, ptr, i);
 }

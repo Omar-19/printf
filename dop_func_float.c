@@ -38,7 +38,7 @@ char	*main_c(char *s)
 	return (cr_dc(s, m1 + 1, max_deg, max_deg));
 }
 
-void	toone(uint64_t *tmp, int min, int m1)
+void	toone(uint64_t *tmp, int m1)
 {
 	int i;
 
@@ -57,7 +57,7 @@ char	*cr_sdc(uint64_t *a, int min, size_t m1)
 	if (!(res = ft_strnew(19 * (m1 - min))))
 		return (NULL);
 	strcat(res, ft_uint64toa(a[min++], 0));
-	while (min < m1)
+	while ((size_t)min < m1)
 	{
 		strcat(res, ft_uint64toa(a[min], 1));
 		++min;
@@ -67,7 +67,7 @@ char	*cr_sdc(uint64_t *a, int min, size_t m1)
 
 void	init_massiv(uint64_t *res, uint64_t *tmp, size_t m1)
 {
-	toone(res, -1, m1);
-	toone(tmp, -1, m1);
+	toone(res, m1);
+	toone(tmp, m1);
 	tmp[m1 - 1] = 1;
 }

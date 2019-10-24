@@ -37,7 +37,7 @@ int		ft_atoi_n(const char *str, int *j)
 
 void	ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s)
 {
-	int i;
+	size_t i;
 	int j;
 
 	i = 0;
@@ -166,7 +166,6 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 {
 	char			*ptr;
 	t_double		d;
-	char			*l;
 	int				sign;
 
 	ptr = NULL;
@@ -204,7 +203,6 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 int		ft_param_processing(const char *str, size_t len, va_list elem)
 {
 	int		l;
-	char	*ptr;
 	// Format placeholder specification
 	t_param	form_place_spc;
 

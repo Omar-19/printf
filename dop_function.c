@@ -45,7 +45,7 @@ char	*cr_dc(char *s, size_t m1, int len, int i)
 		{
 			umn(tmp, i - len, &tmp_n, m1 - 1);
 			res_n = sum_m(res, tmp, min_i(&res_n, &tmp_n), m1 - 1);
-			toone(tmp, -1, m1);
+			toone(tmp, m1);
 			tmp[m1 - 1] = 1;
 			tmp_n = m1 - 1;
 		}

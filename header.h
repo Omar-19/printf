@@ -51,13 +51,15 @@ typedef struct	s_intp
 
 typedef struct	s_param
 {
-	int		precision ;
+	int		precision;
 	char	flags[5];
 	int		width;
 	int		len;
 	int		result;
 }				t_param;
 
+void			ft_write1(t_param *f_p_s, char c, char *ptr);
+void			ft_write2(t_param *f_p_s, char c, char *ptr, int i);
 void			ft_write_min(char *str, int i, char *ptr, t_param *f_p_s);
 void			ft_flag_correction_1(t_param **f_p_s);
 void			ft_flag_correction(t_param **f_p_s);
@@ -68,7 +70,8 @@ char			octa_intc(char *s);
 char			*octa_int(void *a);
 char			*ft_strnew_char(int size, char c);
 int				ft_only_space(char *str);
-int				read_variable_float(const char *str, size_t len, va_list elem, t_param *form_place_spc);
+int				read_variable_float(const char *str, size_t len,
+	va_list elem, t_param *form_place_spc);
 char			*ft_ltoa_base(long long num, int base);
 char			*ft_strnew(size_t size);
 char			*arrayreverse(char *s);
@@ -91,7 +94,7 @@ void			umn10(uint64_t *tmp, int *min, int ndb);
 char			*del(uint64_t *tmp, int deg, int ndb, int t);
 char			*del1_one(uint64_t *tmp, int deg, int ndb, int t);
 char			*mastos(int *a, int t);
-void			toone(uint64_t *tmp, int min, int m1);
+void			toone(uint64_t *tmp, int m1);
 char			*cr_sdc(uint64_t *a, int min, size_t m1);
 char			*hex_int(void *a, int p);
 char			*get_val(char *s);
@@ -121,13 +124,17 @@ void			ft_string_processing(t_param *f_p_s, char *str, int flag);
 int				ft_result_len(t_param *f_p_s, int flag);
 int				ft_atoi_n(const char *str, int *j);
 char			*ft_strchr(const char *s, int c);
-void			itoa_flag_handling(long long int value_i, unsigned long long value_u, t_param **f_p_s, t_intp *par);
-void			ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s);
+void			itoa_flag_handling(long long int value_i,
+	unsigned long long value_u, t_param **f_p_s, t_intp *par);
+void			ft_format_specification_description(const char *str, size_t len,
+	va_list elem, t_param *f_p_s);
 char			*ft_itoa_d_flagmin(t_intp *par, t_param **f_p_s);
-char			*ft_itoa_d(long long int value_i, unsigned long long value_u, t_param *f_p_s);
+char			*ft_itoa_d(long long int value_i, unsigned long long value_u,
+	t_param *f_p_s);
 int				ft_strstr_num(const char *str, const char *to_find, size_t len);
 void			ft_write_str(const char *str, size_t len);
-int				read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc);
+int				read_variable_int(const char *str, size_t len, va_list elem,
+	t_param *form_place_spc);
 int				ft_param_processing(const char *str, size_t len, va_list elem);
 char			*ft_nitoa(int n);
 int				ft_is_conversion(const char c);
