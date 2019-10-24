@@ -12,6 +12,17 @@
 
 #include "header.h"
 
+void	ft_result_len_xo(t_param *f_p_s)
+{
+	if (f_p_s->len == 0)
+		f_p_s->len = 1;
+	(*f_p_s).result = (*f_p_s).len;
+	if (f_p_s->precision > f_p_s->result)
+		f_p_s->result = f_p_s->precision;
+	if (f_p_s->width > f_p_s->result)
+		f_p_s->result = f_p_s->width;
+}
+
 int		ft_result_len(t_param *f_p_s, int flag)
 {
 	int f;
@@ -52,6 +63,8 @@ char	*ft_strnew_char(int size, char c)
 	int		i;
 
 	i = 0;
+	if (size <= 0)
+		return (NULL);
 	if (!(ptr = (char *)malloc(sizeof(char) * size + 1)))
 		return (NULL);
 	while (i <= size)

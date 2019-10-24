@@ -51,14 +51,14 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 		++i;
 	}
 	j = i;
-	i = 0;
-	if (ft_strchr((*f_p_s).flags, '+'))
-		while ((*f_p_s).flags[i] != '\0')
-		{
-			if ((*f_p_s).flags[i] == ' ')
-				(*f_p_s).flags[i] = '+';
-			++i;
-		}
+	// i = 0;
+	// if (ft_strchr((*f_p_s).flags, '+'))
+	// 	while ((*f_p_s).flags[i] != '\0')
+	// 	{
+	// 		if ((*f_p_s).flags[i] == ' ')
+	// 			(*f_p_s).flags[i] = '+';
+	// 		++i;
+	// 	}
 	if (*(str + j) == '*')
 	{
 		(*f_p_s).width = va_arg(elem, int);
@@ -82,7 +82,7 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc)
 {
 	char	*ptr;
-	long long a;
+	//long long	a;
 
 	ptr = NULL;
 	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
@@ -105,27 +105,46 @@ int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_
 		ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc);
 	else if (ft_strstr_num(str, "u\0", len))
 		ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc);
-	else if (ft_strstr_num(str, "x\0", len))
-	{
-		a = va_arg(elem, long long);
-		ptr = hex_int(&a, 0);
-		(*form_place_spc).result = strlen(ptr);
-	}
-	else if (ft_strstr_num(str, "X\0", len))
-	{
-		a = va_arg(elem, long long);
-		ptr = hex_int(&a, 32);
-		(*form_place_spc).result = strlen(ptr);
-	}
-	else if (ft_strstr_num(str, "o\0", len))
-	{
-		a = va_arg(elem, long long);
-		ptr = octa_int(&a);
-		(*form_place_spc).result = strlen(ptr);
-	}
+	// else if (ft_strstr_num(str, "llx\0", len))
+	// 	ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
+	// else if (ft_strstr_num(str, "llX\0", len))
+	// 	ptr = hex_oct_main(elem, form_place_spc, 'X', 1);
+	// else if (ft_strstr_num(str, "x\0", len))
+	// 	ptr = hex_oct_main(elem, form_place_spc, 'x', 0);
+	// else if (ft_strstr_num(str, "X\0", len))
+	// 	ptr = hex_oct_main(elem, form_place_spc, 'X', 0);
+	// else if (ft_strstr_num(str, "llo\0", len))
+	// 	ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
+	// else if (ft_strstr_num(str, "o\0", len))
+	// 	ptr = hex_oct_main(elem, form_place_spc, 'o', 0);
 	else
 		return (0);
 	write(1, ptr, (*form_place_spc).result);
+	if (!ptr)
+		free(ptr);
+	return ((*form_place_spc).result);
+}
+
+int		read_variable_int1(const char *str, size_t len, va_list elem, t_param *form_place_spc)
+{
+	char *ptr;
+
+	ptr = NULL;
+	//printf("\nFLAGS = |%s|\n", form_place_spc->flags);
+	if (ft_strstr_num(str, "llx\0", len))
+		ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
+	else if (ft_strstr_num(str, "llX\0", len))
+		ptr = hex_oct_main(elem, form_place_spc, 'X', 1);
+	else if (ft_strstr_num(str, "x\0", len))
+		ptr = hex_oct_main(elem, form_place_spc, 'x', 0);
+	else if (ft_strstr_num(str, "X\0", len))
+		ptr = hex_oct_main(elem, form_place_spc, 'X', 0);
+	else if (ft_strstr_num(str, "llo\0", len))
+		ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
+	else if (ft_strstr_num(str, "o\0", len))
+		ptr = hex_oct_main(elem, form_place_spc, 'o', 0);
+	else
+		return (0);
 	if (!ptr)
 		free(ptr);
 	return ((*form_place_spc).result);
@@ -207,14 +226,20 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 	t_param	form_place_spc;
 
 	ft_format_specification_description(str, len, elem, &form_place_spc);
-	// если ебнется, то тут:
-	//ft_flag_correction_1(&form_place_spc);
 
-	if ((l = read_variable_int(str, len, elem, &form_place_spc)))
+	if ((l = read_variable_int1(str, len, elem, &form_place_spc)))
 		return (l);
-	else if ((l = read_variable_char(str, len, elem)))
-		return (l);
-	else if ((l = read_variable_float(str, len, elem, &form_place_spc)))
-		return (l);
+	else
+	{
+		// printf("\nFLAG = |%s|\n", form_place_spc.flags);
+		ft_flag_correction3(&form_place_spc);
+		// printf("\nFLAG = |%s|\n", form_place_spc.flags);
+		if ((l = read_variable_int(str, len, elem, &form_place_spc)))
+			return (l);
+		else if ((l = read_variable_char(str, len, elem)))
+			return (l);
+		else if ((l = read_variable_float(str, len, elem, &form_place_spc)))
+			return (l);
+	}
 	return (0);
 }

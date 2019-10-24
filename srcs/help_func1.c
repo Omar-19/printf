@@ -62,3 +62,33 @@ void	ft_flag_correction(t_param **f_p_s)
 		}
 	}
 }
+
+void	ft_flag_correction3(t_param *f_p_s)
+{
+	int i;
+
+	i = 0;
+	if (ft_strchr((*f_p_s).flags, '+'))
+		while ((*f_p_s).flags[i] != '\0')
+		{
+			if ((*f_p_s).flags[i] == ' ')
+				(*f_p_s).flags[i] = '+';
+			++i;
+		}
+}
+
+void	ft_flag_correction2(t_param **f_p_s)
+{
+	int i;
+
+	i = 0;
+	if (!(ft_strchr((**f_p_s).flags, '+')))
+	{
+		while ((**f_p_s).flags[i] != '\0')
+		{
+			if ((**f_p_s).flags[i] == '+')
+				(**f_p_s).flags[i] = ' ';
+			++i;
+		}
+	}
+}

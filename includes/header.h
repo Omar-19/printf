@@ -58,6 +58,12 @@ typedef struct	s_param
 	int		result;
 }				t_param;
 
+void			ft_result_len_xo(t_param *f_p_s);
+void			ft_xo_write_min(t_param *f_p_s, char *ptr, int i[2], char *str[2]);
+void			ft_xo_write(t_param *f_p_s, char *ptr, int i[2], char *str[2]);
+void			ft_write_tail_xo(t_param *f_p_s, char *ptr, char ho);
+void			ft_flag_correction3(t_param *f_p_s);
+void			ft_flag_correction2(t_param **f_p_s);
 void			ft_string_processing1(t_param *f_p_s, int i[3], int flag, char *str);
 void			ft_write1(t_param *f_p_s, char c, char *ptr);
 void			ft_write2(t_param *f_p_s, char c, char *ptr, int i);
@@ -142,5 +148,5 @@ int				ft_is_conversion(const char c);
 int				ft_is_valid_param(const char c);
 int				print_elem(const char *format, va_list elem);
 int				ft_printf(const char *format, ...);
-
+char			*hex_oct_main(va_list elem, t_param *form_place_spc, char ho, int ltype);
 #endif
