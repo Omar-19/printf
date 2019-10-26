@@ -6,7 +6,7 @@
 #    By: btheia <btheia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/28 18:36:22 by angavrel          #+#    #+#              #
-#    Updated: 2019/10/26 17:11:19 by btheia           ###   ########.fr        #
+#    Updated: 2019/10/26 18:58:54 by btheia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,30 +24,31 @@ DIR_O = obj
 
 HEADER = includes
 
-SOURCES =	del_dopfunction2.c \
-			check_symbol.c \
-			ft_lib_int.c \
-			ft_lib_char.c \
-			help_func1.c \
-			main.c\
-			dop_func_float.c \
-			float_my.c \
-			ft_printf.c \
-			help_function2.c \
-			parameter_processing.c \
-			del.c \
-			dop_function.c \
-			float_umn.c \
-			ft_uint64toa.c \
-			help_function3.c \
-			sum_funchelp.c \
-			del_dopfunction.c \
-			ft_lib_float.c \
-			help_func.c \
-			hex_octa_int.c \
-			sum_function.c \
-			bit_out.c \
-			float_eg.c \
+SOURCES =	bit_out.c \
+check_symbol.c \
+del.c \
+del_dopfunction.c \
+del_dopfunction2.c \
+dop_func_float.c \
+dop_function.c \
+float_eg.c \
+float_my.c \
+float_umn.c \
+ft_lib_char.c \
+ft_lib_float.c \
+ft_lib_hex_octa.c \
+ft_lib_int.c \
+ft_printf.c \
+ft_uint64toa.c \
+help_func.c \
+help_func1.c \
+help_function2.c \
+help_function3.c \
+hex_octa_int.c \
+main.c \
+parameter_processing.c \
+sum_funchelp.c \
+sum_function.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

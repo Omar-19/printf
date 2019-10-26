@@ -6,23 +6,11 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:21:52 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/20 16:25:15 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 18:59:48 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-char	*ft_strnew(size_t size)
-{
-	char	*str;
-
-	if (!(str = (char *)malloc(sizeof(char) * size + 1)))
-		return (NULL);
-	str[size] = '\0';
-	while (size--)
-		str[size] = '\0';
-	return (str);
-}
 
 char	*main_c(char *s)
 {

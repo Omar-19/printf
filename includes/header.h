@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/26 18:36:07 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 18:52:49 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct	s_param
 
 void			ft_write_tail_percent(t_param *f_p_s);
 int				read_variable_percent(const char *str, size_t len,
-	va_list elem, t_param *form_place_spc);
+	t_param *form_place_spc);
 void			ft_result_len_char(t_param *f_p_s);
 void			ft_write_tail_char(t_param *f_p_s, char c);
 void			ft_write_tail_str(t_param *f_p_s, char *ptr);

@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:35:29 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/26 18:40:37 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 19:05:40 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,12 +299,12 @@ int		main()
 	// test_func(printf("|%-10.0f|\n", -7.111), ft_printf("|%-10.0f|\n", -7.111));
 	// printf("|%+10.0f|\n", 0.1);
 	// printf("|%+10.0e|\n", 0.1);
-	t_double d;
+	// t_double d;
 	// d.numd = -0.098;
-	d.numld = LDBL_MAX;
+	// d.numld = LDBL_MAX;
 	// d.numd = DBL_MAX;
 	// int prs = 1;
-	int sign = 0;
+	// int sign = 0;
 	// test_func(printf("|%-10.0e|\n", d.numd), ft_printf("|%-10.0e|\n", d.numd));
 	// test_func(printf("|%-+20.7e|\n", d.numd), ft_printf("|%-+20.7e|\n", d.numd));
 	// test_func(printf("|%+21.7e|\n", d.numd), ft_printf("|%+21.7e|\n", d.numd));
@@ -315,7 +315,11 @@ int		main()
 	// test_func(printf("|%Le|\n", d.numld), ft_printf("|%Le|\n", d.numld));
 	// printf("%s\n", float_de(d, prs, &sign));
 
-	ft_printf("%b\n", 5);
+	// test_func(printf("%s %s", "this", "is"), ft_printf("%s %s", "this", "is"));
+	test_func(printf("%s %s", "a", "aaaa"), ft_printf("%s %s", "a", "aaaa"));
+
+	// ft_printf("%b\n", 5);
+	// printf("%g\n", (double)0.1234568);
 	//int i = 0;
 	//printf("%s\n", float_lde(d, prs, &sign));
 	// printf("%lf\n", d.numd);
