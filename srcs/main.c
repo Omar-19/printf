@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:35:29 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/24 17:34:34 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 17:18:43 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,8 @@ int		main()
 	// printf("m%#10.5Xm\n", 1);
 	// printf("m%#10.5om\n", 1);
 	// printf("m%10.5om\n", 1);
+
+	test_func(printf("|%-10.0f|\n", -7.111), ft_printf("|%-10.0f|\n", -7.111));
 
 // 	// char *s = "f";
 // 	// test_func(printf("%p\n", s), ft_printf("%p\n", s));

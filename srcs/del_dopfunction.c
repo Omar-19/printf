@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:01:44 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/20 16:12:18 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 16:51:23 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	okrug1(char **d, int t)
 		}
 	}
 	memset(point + t + 1, '\0', strlen(point));
+	if (t == 0)
+		memset(point, '\0', strlen(point));
 }
 
 char	*drob(char *s, int t)

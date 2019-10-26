@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 15:51:16 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/20 18:04:51 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 17:03:00 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*res_last(char *dc, char *point, int prs, int sign)
 
 	resdec = main_c(dc);
 	dec_x = drob(point + 1, prs);
-	rs = ft_strnew(strlen(resdec) + 2 + strlen(dec_x));
+	rs = ft_strnew(strlen(resdec) + 3 + strlen(dec_x));
 	jk = rs + 1;
 	strcat(rs + 1, resdec);
 	strcat(rs + 1, ".");

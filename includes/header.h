@@ -155,4 +155,12 @@ int				ft_is_valid_param(const char c);
 int				print_elem(const char *format, va_list elem);
 int				ft_printf(const char *format, ...);
 char			*hex_oct_main(va_list elem, t_param *form_place_spc, char ho, int ltype);
+char            *bit_out(void *a);
+char            *create_mantisfd(char *s);
+char            *res_last(char *dc, char *point, int prs, int sign);
+char            *float_de(t_double d, int prs, int *sign);
+char            *res_last2(char *dc, char *point, int prs, int sign);
+int                raz(__uint128_t num);
+char            *ft_uint64toa(uint64_t a, int d);
+
 #endif

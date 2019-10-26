@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parameter_processing.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/23 01:00:08 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 17:17:00 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 	int				sign;
 
 	ptr = NULL;
-	if ((*form_place_spc).precision == 0)
+	if ((*form_place_spc).precision == 0 && !ft_strstr_num(str, ".0\0", len))
 		(*form_place_spc).precision = 6;
 	if (ft_strstr_num(str, "Lf\0", len))
 	{

@@ -6,7 +6,7 @@
 #    By: btheia <btheia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/28 18:36:22 by angavrel          #+#    #+#              #
-#    Updated: 2019/10/24 17:55:35 by btheia           ###   ########.fr        #
+#    Updated: 2019/10/26 17:11:19 by btheia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SOURCES =	del_dopfunction2.c \
 			help_func.c \
 			hex_octa_int.c \
 			sum_function.c \
+			bit_out.c \
+			float_eg.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
