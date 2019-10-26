@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/26 17:17:00 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 18:39:59 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,13 @@ int		read_variable_int1(const char *str, size_t len, va_list elem, t_param *form
 		ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
 	else if (ft_strstr_num(str, "o\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'o', 0);
+	else if (ft_strstr_num(str, "b\0", len))
+		ptr = hex_oct_main(elem, form_place_spc, 'b', 1);
 	else
 		return (0);
 	if (!ptr)
 		free(ptr);
-	return ((*form_place_spc).result);
+	return (form_place_spc->result);
 }
 
 int		read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s)
@@ -217,15 +219,20 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 		d.numld = va_arg(elem, long double);
 		ptr = float_ld(d, (*form_place_spc).precision, &sign);
 	}
-	else if (ft_strstr_num(str, "lf\0", len))
+	else if (ft_strstr_num(str, "f\0", len))
 	{
 		d.numd = va_arg(elem, double);
 		ptr = float_d(d, (*form_place_spc).precision, &sign);
 	}
-	else if (ft_strstr_num(str, "f\0", len))
+	else if (ft_strstr_num(str, "Le\0", len))
 	{
-		d.numf = (float)va_arg(elem, double);
-		ptr = float_f(d, (*form_place_spc).precision, &sign);
+		d.numld = va_arg(elem, long double);
+		ptr = float_lde(d, (*form_place_spc).precision, &sign);
+	}
+	else if (ft_strstr_num(str, "e\0", len))
+	{
+		d.numd = va_arg(elem, double);
+		ptr = float_de(d, (*form_place_spc).precision, &sign);
 	}
 	else
 		return (0);

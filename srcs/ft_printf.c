@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:49 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/22 14:34:51 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/10/26 18:41:14 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		ft_write_str(const char *str, size_t len)
 
 inline int	ft_is_conversion(const char c)
 {
-	return (!(ft_strchr("diuoxXfFeEgGaAcsSpn%", c) == NULL));
+	return (!(ft_strchr("diuoxXfFeEgGaAcsSpbn%", c) == NULL));
 }
 
 int			print_elem(const char *format, va_list elem)

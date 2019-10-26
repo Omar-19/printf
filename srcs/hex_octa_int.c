@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hex_octa_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:18:02 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/23 00:46:48 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 18:40:28 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,14 +146,11 @@ char	*hex_oct_main(va_list elem, t_param *f_p_s, char ho, int ltype)
 		a = va_arg(elem, int);
 	if (ho == 'X' || ho == 'x')
 		ptr = hex_int(&a, 'x' - ho);
-	else
+	else if (ho == 'o')
 		ptr = octa_int(&a);
+	else 
+		ptr = bit_out(&a);
 	(*f_p_s).len = ft_strlen(ptr);
-	//printf("len%d")
-	// printf("PRES = %d LEN = %d W = %d\n",  f_p_s->precision, f_p_s->len, f_p_s->width);
 	ft_write_tail_xo(f_p_s, ptr, ho);
-	// printf("PRES = %d LEN = %d W = %d\n",  f_p_s->precision, f_p_s->len, f_p_s->width);
-	//ft_write_tail(f_p_s, '0', ptr);
-	//printf("PTR = %s\n", ptr);
 	return (ptr);
 }
