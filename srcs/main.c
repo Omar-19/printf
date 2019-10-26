@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:35:29 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/24 17:34:34 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 15:09:33 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,23 +204,23 @@ int		main()
 
 	//ft_printf("m%#10.5xm\n", 1);
 
-	test_func(printf("m%#10.5Xm\n", 1), ft_printf("m%#10.5Xm\n", 1));
+	// test_func(printf("m%#10.5Xm\n", 1), ft_printf("m%#10.5Xm\n", 1));
 
-	test_func(printf("m%#10.5om\n", 1), ft_printf("m%#10.5om\n", 1));
+	// test_func(printf("m%#10.5om\n", 1), ft_printf("m%#10.5om\n", 1));
 
-	test_func(printf("m%10.5om\n", 1), ft_printf("m%10.5om\n", 1));
+	// test_func(printf("m%10.5om\n", 1), ft_printf("m%10.5om\n", 1));
 
-	test_func(printf("m%om\n", 0), ft_printf("m%om\n", 0));
+	// test_func(printf("m%om\n", 0), ft_printf("m%om\n", 0));
 
-	test_func(printf("m%xm\n", 0), ft_printf("m%xm\n", 0));
+	// test_func(printf("m%xm\n", 0), ft_printf("m%xm\n", 0));
 
-	test_func(printf("m%Xm\n", 0), ft_printf("m%Xm\n", 0));
+	// test_func(printf("m%Xm\n", 0), ft_printf("m%Xm\n", 0));
 
-	test_func(printf("m%#om\n", 0), ft_printf("m%#om\n", 0));
+	// test_func(printf("m%#om\n", 0), ft_printf("m%#om\n", 0));
 
-	test_func(printf("m%#xm\n", 0), ft_printf("m%#xm\n", 0));
+	// test_func(printf("m%#xm\n", 0), ft_printf("m%#xm\n", 0));
 
-	test_func(printf("m%#Xm\n", 0), ft_printf("m%#Xm\n", 0));
+	// test_func(printf("m%#Xm\n", 0), ft_printf("m%#Xm\n", 0));
 	
 	// printf("m%#10.5xm\n", 1);
 	// printf("m%#10.5Xm\n", 1);
@@ -240,6 +240,9 @@ int		main()
 	// printf("%o\n", ULLONG_MAX);
 	// ft_printf("%x\n", 0);
 	// printf("%#x\n", ULLONG_MAX);
+	// test_func(printf("%e\n", LDBL_MAX), ft_printf("m%#Xm\n", 0));
+	int a = 5;
+	// printf("%s\n", bit_out(&a));
 	return (0);
 }
 // %#o 0 = 0
