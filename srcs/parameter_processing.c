@@ -79,6 +79,20 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 		(*f_p_s).precision = 0;
 }
 
+int		read_variable_percent(const char *str, size_t len, va_list elem, t_param *form_place_spc)
+{
+	form_place_spc->len = 1;
+	// printf("--------------------------%c", '\n');
+	if (ft_strstr_num(str, "%\0", len))
+	{
+		// printf("--------------------------%c", '\n');
+		ft_write_tail_char(form_place_spc, '%');//ft_write_tail_percent(form_place_spc);
+	}
+	else
+		return (0);
+	return (form_place_spc->result);
+}
+
 int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc)
 {
 	char	*ptr;
@@ -150,7 +164,7 @@ int		read_variable_int1(const char *str, size_t len, va_list elem, t_param *form
 	return ((*form_place_spc).result);
 }
 
-int		read_variable_char(const char *str, size_t len, va_list elem)
+int		read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s)
 {
 	char	*ptr;
 	char	*r1;
@@ -159,24 +173,32 @@ int		read_variable_char(const char *str, size_t len, va_list elem)
 
 	if (ft_strstr_num(str, "c\0", len))
 	{
-		s = (char)va_arg(elem, int);
-		write(1, &s, 1);
-		return (1);
+		f_p_s->len = 1;
+		ft_write_tail_char(f_p_s, (char)va_arg(elem, int));
+		return (f_p_s->result);
 	}
 	else if (ft_strstr_num(str, "s\0", len))
 	{
 		ptr = va_arg(elem, char *);
-		res = ft_strlen(ptr);
-		write(1, ptr, res);
-		return (res);
+		f_p_s->len = ft_strlen(ptr);
+		if (ft_strstr_num(str, ".0\0", len))
+			f_p_s->len = 0;
+		ft_write_tail_str(f_p_s, ptr);
+		ptr = va_arg(elem, char *);
+		return (f_p_s->result);
 	}
 	else if (ft_strstr_num(str, "p\0", len))
 	{
+		f_p_s->precision = 0;
 		ptr = va_arg(elem, char *);
-		r1 = point_hex(&ptr);
-		res = ft_strlen(r1);
-		write(1, r1, res);
-		return (res);
+		ptr = point_hex(&ptr);
+		f_p_s->len = ft_strlen(ptr);
+		ft_write_tail_str(f_p_s, ptr);
+		ptr = va_arg(elem, char *);
+		// r1 = point_hex(&ptr);
+		// res = ft_strlen(r1);
+		// write(1, r1, res);
+		return (f_p_s->result);
 	}
 	return (0);
 }
@@ -226,8 +248,12 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 	t_param	form_place_spc;
 
 	ft_format_specification_description(str, len, elem, &form_place_spc);
-
-	if ((l = read_variable_int1(str, len, elem, &form_place_spc)))
+	// printf("fps->res = %d\n", form_place_spc.width);
+	if ((l = read_variable_percent(str, len, elem, &form_place_spc)))
+		return (l);
+	else if ((l = read_variable_int1(str, len, elem, &form_place_spc)))
+		return (l);
+	else if ((l = read_variable_char(str, len, elem, &form_place_spc)))
 		return (l);
 	else
 	{
@@ -236,8 +262,8 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 		// printf("\nFLAG = |%s|\n", form_place_spc.flags);
 		if ((l = read_variable_int(str, len, elem, &form_place_spc)))
 			return (l);
-		else if ((l = read_variable_char(str, len, elem)))
-			return (l);
+		// else if ((l = read_variable_char(str, len, elem)))
+		// 	return (l);
 		else if ((l = read_variable_float(str, len, elem, &form_place_spc)))
 			return (l);
 	}

@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/26 14:58:35 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/24 17:33:53 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ typedef struct	s_param
 	int		result;
 }				t_param;
 
+void			ft_write_tail_percent(t_param *f_p_s);
+int				read_variable_percent(const char *str, size_t len,
+	va_list elem, t_param *form_place_spc);
+void			ft_result_len_char(t_param *f_p_s);
+void			ft_write_tail_char(t_param *f_p_s, char c);
+void			ft_write_tail_str(t_param *f_p_s, char *ptr);
 void			ft_result_len_xo(t_param *f_p_s);
 void			ft_xo_write_min(t_param *f_p_s, char *ptr, int i[2], char *str[2]);
 void			ft_xo_write(t_param *f_p_s, char *ptr, int i[2], char *str[2]);
@@ -126,7 +132,7 @@ int				sum_mhelp6(__uint128_t *a, uint64_t *res, int pos);
 char			*ft_strnewc(size_t n, char c);
 char			*get_val(char *s);
 size_t			ft_strlen(const char *s);
-int				read_variable_char(const char *str, size_t len, va_list elem);
+int				read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s);
 void			ft_string_processing(t_param *f_p_s, char *str, int flag);
 int				ft_result_len(t_param *f_p_s, int flag);
 int				ft_atoi_n(const char *str, int *j);
@@ -149,6 +155,4 @@ int				ft_is_valid_param(const char c);
 int				print_elem(const char *format, va_list elem);
 int				ft_printf(const char *format, ...);
 char			*hex_oct_main(va_list elem, t_param *form_place_spc, char ho, int ltype);
-char			*bit_out(void *a);
-
 #endif

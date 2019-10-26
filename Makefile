@@ -27,6 +27,7 @@ HEADER = includes
 SOURCES =	del_dopfunction2.c \
 			check_symbol.c \
 			ft_lib_int.c \
+			ft_lib_char.c \
 			help_func1.c \
 			main.c\
 			dop_func_float.c \

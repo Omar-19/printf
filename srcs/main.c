@@ -93,6 +93,13 @@ static void test_func(int a, int b)
 
 int		main()
 {
+	int b;
+	int *a;
+	char *n;
+	char m;
+	char *s = "dd";
+	n = &m;
+	a = &b;
 //  	test_func(printf("x%fx\n", 0.1234567), ft_printf("x%fx\n", 0.1234567));
 
 // 	test_func(printf("%+d\n", -10), ft_printf("%+d\n", -10));
@@ -204,24 +211,86 @@ int		main()
 
 	//ft_printf("m%#10.5xm\n", 1);
 
-	test_func(printf("m%#10.5Xm\n", 1), ft_printf("m%#10.5Xm\n", 1));
+	// test_func(printf("m%#10.5Xm\n", 1), ft_printf("m%#10.5Xm\n", 1));
 
-	test_func(printf("m%#10.5om\n", 1), ft_printf("m%#10.5om\n", 1));
+	// test_func(printf("m%#10.5om\n", 1), ft_printf("m%#10.5om\n", 1));
 
-	test_func(printf("m%10.5om\n", 1), ft_printf("m%10.5om\n", 1));
+	// test_func(printf("m%10.5om\n", 1), ft_printf("m%10.5om\n", 1));
 
-	test_func(printf("m%om\n", 0), ft_printf("m%om\n", 0));
+	// test_func(printf("m%om\n", 0), ft_printf("m%om\n", 0));
 
-	test_func(printf("m%xm\n", 0), ft_printf("m%xm\n", 0));
+	// test_func(printf("m%xm\n", 0), ft_printf("m%xm\n", 0));
 
-	test_func(printf("m%Xm\n", 0), ft_printf("m%Xm\n", 0));
+	// test_func(printf("m%Xm\n", 0), ft_printf("m%Xm\n", 0));
 
-	test_func(printf("m%#om\n", 0), ft_printf("m%#om\n", 0));
+	// test_func(printf("m%#om\n", 0), ft_printf("m%#om\n", 0));
 
-	test_func(printf("m%#xm\n", 0), ft_printf("m%#xm\n", 0));
+	// test_func(printf("m%#xm\n", 0), ft_printf("m%#xm\n", 0));
 
-	test_func(printf("m%#Xm\n", 0), ft_printf("m%#Xm\n", 0));
+	// test_func(printf("m%#Xm\n", 0), ft_printf("m%#Xm\n", 0));
+
+	//printf("|%-7.10s|\n", "lalala");
+
+	// test_func(printf("|%-7.0s|\n", "lalala"), ft_printf("|%-7.0s|\n", "lalala"));
+
+	// test_func(printf("|%-7.10s|\n", "lalala"), ft_printf("|%-7.10s|\n", "lalala"));
+
+	// test_func(printf("|%7.0s|\n", "lalala"), ft_printf("|%7.0s|\n", "lalala"));
+
+	// test_func(printf("|%7.10s|\n", "lalala"), ft_printf("|%7.10s|\n", "lalala"));
+
+	// test_func(printf("|%.6s|\n", "lalala"), ft_printf("|%.6s|\n", "lalala"));
+
+	// test_func(printf("|%-s|\n", "lalala"), ft_printf("|%-s|\n", "lalala"));
+
+	// test_func(printf("|%.3s|\n", "lalala"), ft_printf("|%.3s|\n", "lalala"));
+
+	// printf("|%3c|\n", 'c');
+
+	// test_func(printf("|%3c|\n", 'c'), ft_printf("|%3c|\n", 'c'));
+
+	// test_func(printf("|%-3c|\n", 'c'), ft_printf("|%-3c|\n", 'c'));
+
+	//test_func(printf("|%3c|\n", 'c'), ft_printf("|%3c|\n", 'c'));
+
+	// test_func(printf("|%5%%d|\n", 7), ft_printf("|%5%%d|\n", 7));
+
+	// test_func(printf("|%-5%%d|\n", 7), ft_printf("|%-5%%d|\n", 7));
+
+	// test_func(printf("------------|%5%%d|\n", 7), ft_printf("------------|%5%%d|\n", 7));
+
+	// ft_printf("|%10%|\n", 7);
+
+	// test_func(printf("|%d|%%\n", 7), ft_printf("|%d|%%\n", 7));
+
+	// test_func(printf("|%p|\n", n), ft_printf("|%p|\n", n));
 	
+	// test_func(printf("|%20p|\n", a), ft_printf("|%20p|\n", a));
+
+	// test_func(printf("|%-20p|\n", a), ft_printf("|%-20p|\n", a));
+
+	// test_func(printf("|%20p|\n", n), ft_printf("|%20p|\n", n));
+
+	// test_func(printf("|%-20p|\n", n), ft_printf("|%-20p|\n", n));
+
+	// test_func(printf("|%p|\n", s), ft_printf("|%p|\n", s));
+
+	// test_func(printf("|%20p|\n", &a), ft_printf("|%20p|\n", &a));
+
+	// test_func(printf("|%-20p|\n", &a), ft_printf("|%-20p|\n", &a));
+
+	// printf("|%p|\n", &a);
+
+	// printf("|%20p|\n", &a);
+
+	// printf("|%-20p|\n", &a);
+
+	// printf("|%20p|\n", &a);
+
+	// printf("|%-20p|\n", &a);
+	
+	//printf("|%-7.0d|\n", 7);
+
 	// printf("m%#10.5xm\n", 1);
 	// printf("m%#10.5Xm\n", 1);
 	// printf("m%#10.5om\n", 1);

@@ -12,10 +12,10 @@
 
 #include "header.h"
 
-int					ft_is_conversion(const char c)
-{
-	return (!(ft_strchr("diuoxXfFeEgGaAcsSpn", c) == NULL));
-}
+// int					ft_is_conversion(const char c)
+// {
+// 	return (!(ft_strchr("diuoxXfFeEgGaAcsSpn", c) == NULL));
+// }
 
 static inline int	ft_is_length(const char c)
 {

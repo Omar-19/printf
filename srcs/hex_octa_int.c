@@ -37,17 +37,14 @@ char	hex_intc(char *s, int p)
 
 char	*point_hex(void *a)
 {
-	char	res[13];
+	char	res[65];
 	char	buf[5];
 	int		j;
 	int		i;
 
-	i = 31;
+	i = 63;
 	j = 2;
-	memset(res, '0', 13);
-	res[0] = '0';
-	res[1] = 'x';
-	res[2] = '1';
+	memset(res, '0', 64);
 	while (i >= 0)
 	{
 		buf[3 - (i % 4)] = ((*(__uint128_t *)a >> i) & 1) + '0';
@@ -57,7 +54,12 @@ char	*point_hex(void *a)
 		i--;
 	}
 	res[++j] = 0;
-	return (strdup(res));
+	j = 0;
+	while (res[j] == '0' && j < 15)
+		j++;
+	res[j - 2] = '0';
+	res[j - 1] = 'x';
+	return (strdup(res + j - 2));
 }
 
 char	*hex_int(void *a, int p)
