@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/24 17:33:53 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 14:58:35 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,6 @@ int				ft_is_valid_param(const char c);
 int				print_elem(const char *format, va_list elem);
 int				ft_printf(const char *format, ...);
 char			*hex_oct_main(va_list elem, t_param *form_place_spc, char ho, int ltype);
+char			*bit_out(void *a);
+
 #endif
