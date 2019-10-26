@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:18:02 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/26 18:40:28 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 20:14:43 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ char	*point_hex(void *a)
 	return (strdup(res + j - 2));
 }
 
-char	*hex_int(void *a, int p)
+char	*hex_int(void *a, int p, int type)
 {
 	char	res[17];
 	char	buf[5];
 	int		j;
 	int		i;
 
-	i = 63;
+	i = type - 1;
 	j = -1;
 	memset(res, '0', 16);
 	while (i >= 0)
@@ -80,9 +80,10 @@ char	*hex_int(void *a, int p)
 			res[++j] = hex_intc(buf, p);
 		i--;
 	}
+	(type == 32) ? (i = 7) : (i = 15);
 	res[++j] = 0;
 	j = 0;
-	while (res[j] == '0' && j < 15)
+	while (res[j] == '0' &&  j < i)
 		j++;
 	return (strdup(res + j));
 }
@@ -129,7 +130,6 @@ char	*octa_int(void *a)
 	}
 	res[++j] = 0;
 	j = 0;
-	// printf("%s\n", res);
 	while (res[j] == '0' && j <  21)
 		j++;
 	return (strdup(res + j));
@@ -143,9 +143,9 @@ char	*hex_oct_main(va_list elem, t_param *f_p_s, char ho, int ltype)
 	if (ltype == 1)
 		a = va_arg(elem, long long);
 	else
-		a = va_arg(elem, int);
+		a = va_arg(elem, long long);
 	if (ho == 'X' || ho == 'x')
-		ptr = hex_int(&a, 'x' - ho);
+		ptr = hex_int(&a, 'x' - ho, 32 + 32 * ltype);
 	else if (ho == 'o')
 		ptr = octa_int(&a);
 	else 

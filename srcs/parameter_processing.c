@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/26 19:08:42 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 20:52:44 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ int		read_variable_int1(const char *str, size_t len, va_list elem, t_param *form
 
 	ptr = NULL;
 	//printf("\nFLAGS = |%s|\n", form_place_spc->flags);
-	if (ft_strstr_num(str, "llx\0", len))
+	if (ft_strstr_num(str, "llx\0", len) || ft_strstr_num(str, "lx\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
 	else if (ft_strstr_num(str, "llX\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'X', 1);
@@ -181,15 +181,12 @@ int		read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_
 	}
 	else if (ft_strstr_num(str, "s\0", len))
 	{
-		printf("\n%s\n", "+:w---------");
-		ptr = va_arg(elem, char *);
-		// csegfault:
+		ptr = va_arg(elem, char*);
+		(ptr == NULL) ? (ptr = "(null)") : 0;
 		f_p_s->len = ft_strlen(ptr);
-		printf("\n%s\n", "+---------");
 		if (ft_strstr_num(str, ".0\0", len))
 			f_p_s->len = 0;
 		ft_write_tail_str(f_p_s, ptr);
-		ptr = va_arg(elem, char *);
 		return (f_p_s->result);
 	}
 	else if (ft_strstr_num(str, "p\0", len))
@@ -241,11 +238,8 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 		return (0);
 	(*form_place_spc).len = ft_strlen(ptr);
 	ft_result_len(form_place_spc, 0);
-	//printf("\nFLAG = |%s|\n", form_place_spc->flags);
 	ft_flag_correction_1(&form_place_spc);
-	//printf("\nFLAG = |%s|\n", form_place_spc->flags);
 	ft_write_tail(form_place_spc, *ptr, ptr);
-	//write(1, ptr, (*form_place_spc).len);
 	if (!ptr)
 		free(ptr);
 	return ((*form_place_spc).result);
@@ -267,13 +261,9 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 		return (l);
 	else
 	{
-		// printf("\nFLAG = |%s|\n", form_place_spc.flags);
 		ft_flag_correction3(&form_place_spc);
-		// printf("\nFLAG = |%s|\n", form_place_spc.flags);
 		if ((l = read_variable_int(str, len, elem, &form_place_spc)))
 			return (l);
-		// else if ((l = read_variable_char(str, len, elem)))
-		// 	return (l);
 		else if ((l = read_variable_float(str, len, elem, &form_place_spc)))
 			return (l);
 	}

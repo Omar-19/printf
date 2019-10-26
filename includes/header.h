@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/26 18:52:49 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/26 19:43:47 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char			*del1_one(uint64_t *tmp, int deg, int ndb, int t);
 char			*mastos(int *a, int t);
 void			toone(uint64_t *tmp, int m1);
 char			*cr_sdc(uint64_t *a, int min, size_t m1);
-char			*hex_int(void *a, int p);
+char			*hex_int(void *a, int p, int type);
 char			*get_val(char *s);
 char			*main_p(char **s, int pos);
 char			*float_f(t_double d, int prs, int *sign);
