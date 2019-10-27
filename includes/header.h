@@ -72,11 +72,11 @@ typedef struct	s_param
 	int		result;
 }				t_param;
 
+void			ft_write_tail_percent(t_param *f_p_s);
 void			ft_write_no_min_int(t_param *f_p_s, char *ptr, char *str[2]);
 void			ft_write_min_int(t_param *f_p_s, char *ptr, char *str[2]);
 void			ft_result_len_int(t_param *f_p_s);
 void			ft_write_tail_int(t_param *f_p_s, char *ptr);
-void			ft_write_tail_percent(t_param *f_p_s);
 int				read_variable_percent(const char *str, size_t len,
 	t_param *form_place_spc);
 void			ft_result_len_char(t_param *f_p_s);

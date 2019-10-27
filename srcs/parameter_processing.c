@@ -118,7 +118,7 @@ int					read_variable_percent(const char *str, size_t len, t_param *form_place_s
 	if (ft_strstr_num(str, "%\0", len))
 	{
 		// printf("--------------------------%c", '\n');
-		ft_write_tail_char(form_place_spc, '%');//ft_write_tail_percent(form_place_spc);
+		ft_write_tail_percent(form_place_spc);//ft_write_tail_percent(form_place_spc);
 	}
 	else
 		return (0);
@@ -222,9 +222,10 @@ int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f
 	}
 	else if (ft_strstr_num(str, "p\0", len))
 	{
+		f_p_s->is_pres = 0;
 		f_p_s->precision = 0;
 		ptr = va_arg(elem, char *);
-		ptr = point_hex(&ptr);
+		(!ptr) ? (ptr = "0x0") : (ptr = point_hex(&ptr));
 		f_p_s->len = ft_strlen(ptr);
 		ft_write_tail_str(f_p_s, ptr);
 		ptr = va_arg(elem, char *);

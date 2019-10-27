@@ -22,6 +22,18 @@ static void test_func(int a, int b)
 
 int		main()
 {
+	int a01;
+	int a02;
+	int a03;
+	int a04;
+	int a05;
+	int a06;
+	int a07;
+	int a08;
+	int a09;
+	int a10;
+	int a11;
+	int a12;
 // 	int b;
 // 	int *a;
 // 	char *n;
@@ -324,17 +336,40 @@ int		main()
 
 	// test_func(printf("|% .5d|\n", 2), ft_printf("|% .5d|\n", 2));
 
-	test_func(printf("%.03s\n", NULL), ft_printf("%.03s\n", NULL));
+	// test_func(printf("|%p%p%p%p%p%p%p%p%p%p%p%p|\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
+	// 	ft_printf("|%p%p%p%p%p%p%p%p%p%p%p%p|\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
 
 	// printf("|%.5s|\n", "aaa");
 
-	// test_func(printf("|% .2d|\n", 2), ft_printf("|% .2d|\n", 2));
+	// test_func(printf("|%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p|\n", 
+	// 	&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
+	// 		ft_printf("|%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p|\n", 
+	// 			&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
+//"%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10
+	
+	// test_func(printf("|%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p|\n", 
+	// 	&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
+	// 		ft_printf("|%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p|\n", 
+	// 			&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
+
+	// test_func(printf("|%-32p%-32p%-32p|\n", &a01,&a02,&a03),
+	// 		ft_printf("|%-32p%-32p%-32p|\n", &a01,&a02,&a03));
 
 	// test_func(printf("%03.2d\n", 0), ft_printf("%03.2d\n", 0));
 
 	// test_func(printf("%5.d %5.0d\n", 0, 0), ft_printf("%5.d %5.0d\n", 0, 0));
 
-	// test_func(printf("% hhd\n", (char)(-128)), ft_printf("% hhd\n", (char)(-128)));
+	// test_func(printf("|%05%|\n"), ft_printf("|%05%|\n"));
+
+	// test_func(printf("|%5%|\n"), ft_printf("|%5%|\n"));
+
+	// test_func(printf("|% %|\n"), ft_printf("|% %|\n"));
+
+	// test_func(printf("|%-10%|\n"), ft_printf("|%-10%|\n"));
+
+	// test_func(printf("|% 03%|\n"), ft_printf("|% 03%|\n"));
+
+	test_func(printf("%"), ft_printf("%"));
 
 	//printf("%+u\n", (unsigned)4294967295);
 

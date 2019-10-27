@@ -53,8 +53,11 @@ int			print_elem(const char *format, va_list elem)
 			// 	++i;
 			// else
 			// {
+			if (!str[i])
+				return res;
 			while(!(ft_is_conversion(str[i])))
-				++i;
+				if (!str[i++ + 1])
+					return res;
 			len = str + i - ptr + 1;
 			res += ft_param_processing(ptr, len, elem);
 			ptr = str + ++i;
