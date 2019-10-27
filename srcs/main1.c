@@ -282,7 +282,56 @@ int		main()
 	// test_func(printf("%10x\n", 42), ft_printf("%10x\n", 42));
 	// test_func(printf("%#x\n", 0), ft_printf("%#x\n", 0));
 	// test_func(printf("%10s\n", NULL), ft_printf("%10s\n", NULL));
-	test_func(printf("|%.03s|\n", "qw"), ft_printf("|%.03s|\n", "qw"));
+	//test_func(printf("|%.03s|\n", "qw"), ft_printf("|%.03s|\n", "qw"));
+	// test_func(printf("|%+05d|\n", -7), ft_printf("|%+05d|\n", -7));
+	// test_func(printf("|%08.5d|\n", 34), ft_printf("|%08.5d|\n", 34));
+	// test_func(printf("|% d|\n", -1), ft_printf("|% d|\n", -1));
+	// test_func(printf("|% .3d|\n", 13862), ft_printf("|% .3d|\n", 13862));
+	// test_func(printf("|% 03.3d|\n", 6983), ft_printf("|% 03.3d|\n", 6983));
+	// test_func(printf("|%5.0d|\n", 0), ft_printf("|%5.0d|\n", 0));
+	// test_func(printf("|%+5.0d|\n", 0), ft_printf("|%+5.0d|\n", 0));
+	// test_func(printf("|%+5.d|\n", 0), ft_printf("|%+5.d|\n", 0));
+	// test_func(printf("|% 03.3d|\n", 6983), ft_printf("|% 03.3d|\n", 6983));
+	// test_func(printf("|% 06.3d|\n", 6983), ft_printf("|% 06.3d|\n", 6983));
+	// test_func(printf("|%06.3d|\n", 6983), ft_printf("|%06.3d|\n", 6983));
+
+	// test_func(printf("|%+.d|\n", 0), ft_printf("|%+.d|\n", 0));
+
+	// printf("%g\n", 123456.923);
+	//write(1, ANSI_COLOR_CYAN "This text is CYAN!", 18);
+
+	// test_func(printf("%.0d\n", 0), ft_printf("%.0d\n", 0));
+
+	// test_func(printf("%+.0d\n", 0), ft_printf("%+.0d\n", 0));
+
+	// test_func(printf("%+.0d\n", -0), ft_printf("%+.0d\n", -0));
+
+	// test_func(printf("%.0d\n", 1), ft_printf("%.0d\n", 1));
+
+	// test_func(printf("|%+d|\n", 6983), ft_printf("|%+d|\n", 6983));
+
+	// test_func(printf("|%+d|\n", -6983), ft_printf("|%+d|\n", -6983));
+
+	// test_func(printf("|%d|\n", -6983), ft_printf("|%d|\n", -6983));
+
+	// test_func(printf("|%+5.d|\n", 0), ft_printf("|%+5.d|\n", 0));
+
+	// test_func(printf("% d\n", -42, 0), ft_printf("% d\n", -42));
+
+	// test_func(printf("%-+10.5d\n", 4242, 0), ft_printf("%-+10.5d\n", 4242, 0));
+
+	// test_func(printf("%03.2d\n", 0), ft_printf("%03.2d\n", 0));
+
+	// test_func(printf("%5.d %5.0d\n", 0, 0), ft_printf("%5.d %5.0d\n", 0, 0));
+
+	// test_func(printf("%+u\n", 4294967295), ft_printf("%+u\n", 4294967295));
+
+	//printf("%+u\n", (unsigned)4294967295);
+
+	printf("%.0g\n", 16.01234567890);
+
+	// printf("|%+05d|\n", -7);
+	// ft_printf("|%+05d|\n", -7);
 	// ft_printf("%#08o", 42);
 	return (0);
 }

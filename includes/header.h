@@ -27,6 +27,13 @@
 # define RETF(x) (((*(uint32_t*)(&x) >> 23) & (uint32_t)0xFF)  - 127)
 # define RETD(x) (((*(uint64_t *)(&d.numd) >> 52) & 0x7FF) - 1023)
 # define RETLD(x) (((*(__uint128_t*)(&d.numld) >> 64) & 0x7FFF) - 16383)
+# define ANSI_COLOR_RED     "\x1b[31m"
+# define ANSI_COLOR_GREEN   "\x1b[32m"
+# define ANSI_COLOR_YELLOW  "\x1b[33m"
+# define ANSI_COLOR_BLUE    "\x1b[34m"
+# define ANSI_COLOR_MAGENTA "\x1b[35m"
+# define ANSI_COLOR_CYAN    "\x1b[36m"
+# define ANSI_COLOR_RESET   "\x1b[0m"
 
 typedef union	u_double
 {
@@ -52,12 +59,23 @@ typedef struct	s_intp
 typedef struct	s_param
 {
 	int		precision;
+	int		is_pres;
+	int		is_width;
 	char	flags[5];
+	int		is_minus;
+	int		is_plus;
+	int		is_zero;
+	int		is_space;
+	int		is_hash;
 	int		width;
 	int		len;
 	int		result;
 }				t_param;
 
+void			ft_write_no_min_int(t_param *f_p_s, char *ptr, char *str[2]);
+void			ft_write_min_int(t_param *f_p_s, char *ptr, char *str[2]);
+void			ft_result_len_int(t_param *f_p_s);
+void			ft_write_tail_int(t_param *f_p_s, char *ptr);
 void			ft_write_tail_percent(t_param *f_p_s);
 int				read_variable_percent(const char *str, size_t len,
 	t_param *form_place_spc);
@@ -138,7 +156,7 @@ int				ft_result_len(t_param *f_p_s, int flag);
 int				ft_atoi_n(const char *str, int *j);
 char			*ft_strchr(const char *s, int c);
 void			itoa_flag_handling(long long int value_i,
-	unsigned long long value_u, t_param **f_p_s, t_intp *par);
+	unsigned long long value_u, t_param *f_p_s, t_intp *par);
 void			ft_format_specification_description(const char *str, size_t len,
 	va_list elem, t_param *f_p_s);
 char			*ft_itoa_d_flagmin(t_intp *par, t_param **f_p_s);

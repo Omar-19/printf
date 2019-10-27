@@ -12,12 +12,12 @@
 
 #include "header.h"
 
-static inline int		ft_is_flag(const char c)
+static inline int	ft_is_flag(const char c)
 {
-	return (!(ft_strchr("#0-+' ", c) == NULL));
+	return (!(ft_strchr("#0-+ ", c) == NULL));
 }
 
-int		ft_atoi_n(const char *str, int *j)
+int					ft_atoi_n(const char *str, int *j)
 {
 	long	number;
 
@@ -35,21 +35,41 @@ int		ft_atoi_n(const char *str, int *j)
 	return (number);
 }
 
-void	ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s)
+static inline void	ft_null_f_p_s(t_param *f_p_s, size_t *i, int *j)
+{
+	*i = 0;
+	*j = 0;
+	f_p_s->is_hash = 0;
+	f_p_s->is_minus = 0;
+	f_p_s->is_plus = 0;
+	f_p_s->is_pres = 0;
+	f_p_s->is_space = 0;
+	f_p_s->is_zero = 0;
+	f_p_s->is_width = 1;
+}
+
+void				ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s)
 {
 	size_t i;
 	int j;
 
-	i = 0;
+	ft_null_f_p_s(f_p_s, &i, &j);
 	while (ft_is_flag(*(str + i)) && i < len)
 	{
 		if (i == 0 || !ft_strchr((*f_p_s).flags, *(str + i)))
 		{
-			*((*f_p_s).flags + i) = *(str + i);
-			*((*f_p_s).flags + i + 1) = '\0';
+			(*(str + i) == ' ') ? (f_p_s->is_space = 1) : 0;
+			(*(str + i) == '+') ? (f_p_s->is_plus = 1) : 0;
+			(*(str + i) == '-') ? (f_p_s->is_minus = 1) : 0;
+			(*(str + i) == '#') ? (f_p_s->is_hash = 1) : 0;
+			(*(str + i) == '0') ? (f_p_s->is_zero = 1) : 0;
+			*((*f_p_s).flags + j) = *(str + i);
+			*((*f_p_s).flags + j + 1) = '\0';
+			++j;
 		}
 		++i;
 	}
+	// printf("FLAGs = |%s|\n", f_p_s->flags);
 	j = i;
 	// i = 0;
 	// if (ft_strchr((*f_p_s).flags, '+'))
@@ -67,19 +87,31 @@ void	ft_format_specification_description(const char *str, size_t len, va_list el
 	else if (*(str + j) >= '0' && *(str + j) <= '9')
 		(*f_p_s).width = ft_atoi_n(str + j, &j);
 	else
+	{
+		f_p_s->is_width = 0;
 		(*f_p_s).width = 0;
+	}
 	if (*(str + j) == '.')
 	{
 		if (*(str + ++j) == '*')
 			(*f_p_s).precision = va_arg(elem, int);
 		else
 			(*f_p_s).precision = ft_atoi_n(str + j, &j);
+		f_p_s->is_pres = 1;
 	}
 	else
 		(*f_p_s).precision = 0;
+	// printf("FLAGs = |%s|\n", f_p_s->flags);
+	// printf("PRES = |%d|\n", f_p_s->precision);
+	// printf("# = |%d|\n", f_p_s->is_hash);
+	// printf("- = |%d|\n", f_p_s->is_minus);
+	// printf("+ = |%d|\n", f_p_s->is_plus);
+	// printf("pres = |%d|\n", f_p_s->is_pres);
+	// printf("space = |%d|\n", f_p_s->is_space);
+	// printf("0 = |%d|\n", f_p_s->is_zero);
 }
 
-int		read_variable_percent(const char *str, size_t len, t_param *form_place_spc)
+int					read_variable_percent(const char *str, size_t len, t_param *form_place_spc)
 {
 	form_place_spc->len = 1;
 	// printf("--------------------------%c", '\n');
@@ -93,11 +125,12 @@ int		read_variable_percent(const char *str, size_t len, t_param *form_place_spc)
 	return (form_place_spc->result);
 }
 
-int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc)
+int					read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc)
 {
 	char	*ptr;
 	//long long	a;
 
+	// printf("FLAGs = |%s|\n", form_place_spc->flags);
 	ptr = NULL;
 	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
 		ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc);
@@ -133,13 +166,13 @@ int		read_variable_int(const char *str, size_t len, va_list elem, t_param *form_
 	// 	ptr = hex_oct_main(elem, form_place_spc, 'o', 0);
 	else
 		return (0);
-	write(1, ptr, (*form_place_spc).result);
+	//write(1, ptr, form_place_spc->result);
 	if (!ptr)
 		free(ptr);
 	return ((*form_place_spc).result);
 }
 
-int		read_variable_int1(const char *str, size_t len, va_list elem, t_param *form_place_spc)
+int					read_variable_int1(const char *str, size_t len, va_list elem, t_param *form_place_spc)
 {
 	char *ptr;
 
@@ -166,7 +199,7 @@ int		read_variable_int1(const char *str, size_t len, va_list elem, t_param *form
 	return (form_place_spc->result);
 }
 
-int		read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s)
+int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s)
 {
 	char	*ptr;
 	// char	*r1;
@@ -205,7 +238,7 @@ int		read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_
 	return (0);
 }
 
-int		read_variable_float(const char *str, size_t len, va_list elem, t_param *form_place_spc)
+int					read_variable_float(const char *str, size_t len, va_list elem, t_param *form_place_spc)
 {
 	char			*ptr;
 	t_double		d;
@@ -245,7 +278,7 @@ int		read_variable_float(const char *str, size_t len, va_list elem, t_param *for
 	return ((*form_place_spc).result);
 }
 
-int		ft_param_processing(const char *str, size_t len, va_list elem)
+int					ft_param_processing(const char *str, size_t len, va_list elem)
 {
 	int		l;
 	// Format placeholder specification
@@ -259,12 +292,12 @@ int		ft_param_processing(const char *str, size_t len, va_list elem)
 		return (l);
 	else if ((l = read_variable_char(str, len, elem, &form_place_spc)))
 		return (l);
+	else if ((l = read_variable_int(str, len, elem, &form_place_spc)))
+		return (l);
 	else
 	{
 		ft_flag_correction3(&form_place_spc);
-		if ((l = read_variable_int(str, len, elem, &form_place_spc)))
-			return (l);
-		else if ((l = read_variable_float(str, len, elem, &form_place_spc)))
+		if ((l = read_variable_float(str, len, elem, &form_place_spc)))
 			return (l);
 	}
 	return (0);
