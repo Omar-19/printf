@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:26:02 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/26 18:14:48 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/27 16:33:35 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ char	*res_last3(char *point, int prs, int sign)
 	ft_strcat(jk, "e-");
 	ft_strcat(jk, ft_uint64toa2(sp + 1, 0));
 	return (jk);
-
 }
 
 char	*res_last2(char *dc, char *point, int prs, int sign)

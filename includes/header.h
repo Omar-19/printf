@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/26 19:43:47 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/27 18:12:56 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,4 +183,11 @@ char            *ft_uint64toa(uint64_t a, int d);
 char			*ft_uint64toa2(uint64_t a, int d);
 char			*float_lde(t_double d, int prs, int *sign);
 char			*bit_help(va_list elem);
+
+char			*float_ldg(t_double d, int prs, int *sign);
+char			*float_dg(t_double d, int prs, int *sign);
+char			*res_last_g(char *dc, char *point, int prs, int sign);
+char			*res_last3_g(char *point, int prs, int sign);
+char			*res_last4_g(char *des, char *point, int sign);
+
 #endif
