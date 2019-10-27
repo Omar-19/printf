@@ -322,9 +322,13 @@ int		main()
 
 	// test_func(printf("this % d number\n", 17), ft_printf("this % d number\n", 17));
 
-	test_func(printf("|% .5d|\n", 2), ft_printf("|% .5d|\n", 2));
+	// test_func(printf("|% .5d|\n", 2), ft_printf("|% .5d|\n", 2));
 
-	test_func(printf("|% .2d|\n", 2), ft_printf("|% .2d|\n", 2));
+	test_func(printf("%.03s\n", NULL), ft_printf("%.03s\n", NULL));
+
+	// printf("|%.5s|\n", "aaa");
+
+	// test_func(printf("|% .2d|\n", 2), ft_printf("|% .2d|\n", 2));
 
 	// test_func(printf("%03.2d\n", 0), ft_printf("%03.2d\n", 0));
 

@@ -31,7 +31,8 @@ del_dopfunction.c \
 del_dopfunction2.c \
 dop_func_float.c \
 dop_function.c \
-float_eg.c \
+float_g.c \
+float_e.c \
 float_my.c \
 float_umn.c \
 ft_lib_char.c \

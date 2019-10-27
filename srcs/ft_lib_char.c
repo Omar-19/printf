@@ -14,23 +14,30 @@
 
 void	ft_result_len_str(t_param *f_p_s)
 {
-	if (f_p_s->len > f_p_s->precision && f_p_s->precision != 0)
-		f_p_s->len = f_p_s->precision;
+	(f_p_s->is_pres && !f_p_s->precision) ? (f_p_s->len = 0) : 0;
+	// if (f_p_s->len > f_p_s->precision && f_p_s->precision != 0)
+	// 	f_p_s->len = f_p_s->precision;
+	// f_p_s->result = f_p_s->len;
+	// if (f_p_s->width > f_p_s->result)
+	// 	f_p_s->result = f_p_s->width;
+	// printf("\nfps->w = %d\n", f_p_s->width);
+	// printf("\nfps->w = %d\n", f_p_s->width);
+	// ((f_p_s->precision = f_p_s->precision - f_p_s->len) > 0) ?
+	// 	0 : (f_p_s->precision = 0);
+	(f_p_s->is_pres && (f_p_s->precision < f_p_s->len)) ?
+		(f_p_s->len = f_p_s->precision) : 0;
 	f_p_s->result = f_p_s->len;
 	if (f_p_s->width > f_p_s->result)
 		f_p_s->result = f_p_s->width;
+	((f_p_s->width = f_p_s->result - f_p_s->len) > 0) ?
+		0 : (f_p_s->width = 0);
 }
 
 void	ft_result_len_char(t_param *f_p_s)
 {
 	f_p_s->result = f_p_s->len;
 	if (f_p_s->width > f_p_s->result)
-		f_p_s->result = f_p_s->width;
-	
-	// printf("fps->len = %d\n", f_p_s->len);
-	// printf("fps->w = %d\n", f_p_s->width);
-	// printf("fps->res = %d\n", f_p_s->result);
-	
+		f_p_s->result = f_p_s->width;	
 }
 
 void		ft_write_tail_str(t_param *f_p_s, char *ptr)
@@ -38,15 +45,15 @@ void		ft_write_tail_str(t_param *f_p_s, char *ptr)
 	char *str;
 
 	ft_result_len_str(f_p_s);
-	str = ft_strnew_char((f_p_s->result - f_p_s->len), ' ');
-	if (ft_strchr((*f_p_s).flags, '-'))
+	str = ft_strnew_char(f_p_s->width, ' ');
+	if (f_p_s->is_minus)
 	{
 		write(1, ptr, f_p_s->len);
-		write(1, str, (f_p_s->result - f_p_s->len));
+		write(1, str, f_p_s->width);
 	}
 	else
 	{
-		write(1, str, (f_p_s->result - f_p_s->len));
+		write(1, str, f_p_s->width);
 		write(1, ptr, f_p_s->len);
 	}
 	free(str);
@@ -60,7 +67,7 @@ void		ft_write_tail_char(t_param *f_p_s, char c)
 	// printf("fps->w = %d\n", f_p_s->width);
 	// printf("fps->res = %d\n", f_p_s->result);
 	str = ft_strnew_char((f_p_s->result - f_p_s->len), ' ');
-	if (ft_strchr((*f_p_s).flags, '-'))
+	if (f_p_s->is_minus)
 	{
 		write(1, &c, 1);
 		write(1, str, (f_p_s->result - f_p_s->len));
