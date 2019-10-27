@@ -203,6 +203,7 @@ int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f
 {
 	char	*ptr;
 
+
 	if (ft_strstr_num(str, "c\0", len))
 	{
 		f_p_s->len = 1;
@@ -213,11 +214,8 @@ int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f
 	{
 		ptr = va_arg(elem, char*);
 		if (!ptr)
-		{
-			if (f_p_s->is_pres && !f_p_s->precision)
-				ptr = "";
-			ptr = "(null)";
-		}
+			(f_p_s->is_pres && !f_p_s->precision) ? (ptr = "") :
+				(ptr = "(null)");
 		f_p_s->len = ft_strlen(ptr);
 		ft_write_tail_str(f_p_s, ptr);
 		return (f_p_s->result);
