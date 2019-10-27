@@ -28,15 +28,36 @@ void	ft_result_len_int(t_param *f_p_s)
 
 void		ft_write_no_min_int(t_param *f_p_s, char *ptr, char *str[2])
 {
+	if (f_p_s->is_space && !f_p_s->is_plus)
+	{
+		write(1, " ", 1);
+		//(f_p_s->width == f_p_s->precision + f_p_s->len) ? (++f_p_s->result) : 0;
+		++f_p_s->result;
+		//--f_p_s->precision;
+		--f_p_s->width;
+	}
+	// (f_p_s->is_space && !f_p_s->is_plus) ? ((write(1, " ", 1)) &&
+	// 	(++f_p_s->result) && --f_p_s->precision && --f_p_s->width) : 0;
 	// printf("f_p_s->width = %d str[1] = |%s|\n", f_p_s->is_width, str[1]);
-	write(1, str[1], f_p_s->width);
+	(f_p_s->is_zero) ? 0 : (write(1, str[1], f_p_s->width));
 	(f_p_s->is_plus) ? ((write(1, ptr++, 1)) && --f_p_s->len) : 0;
+	(f_p_s->is_zero) ? (write(1, str[1], f_p_s->width)) : 0;
 	write(1, str[0], f_p_s->precision);
 	write(1, ptr, f_p_s->len);
 }
 
 void		ft_write_min_int(t_param *f_p_s, char *ptr, char *str[2])
 {
+	if (f_p_s->is_space && !f_p_s->is_plus)
+	{
+		write(1, " ", 1);
+		++f_p_s->result;
+		// (f_p_s->width == f_p_s->precision + f_p_s->len) ? (++f_p_s->result) : 0;
+		//--f_p_s->precision;
+		--f_p_s->width;
+	}
+	// (f_p_s->is_space && !f_p_s->is_plus) ? ((write(1, " ", 1)) &&
+	// 	(++f_p_s->result) && --f_p_s->precision && --f_p_s->width) : 0;
 	(f_p_s->is_plus) ? ((write(1, ptr++, 1)) && --f_p_s->len) : 0;
 	write(1, str[0], f_p_s->precision);
 	write(1, ptr, f_p_s->len);

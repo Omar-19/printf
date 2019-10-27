@@ -320,7 +320,11 @@ int		main()
 
 	// test_func(printf("%-+10.5d\n", 4242), ft_printf("%-+10.5d\n", 4242));
 
-	test_func(printf("%0+8.3d\n", -8473), ft_printf("%0+8.3d\n", -8473));
+	// test_func(printf("this % d number\n", 17), ft_printf("this % d number\n", 17));
+
+	test_func(printf("|% .5d|\n", 2), ft_printf("|% .5d|\n", 2));
+
+	test_func(printf("|% .2d|\n", 2), ft_printf("|% .2d|\n", 2));
 
 	// test_func(printf("%03.2d\n", 0), ft_printf("%03.2d\n", 0));
 
