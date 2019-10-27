@@ -161,7 +161,7 @@ void			ft_format_specification_description(const char *str, size_t len,
 	va_list elem, t_param *f_p_s);
 char			*ft_itoa_d_flagmin(t_intp *par, t_param **f_p_s);
 char			*ft_itoa_d(long long int value_i, unsigned long long value_u,
-	t_param *f_p_s);
+	t_param *f_p_s, int u);
 int				ft_strstr_num(const char *str, const char *to_find, size_t len);
 void			ft_write_str(const char *str, size_t len);
 int				read_variable_int(const char *str, size_t len, va_list elem,

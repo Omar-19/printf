@@ -318,17 +318,19 @@ int		main()
 
 	// test_func(printf("% d\n", -42, 0), ft_printf("% d\n", -42));
 
-	// test_func(printf("%-+10.5d\n", 4242, 0), ft_printf("%-+10.5d\n", 4242, 0));
+	// test_func(printf("%-+10.5d\n", 4242), ft_printf("%-+10.5d\n", 4242));
+
+	test_func(printf("%0+8.3d\n", -8473), ft_printf("%0+8.3d\n", -8473));
 
 	// test_func(printf("%03.2d\n", 0), ft_printf("%03.2d\n", 0));
 
 	// test_func(printf("%5.d %5.0d\n", 0, 0), ft_printf("%5.d %5.0d\n", 0, 0));
 
-	// test_func(printf("%+u\n", 4294967295), ft_printf("%+u\n", 4294967295));
+	// test_func(printf("% hhd\n", (char)(-128)), ft_printf("% hhd\n", (char)(-128)));
 
 	//printf("%+u\n", (unsigned)4294967295);
 
-	printf("%.0g\n", 16.01234567890);
+	// printf("%.0g\n", 16.01234567890);
 
 	// printf("|%+05d|\n", -7);
 	// ft_printf("|%+05d|\n", -7);

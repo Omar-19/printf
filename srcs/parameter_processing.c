@@ -133,25 +133,25 @@ int					read_variable_int(const char *str, size_t len, va_list elem, t_param *fo
 	// printf("FLAGs = |%s|\n", form_place_spc->flags);
 	ptr = NULL;
 	if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
-		ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc);
+		ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc, 0);
 	else if (ft_strstr_num(str, "hd\0", len) || ft_strstr_num(str, "hi\0", len))
-		ptr = ft_itoa_d((short int)va_arg(elem, int), 0, form_place_spc);
+		ptr = ft_itoa_d((short int)va_arg(elem, int), 0, form_place_spc, 0);
 	else if (ft_strstr_num(str, "lld\0", len) || ft_strstr_num(str, "lli\0", len))
-		ptr = ft_itoa_d(va_arg(elem, long long int), 0, form_place_spc);
+		ptr = ft_itoa_d(va_arg(elem, long long int), 0, form_place_spc, 0);
 	else if (ft_strstr_num(str, "ld\0", len) || ft_strstr_num(str, "li\0", len))
-		ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc);
+		ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc, 0);
 	else if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "i\0", len))
-		ptr = ft_itoa_d(va_arg(elem, int), 0, form_place_spc);
+		ptr = ft_itoa_d(va_arg(elem, int), 0, form_place_spc, 0);
 	else if (ft_strstr_num(str, "llu\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), form_place_spc);
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), form_place_spc, 1);
 	else if (ft_strstr_num(str, "lu\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), form_place_spc);
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), form_place_spc, 1);
 	else if (ft_strstr_num(str, "hhu\0", len))
-		ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), form_place_spc);
+		ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), form_place_spc, 1);
 	else if (ft_strstr_num(str, "hu\0", len))
-		ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc);
+		ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc, 1);
 	else if (ft_strstr_num(str, "u\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc);
+		ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc, 1);
 	// else if (ft_strstr_num(str, "llx\0", len))
 	// 	ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
 	// else if (ft_strstr_num(str, "llX\0", len))

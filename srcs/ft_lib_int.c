@@ -20,7 +20,7 @@ void	ft_result_len_int(t_param *f_p_s)
 		f_p_s->result = f_p_s->precision;
 	if (f_p_s->width > f_p_s->result)
 		f_p_s->result = f_p_s->width;
-	((f_p_s->precision = f_p_s->precision - f_p_s->len) > 0) ?
+	((f_p_s->precision = f_p_s->precision - f_p_s->len + f_p_s->is_plus) > 0) ?
 		0 : (f_p_s->precision = 0);
 	((f_p_s->width = f_p_s->result - f_p_s->len - f_p_s->precision) > 0) ?
 		0 : (f_p_s->width = 0);
@@ -51,6 +51,7 @@ void		ft_write_tail_int(t_param *f_p_s, char *ptr)
 	// str[1] = NULL;
 	//if (f_p_s->is_pres)
 	str[0] = ft_strnew_char(f_p_s->precision, '0');
+	// printf("f_p_s->precision = %d str[0] = |%s|\n", f_p_s->precision, str[0]);
 	//if (f_p_s->width)
 	//{
 	(f_p_s->is_zero) ? (str[1] = ft_strnew_char(f_p_s->width, '0')) :
@@ -153,12 +154,13 @@ void		itoa_flag_handling(long long int value_i,
 // }
 
 char		*ft_itoa_d(long long int value_i,
-	unsigned long long value_u, t_param *f_p_s)
+	unsigned long long value_u, t_param *f_p_s, int u)
 {
 	t_intp	par;
 	int		i;
 
 	i = 0;
+	(u) ? (f_p_s->is_plus = 0) : 0;
 	itoa_flag_handling(value_i, value_u, f_p_s, &par);
 	par.val[1] = par.val[0];
 	while (par.val[1] /= 10)
