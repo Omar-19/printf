@@ -341,11 +341,11 @@ int		main()
 
 // 	// printf("|%.5s|\n", "aaa");
 
-test_func(printf("|%-#10.7x|\n", 7), ft_printf("|%-#10.7x|\n", 7));
+// test_func(printf("|%-#10.7x|\n", 7), ft_printf("|%-#10.7x|\n", 7));
 
-test_func(printf("|%-#10.7X|\n", 6), ft_printf("|%-#10.7X|\n", 6));
+// test_func(printf("|%-#10.7X|\n", 6), ft_printf("|%-#10.7X|\n", 6));
 
-test_func(printf("|%-#10.7o|\n", 5), ft_printf("|%-#10.7o|\n", 5)); // tut
+// test_func(printf("|%-#10.7o|\n", 5), ft_printf("|%-#10.7o|\n", 5)); // tut
 
 	// test_func(printf("|%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p|\n", 
 	// 	&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
@@ -381,7 +381,7 @@ test_func(printf("|%-#10.7o|\n", 5), ft_printf("|%-#10.7o|\n", 5)); // tut
 
 // test_func(printf("|%-#10.7X|\n", 6), ft_printf("|%-#10.7X|\n", 6));
 
-// test_func(printf("|%-#10.7o|\n", 5), ft_printf("|%-#10.7o|\n", 5)); // tut
+test_func(printf("|%ll#o|\n", 9223372036854775807), ft_printf("|%ll#x|\n", 9223372036854775807)); // tut
 
 	
 
@@ -390,11 +390,14 @@ test_func(printf("|%-#10.7o|\n", 5), ft_printf("|%-#10.7o|\n", 5)); // tut
 
 // test_func(printf("|%08.5x|\n", 34), ft_printf("|%08.5x|\n", 34));
 
-// test_func(printf("|%08.5x|\n", 0), ft_printf("|%08.5x|\n", 0));
+// test_func(printf("|%#08.5x|\n", 7), ft_printf("|%#08.5x|\n", 7));
 
 // test_func(printf("|%#-3x|\n", 0), ft_printf("|%#-3x|\n", 0));
 
-// test_func(printf("|%.x|\n", 0), ft_printf("|%.x|\n", 0));
+// test_func(printf("|%#010.x|\n", 0), ft_printf("|%#010.x|\n", 0));
+
+// test_func(printf("abc%M"), ft_printf("abc%M"));
+// printf("abc%M");
 
 // 	//printf("%+u\n", (unsigned)4294967295);
 

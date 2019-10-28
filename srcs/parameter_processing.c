@@ -75,9 +75,17 @@ void				ft_format_specification_description(const char *str, size_t len, va_list
 	j = i;
 	while (i < len)
 	{
-		if (*(str + i) == '+')
+		if (*(str + i) == '+' || *(str + i) == '-')
 		{
 			f_p_s->is_plus = 1;
+			*((*f_p_s).flags + k) = *(str + i);
+			*((*f_p_s).flags + k + 1) = '\0';
+			++k;
+		}
+		//  *(str + i) == '#'
+		if (*(str + i) == '#')
+		{
+			f_p_s->is_hash = 1;
 			*((*f_p_s).flags + k) = *(str + i);
 			*((*f_p_s).flags + k + 1) = '\0';
 			++k;
@@ -205,13 +213,13 @@ int					read_variable_int1(const char *str, size_t len, va_list elem, t_param *f
 	else if (ft_strstr_num(str, "llX\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'X', 1);
 	else if (ft_strstr_num(str, "x\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'x', 0);
+		ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
 	else if (ft_strstr_num(str, "X\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'X', 0);
 	else if (ft_strstr_num(str, "llo\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
 	else if (ft_strstr_num(str, "o\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'o', 0);
+		ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
 	else if (ft_strstr_num(str, "b\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'b', 1);
 	else
