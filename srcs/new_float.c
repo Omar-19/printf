@@ -18,7 +18,7 @@ void	get_mantis_d(t_double d, char *s, int type)
 		--j;
 	}
 	s[i] = 0;
-	(n != NULL) ? *n = 0 : 0;
+	// (n != NULL) ? *n = 0 : 0;
 }
 
 void	get_mm(void *a, char *s)
@@ -39,7 +39,7 @@ void	get_mm(void *a, char *s)
 		--j;
 	}
 	s[i] = 0;
-	(n != NULL) ? *n = 0 : 0;
+	// (n != NULL) ? *n = 0 : 0;
 }
 
 char	*get_point_part2(char *m, int t)
@@ -152,13 +152,12 @@ char	*get_float_all(char *m, int p, int prs, int sign)
 	char *dec;
 	char *point;
 
-	// printf("mant %s p %d\n", m, p);
-	//
+	printf("m %s\n", m + 1);
 	if (p < 0)
 	{
-		dec = "0";
+		dec = strdup("0");
 		point = get_point_part(m, p, prs);
-		// write(1, point, strlen(point));
+		write(1, point, strlen(point));
 	}
 	else if (p >= 0 && (size_t)p < strlen(m) - 1)
 	{
@@ -169,7 +168,7 @@ char	*get_float_all(char *m, int p, int prs, int sign)
 	{
 		dec = get_dec_part(m, p);
 		if (prs == 0)
-			return (dec);
+			return (strdup(dec));
 		point = ft_strnewc(prs + 1, '0');
 		point[0] = '.';
 		return (ft_strjoin(dec, point));
@@ -188,7 +187,7 @@ char	*new_float_d(t_double d, int prs)
 	get_mm(&d.numd, mantis);
 	sign = (*(__uint128_t *)(&d.numld) >> 63 & 1);
 	p = RETD(d.numd);
-	printf("ma %s\n p %d", mantis, p);
+	// printf("ma %s\n p %d", mantis, p);
 
 
 	return (get_float_all(mantis, p, prs, sign));

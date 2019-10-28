@@ -391,14 +391,23 @@ int		main()
 	// ft_printf("%f\n", 0.000039);
 	// ft_printf("%f\n", 0.000039);
 	// printf("%.0f", 7.4);
-	// 101000111001001111101110010111101110110111001100001
-	// 101000111001001111101110010111101110110111001100001
+	// site 10100011100100111110111001011110111011011100110000100
+	//		10100011100100111110111001011110111011011100110000100
+	//		0100011100100111110111001011110111011011100110000100
+	//		0100011100100111110111001011110111011011100110000100
 	t_double d;
 	d.numd = 0.000039;
-	// for (int i = 51; i >= 0 ; i--)
-	// 	printf("%d", (*(__uint128_t*)&d.numd >> i & (__uint128_t)1));
-	// // printf("\n");
+	printf("%f\n", d.numd);
+	for (int i = 51; i >= 0 ; i--)
+		printf("%d", ((*(__uint128_t*)(&d.numd) >> i) & (__uint128_t)1));
+	printf("\n");
 	printf("\n%s\n", new_float_d(d, 6));
+	printf("\n%s\n", new_float_d(d, 6));
+	printf("\n%s\n", new_float_d(d, 6));
+	printf("\n%s\n", new_float_d(d, 6));
+	printf("\n%s\n", new_float_d(d, 6));
+	printf("\n%s\n", new_float_d(d, 6));
+
 	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("\n%s\n", new_float_d(d, 6));
