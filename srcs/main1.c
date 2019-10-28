@@ -10,30 +10,30 @@
 // /*                                                                            */
 // /* ************************************************************************** */
 
-// #include "header.h"
+#include "header.h"
 
-// static void test_func(int a, int b)
-// {
-// 	if (a == b)
-// 		printf("%d-------------------------------------------------%s\n", a, "OK");
-// 	else
-// 		printf("(sist)%d != %d-------------------------------------------------%s\n", a, b, "FAIL");
-// }
+static void test_func(int a, int b)
+{
+	if (a == b)
+		printf("%d-------------------------------------------------%s\n", a, "OK");
+	else
+		printf("(sist)%d != %d-------------------------------------------------%s\n", a, b, "FAIL");
+}
 
-// int		main()
-// {
-// 	int a01;
-// 	int a02;
-// 	int a03;
-// 	int a04;
-// 	int a05;
-// 	int a06;
-// 	int a07;
-// 	int a08;
-// 	int a09;
-// 	int a10;
-// 	int a11;
-// 	int a12;
+int		main()
+{
+	int a01;
+	int a02;
+	int a03;
+	int a04;
+	int a05;
+	int a06;
+	int a07;
+	int a08;
+	int a09;
+	int a10;
+	int a11;
+	int a12;
 // // 	int b;
 // // 	int *a;
 // // 	char *n;
@@ -336,16 +336,22 @@
 
 // 	// test_func(printf("|% .5d|\n", 2), ft_printf("|% .5d|\n", 2));
 
-// 	// test_func(printf("|%p%p%p%p%p%p%p%p%p%p%p%p|\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
-// 	// 	ft_printf("|%p%p%p%p%p%p%p%p%p%p%p%p|\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
+	// test_func(printf("|%p %p %p %p%p %p %p%5p%5p%5p%5p%5p|\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
+	// 	ft_printf("|%5p%5p%5p%5p%5p%5p%5p%5p%5p%5p%5p%5p|\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
 
 // 	// printf("|%.5s|\n", "aaa");
 
-// 	// test_func(printf("|%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p|\n", 
-// 	// 	&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
-// 	// 		ft_printf("|%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p|\n", 
-// 	// 			&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
-// //"%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10
+test_func(printf("|%-#10.7x|\n", 7), ft_printf("|%-#10.7x|\n", 7));
+
+test_func(printf("|%-#10.7X|\n", 6), ft_printf("|%-#10.7X|\n", 6));
+
+test_func(printf("|%-#10.7o|\n", 5), ft_printf("|%-#10.7o|\n", 5)); // tut
+
+	// test_func(printf("|%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p|\n", 
+	// 	&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
+	// 		ft_printf("|%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p%16p|\n", 
+	// 			&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
+// "%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10
 	
 // 	// test_func(printf("|%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p%-32p|\n", 
 // 	// 	&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12),
@@ -369,7 +375,26 @@
 
 // 	// test_func(printf("|% 03%|\n"), ft_printf("|% 03%|\n"));
 
-// 	test_func(printf("%"), ft_printf("%"));
+// test_func(printf("|% Z|\n", 42), ft_printf("|% Z|\n", 42));
+
+// test_func(printf("|%-#10.7x|\n", 7), ft_printf("|%-#10.7x|\n", 7));
+
+// test_func(printf("|%-#10.7X|\n", 6), ft_printf("|%-#10.7X|\n", 6));
+
+// test_func(printf("|%-#10.7o|\n", 5), ft_printf("|%-#10.7o|\n", 5)); // tut
+
+	
+
+// 100000000000
+// printf("|%0100000000000x|\n", 1);
+
+// test_func(printf("|%08.5x|\n", 34), ft_printf("|%08.5x|\n", 34));
+
+// test_func(printf("|%08.5x|\n", 0), ft_printf("|%08.5x|\n", 0));
+
+// test_func(printf("|%#-3x|\n", 0), ft_printf("|%#-3x|\n", 0));
+
+// test_func(printf("|%.x|\n", 0), ft_printf("|%.x|\n", 0));
 
 // 	//printf("%+u\n", (unsigned)4294967295);
 
@@ -378,7 +403,7 @@
 // 	// printf("|%+05d|\n", -7);
 // 	// ft_printf("|%+05d|\n", -7);
 // 	// ft_printf("%#08o", 42);
-// 	return (0);
-// }
+	return (0);
+}
 // // %#o 0 = 0
 // // %#x 0 = 0

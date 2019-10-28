@@ -50,8 +50,9 @@ static inline void	ft_null_f_p_s(t_param *f_p_s, size_t *i, int *j)
 
 void				ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s)
 {
-	size_t i;
-	int j;
+	size_t	i;
+	int		j;
+	int		k;
 
 	ft_null_f_p_s(f_p_s, &i, &j);
 	while (ft_is_flag(*(str + i)) && i < len)
@@ -70,7 +71,28 @@ void				ft_format_specification_description(const char *str, size_t len, va_list
 		++i;
 	}
 	// printf("FLAGs = |%s|\n", f_p_s->flags);
+	k = j;
 	j = i;
+	while (i < len)
+	{
+		if (*(str + i) == '+')
+		{
+			f_p_s->is_plus = 1;
+			*((*f_p_s).flags + k) = *(str + i);
+			*((*f_p_s).flags + k + 1) = '\0';
+			++k;
+		}
+			// (*(str + i) == ' ') ? (f_p_s->is_space = 1) : 0;
+			// (*(str + i) == '+') ? (f_p_s->is_plus = 1) : 0;
+			// (*(str + i) == '-') ? (f_p_s->is_minus = 1) : 0;
+			// (*(str + i) == '#') ? (f_p_s->is_hash = 1) : 0;
+			// (*(str + i) == '0') ? (f_p_s->is_zero = 1) : 0;
+			// *((*f_p_s).flags + k) = *(str + i);
+			// *((*f_p_s).flags + k + 1) = '\0';
+			// ++j;
+		// }
+		++i;
+	}
 	// i = 0;
 	// if (ft_strchr((*f_p_s).flags, '+'))
 	// 	while ((*f_p_s).flags[i] != '\0')
@@ -224,14 +246,10 @@ int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f
 	{
 		f_p_s->is_pres = 0;
 		f_p_s->precision = 0;
-		ptr = va_arg(elem, char *);
+		ptr = va_arg(elem, void *);
 		(!ptr) ? (ptr = "0x0") : (ptr = point_hex(&ptr));
 		f_p_s->len = ft_strlen(ptr);
 		ft_write_tail_str(f_p_s, ptr);
-		ptr = va_arg(elem, char *);
-		// r1 = point_hex(&ptr);
-		// res = ft_strlen(r1);
-		// write(1, r1, res);
 		return (f_p_s->result);
 	}
 	return (0);

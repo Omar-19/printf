@@ -14,26 +14,33 @@
 
 void	ft_result_len_int(t_param *f_p_s)
 {
+	int i;
+
+	i = 0;
 	(f_p_s->is_pres) ? (f_p_s->is_zero = 0) : 0;
 	f_p_s->result = f_p_s->len;
 	if (f_p_s->precision > f_p_s->result)
 		f_p_s->result = f_p_s->precision;
 	if (f_p_s->width > f_p_s->result)
 		f_p_s->result = f_p_s->width;
+	if ((f_p_s->result == f_p_s->precision) && f_p_s->is_plus)
+		i = 1;
 	((f_p_s->precision = f_p_s->precision - f_p_s->len + f_p_s->is_plus) > 0) ?
 		0 : (f_p_s->precision = 0);
 	((f_p_s->width = f_p_s->result - f_p_s->len - f_p_s->precision) > 0) ?
 		0 : (f_p_s->width = 0);
+	f_p_s->result += i;
 }
 
 void		ft_write_no_min_int(t_param *f_p_s, char *ptr, char *str[2])
 {
 	if (f_p_s->is_space && !f_p_s->is_plus)
 	{
+		//new
+		// f_p_s->result = 1;
 		write(1, " ", 1);
-		//(f_p_s->width == f_p_s->precision + f_p_s->len) ? (++f_p_s->result) : 0;
-		++f_p_s->result;
-		//--f_p_s->precision;
+		(f_p_s->width) ? 0 : (++f_p_s->result);
+		// printf("f_p_s->width = %d\n", f_p_s->width);
 		--f_p_s->width;
 	}
 	// (f_p_s->is_space && !f_p_s->is_plus) ? ((write(1, " ", 1)) &&
@@ -75,12 +82,18 @@ void		ft_write_tail_int(t_param *f_p_s, char *ptr)
 	// printf("f_p_s->precision = %d str[0] = |%s|\n", f_p_s->precision, str[0]);
 	//if (f_p_s->width)
 	//{
-	(f_p_s->is_zero) ? (str[1] = ft_strnew_char(f_p_s->width, '0')) :
+	// printf("\nf_p_s->is_space = %d\n", f_p_s->is_space);
+	(f_p_s->is_zero && !f_p_s->is_minus) ? (str[1] = ft_strnew_char(f_p_s->width, '0')) :
 		(str[1] = ft_strnew_char(f_p_s->width, ' '));
 	// printf("f_p_s->width = %d str[1] = |%s|\n", f_p_s->width, str[1])
 	//}
 	(f_p_s->is_minus) ? (ft_write_min_int(f_p_s, ptr, str)) :
 		(ft_write_no_min_int(f_p_s, ptr, str));
+	// printf("\nRES(%d) == %d\n", f_p_s->result, (f_p_s->len - 1 + f_p_s->width +
+	// 		f_p_s->precision + f_p_s->is_space));
+	// (f_p_s->is_plus &&
+	// 	(f_p_s->result == (f_p_s->len - 1 + f_p_s->width +
+	// 		f_p_s->precision + f_p_s->is_space))) ? (++f_p_s->result) : 0;
 }
 
 // void		ft_string_processing1(t_param *f_p_s, int *i, int flag, char *str)
@@ -181,7 +194,14 @@ char		*ft_itoa_d(long long int value_i,
 	int		i;
 
 	i = 0;
-	(u) ? (f_p_s->is_plus = 0) : 0;
+	// printf("\nU = %d|\n", u);
+	if (u)
+	{
+		f_p_s->is_plus = 0;
+		f_p_s->is_space = 0;
+	}
+	// (u) ? ((f_p_s->is_plus = 0) && f_p_s->is_space = 0) : 0;
+	// printf("\nf_p_s->is_space = %d\n", f_p_s->is_space);
 	itoa_flag_handling(value_i, value_u, f_p_s, &par);
 	par.val[1] = par.val[0];
 	while (par.val[1] /= 10)

@@ -37,17 +37,17 @@ char	hex_intc(char *s, int p)
 
 char	*point_hex(void *a)
 {
-	char	res[65];
+	char	res[17];
 	char	buf[5];
 	int		j;
 	int		i;
 
 	i = 63;
 	j = 2;
-	memset(res, '0', 64);
+	memset(res, '0', 17);
 	while (i >= 0)
 	{
-		buf[3 - (i % 4)] = ((*(__uint128_t *)a >> i) & 1) + '0';
+		buf[3 - (i % 4)] = ((*(long long *)a >> i) & 1) + '0';
 		buf[4] = '\0';
 		if (!(i % 4))
 			res[++j] = hex_intc(buf, 0);

@@ -30,6 +30,7 @@ int			print_elem(const char *format, va_list elem)
 	size_t		len;
 	int			res;
 	int			i;
+	int			j;
 
 	str = format;
 	res = 0;
@@ -38,6 +39,7 @@ int			print_elem(const char *format, va_list elem)
 	len = 0;
 	while(str[i])
 	{
+		j = 0;
 		if (str[i] == '%')
 		{
 			len = str + i - ptr;
@@ -54,10 +56,26 @@ int			print_elem(const char *format, va_list elem)
 			// else
 			// {
 			if (!str[i])
+			{
+				// res += len;
+				// ft_write_str(ptr, len);
+				// // --i;
+				// // break;
 				return res;
+			}
 			while(!(ft_is_conversion(str[i])))
-				if (!str[i++ + 1])
+			{
+				++j;
+				if (!str[++i])
+				{
+					res += j;
+					write(1, (str + i - 1), 1);
+					// ft_write_str(ptr, len);
+					//--i;
+					// break;
 					return res;
+				}
+			}
 			len = str + i - ptr + 1;
 			res += ft_param_processing(ptr, len, elem);
 			ptr = str + ++i;

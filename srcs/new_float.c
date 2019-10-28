@@ -183,12 +183,12 @@ char	*new_float_ld(t_double d, int prs)
 	return (get_float_all(mantis, p, prs, sign));
 }
 
-int main()
-{
-	t_double d;
-	d.numld = LDBL_MIN;
-	// new_float_d(d, 5);
-	// printf("%Lf\n", d.numld);
-	printf("%s\n", new_float_ld(d, 6));
-	// printf("%Lf\n", d.numld);
-}
+// int main()
+// {
+// 	t_double d;
+// 	d.numld = LDBL_MIN;
+// 	// new_float_d(d, 5);
+// 	// printf("%Lf\n", d.numld);
+// 	printf("%s\n", new_float_ld(d, 6));
+// 	// printf("%Lf\n", d.numld);
+// }
