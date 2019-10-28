@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/27 18:12:56 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/28 13:58:13 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,5 +189,9 @@ char			*float_dg(t_double d, int prs, int *sign);
 char			*res_last_g(char *dc, char *point, int prs, int sign);
 char			*res_last3_g(char *point, int prs, int sign);
 char			*res_last4_g(char *des, char *point, int sign);
+
+char	*drob1_new(char *s, size_t m1, int *max_d, int t);
+char	*get_point_part(char *m, int p, int t);
+char	*res_last_new(char *dec, char *point, int prs, int sign);
 
 #endif
