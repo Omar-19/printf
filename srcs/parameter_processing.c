@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/26 20:52:44 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/28 21:13:47 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,12 +275,12 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 	if (ft_strstr_num(str, "Lf\0", len))
 	{
 		d.numld = va_arg(elem, long double);
-		ptr = float_ld(d, (*form_place_spc).precision, &sign);
+		ptr = new_float_ld(d, (*form_place_spc).precision);
 	}
 	else if (ft_strstr_num(str, "f\0", len))
 	{
 		d.numd = va_arg(elem, double);
-		ptr = float_d(d, (*form_place_spc).precision, &sign);
+		ptr = new_float_d(d, (*form_place_spc).precision);
 	}
 	else if (ft_strstr_num(str, "Le\0", len))
 	{

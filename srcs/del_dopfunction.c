@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_dopfunction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:01:44 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/28 13:12:16 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/28 19:39:10 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,8 @@ char	*drob1(char *s, size_t m1, int max_d, int t)
 			tmp_n = m1 - 1;
 		}
 	}
+	// for (int k = tmp_n; k < m1; k++)
+	// 	printf("%llu\n", res[i]);
+	// return(strdup("0000"));
 	return (del(res, max_d, m1, t));
 }

@@ -6,7 +6,7 @@
 #    By: btheia <btheia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/28 18:36:22 by angavrel          #+#    #+#              #
-#    Updated: 2019/10/26 18:58:54 by btheia           ###   ########.fr        #
+#    Updated: 2019/10/28 20:56:22 by btheia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ main.c \
 parameter_processing.c \
 sum_funchelp.c \
 sum_function.c \
+new_float.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

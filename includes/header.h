@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/28 13:58:13 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/28 20:59:21 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,5 +193,16 @@ char			*res_last4_g(char *des, char *point, int sign);
 char	*drob1_new(char *s, size_t m1, int *max_d, int t);
 char	*get_point_part(char *m, int p, int t);
 char	*res_last_new(char *dec, char *point, int prs, int sign);
+
+char	*new_float_ld(t_double d, int prs);
+char	*new_float_d(t_double d, int prs);
+char	*get_float_all(char *m, int p, int prs, int sign);
+char	*res_last_new(char *dec, char *point, int prs, int sign);
+char	*get_dec_part(char *m, int p);
+char	*cr_dc_new(char *s, size_t m1, int max_deg, int i);
+char	*drob1_new(char *s, size_t m1, int *max_d, int t);
+char	*get_point_part(char *m, int p, int t);
+char	*get_point_part2(char *m, int t);
+void	get_mantis_d(t_double d, char *s, int type);
 
 #endif

@@ -381,9 +381,15 @@ int		main()
 
 // test_func(printf("|%-#10.7X|\n", 6), ft_printf("|%-#10.7X|\n", 6));
 
-test_func(printf("|%ll#o|\n", 9223372036854775807), ft_printf("|%ll#x|\n", 9223372036854775807)); // tut
-
-	
+// test_func(printf("|%ll#o|\n", 9223372036854775807), ft_printf("|%ll#x|\n", 9223372036854775807)); // tut
+	// printf("2 %f\n", 0.000039);
+	ft_printf("3 %f\n", 0.000039);
+	ft_printf("3 %f", 0.000039);
+	// ft_printf("%f\n", 0.000039);
+	// ft_printf("%f\n", 0.000039);
+	// ft_printf("%f\n", 0.000039);
+	// ft_printf("%f\n", 0.000039);
+	// ft_printf("%f\n", 0.000039);
 
 // 100000000000
 // printf("|%0100000000000x|\n", 1);

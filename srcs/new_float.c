@@ -21,7 +21,7 @@ void	get_mantis_d(t_double d, char *s, int type)
 	(n != NULL) ? *n = 0 : 0;
 }
 
-char	*get_point_part2(char *m, int p, int t)
+char	*get_point_part2(char *m, int t)
 {
 	int		max_deg;
 	int		n1;
@@ -42,7 +42,6 @@ char	*get_point_part(char *m, int p, int t)
 
 	max_deg[0] = -1 * p + strlen(m) - 1;
 	max_deg[1] = strlen(m);
-	// printf("tu %d\n", max_deg[0] - strlen(m) + 1);
 	n1 = (max_deg[0] - strlen(m) + 1) / 10 + 1;
 	(t < 17) ? t = 18 : t++;
 	m1 = (n1 * 3) / 19 + 1;
@@ -58,7 +57,6 @@ char	*drob1_new(char *s, size_t m1, int *max_d, int t)
 	int			tmp_n;
 
 	res_n = m1 - 1;
-	// printf("t %d\n", res_n);
 	tmp_n = m1 - 1;
 	i = -1;
 	init_massiv(res, tmp, m1);
@@ -73,9 +71,6 @@ char	*drob1_new(char *s, size_t m1, int *max_d, int t)
 			tmp_n = m1 - 1;
 		}
 	}
-	// for (int i = 0 ; i < m1; i++)
-	// 	printf("%llu\n", res[i]);
-	printf("%d\n", res_n);
 	return (del(res, max_d[0], m1, t));
 }
 
@@ -140,11 +135,12 @@ char	*get_float_all(char *m, int p, int prs, int sign)
 	{
 		dec = "0";
 		point = get_point_part(m, p, prs);
+		// printf("%s\n", point);
 	}
-	else if (p >= 0 && p < strlen(m) - 1)
+	else if (p >= 0 && (size_t)p < strlen(m) - 1)
 	{
 		dec = get_dec_part(m, p);
-		point = get_point_part2(m + p + 1, 0, prs);
+		point = get_point_part2(m + p + 1, prs);
 	}
 	else
 	{
@@ -185,10 +181,13 @@ char	*new_float_ld(t_double d, int prs)
 
 // int main()
 // {
-// 	t_double d;
-// 	d.numld = LDBL_MIN;
+// 	// t_double d;
+// 	// d.numld = 1313.3131;
 // 	// new_float_d(d, 5);
 // 	// printf("%Lf\n", d.numld);
-// 	printf("%s\n", new_float_ld(d, 6));
+// 	// printf("%s\n", new_float_ld(d, 6));
+// 	printf("%llo\n", UINT64_MAX);
+// 	long long a = UINT64_MAX;
+// 	printf("%s\n", octa_int(&a));
 // 	// printf("%Lf\n", d.numld);
 // }
