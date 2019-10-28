@@ -21,6 +21,27 @@ void	get_mantis_d(t_double d, char *s, int type)
 	(n != NULL) ? *n = 0 : 0;
 }
 
+void	get_mm(void *a, char *s)
+{
+	int		i;
+	int		j;
+	char 	*n;
+
+	n = NULL;
+	j = 51;
+	i = 1;
+	while (j >= 0)
+	{
+		s[i] = ((*(uint64_t*)(a) >> j) & 1) + '0';
+		(s[i] == '0' && !n) ? (n = &s[i]) : 0;
+		(s[i] == '1') ? (n = NULL) : 0;
+		++i;
+		--j;
+	}
+	s[i] = 0;
+	(n != NULL) ? *n = 0 : 0;
+}
+
 char	*get_point_part2(char *m, int t)
 {
 	int		max_deg;
@@ -131,11 +152,13 @@ char	*get_float_all(char *m, int p, int prs, int sign)
 	char *dec;
 	char *point;
 
+	// printf("mant %s p %d\n", m, p);
+	//
 	if (p < 0)
 	{
 		dec = "0";
 		point = get_point_part(m, p, prs);
-		// printf("%s\n", point);
+		// write(1, point, strlen(point));
 	}
 	else if (p >= 0 && (size_t)p < strlen(m) - 1)
 	{
@@ -161,9 +184,13 @@ char	*new_float_d(t_double d, int prs)
 	int		p;
 
 	mantis[0] = '1';
-	get_mantis_d(d, mantis, 1);
+	// get_mantis_d(d, mantis, 1);
+	get_mm(&d.numd, mantis);
 	sign = (*(__uint128_t *)(&d.numld) >> 63 & 1);
 	p = RETD(d.numd);
+	printf("ma %s\n p %d", mantis, p);
+
+
 	return (get_float_all(mantis, p, prs, sign));
 }
 

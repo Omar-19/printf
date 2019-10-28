@@ -213,7 +213,7 @@ int					read_variable_int1(const char *str, size_t len, va_list elem, t_param *f
 	else if (ft_strstr_num(str, "llX\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'X', 1);
 	else if (ft_strstr_num(str, "x\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
+		ptr = hex_oct_main(elem, form_place_spc, 'x', 0);
 	else if (ft_strstr_num(str, "X\0", len))
 		ptr = hex_oct_main(elem, form_place_spc, 'X', 0);
 	else if (ft_strstr_num(str, "llo\0", len))
@@ -280,7 +280,9 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 	else if (ft_strstr_num(str, "f\0", len))
 	{
 		d.numd = va_arg(elem, double);
+		// printf("ddd %f\n",d.numd );
 		ptr = new_float_d(d, (*form_place_spc).precision);
+		// printf("F = %s\n", ptr);
 	}
 	else if (ft_strstr_num(str, "Le\0", len))
 	{
@@ -295,6 +297,7 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 	else
 		return (0);
 	(*form_place_spc).len = ft_strlen(ptr);
+	// printf("F = %s\n", ptr);
 	ft_result_len(form_place_spc, 0);
 	ft_flag_correction_1(&form_place_spc);
 	ft_write_tail(form_place_spc, *ptr, ptr);

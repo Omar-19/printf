@@ -380,17 +380,41 @@ int		main()
 // test_func(printf("|%-#10.7x|\n", 7), ft_printf("|%-#10.7x|\n", 7));
 
 // test_func(printf("|%-#10.7X|\n", 6), ft_printf("|%-#10.7X|\n", 6));
-
-// test_func(printf("|%ll#o|\n", 9223372036854775807), ft_printf("|%ll#x|\n", 9223372036854775807)); // tut
+// ft_printf("%x\n", -42);
+// test_func(printf("|%x|\n", -42), ft_printf("|%x|\n", -42)); // tut
+// ft_printf("%x\n", -42);
 	// printf("2 %f\n", 0.000039);
-	ft_printf("3 %f\n", 0.000039);
-	ft_printf("3 %f", 0.000039);
+	// ft_printf("3 %f\n", 0.000039);
 	// ft_printf("%f\n", 0.000039);
 	// ft_printf("%f\n", 0.000039);
 	// ft_printf("%f\n", 0.000039);
 	// ft_printf("%f\n", 0.000039);
 	// ft_printf("%f\n", 0.000039);
-
+	// printf("%.0f", 7.4);
+	// 101000111001001111101110010111101110110111001100001
+	// 101000111001001111101110010111101110110111001100001
+	t_double d;
+	d.numd = 0.000039;
+	// for (int i = 51; i >= 0 ; i--)
+	// 	printf("%d", (*(__uint128_t*)&d.numd >> i & (__uint128_t)1));
+	// // printf("\n");
+	printf("\n%s\n", new_float_d(d, 6));
+	// printf("\n%s\n", new_float_d(d, 6));
+	// printf("\n%s\n", new_float_d(d, 6));
+	// printf("\n%s\n", new_float_d(d, 6));
+	// printf("\n%s\n", new_float_d(d, 6));
+	// printf("\n%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
+	// printf("%s\n", new_float_d(d, 6));
 // 100000000000
 // printf("|%0100000000000x|\n", 1);
 
