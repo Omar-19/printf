@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:07:16 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/27 17:13:39 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/28 14:45:50 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*del1_one(uint64_t *tmp, int deg, int ndb, int t)
 
 	init_help_del1(a, &o, deg);
 	i = search_non(tmp, ndb - 1) - 1;
+	printf("%d\n", i);
 	umn1(tmp, -1, &i, ndb);
 	while (++i < ndb)
 	{

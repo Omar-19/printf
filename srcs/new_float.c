@@ -42,7 +42,8 @@ char	*get_point_part(char *m, int p, int t)
 
 	max_deg[0] = -1 * p + strlen(m) - 1;
 	max_deg[1] = strlen(m);
-	n1 = p / 10 + 1;
+	// printf("tu %d\n", max_deg[0] - strlen(m) + 1);
+	n1 = (max_deg[0] - strlen(m) + 1) / 10 + 1;
 	(t < 17) ? t = 18 : t++;
 	m1 = (n1 * 3) / 19 + 1;
 	return (drob1_new(m, m1 + 1, max_deg, t));
@@ -57,6 +58,7 @@ char	*drob1_new(char *s, size_t m1, int *max_d, int t)
 	int			tmp_n;
 
 	res_n = m1 - 1;
+	// printf("t %d\n", res_n);
 	tmp_n = m1 - 1;
 	i = -1;
 	init_massiv(res, tmp, m1);
@@ -71,6 +73,9 @@ char	*drob1_new(char *s, size_t m1, int *max_d, int t)
 			tmp_n = m1 - 1;
 		}
 	}
+	// for (int i = 0 ; i < m1; i++)
+	// 	printf("%llu\n", res[i]);
+	printf("%d\n", res_n);
 	return (del(res, max_d[0], m1, t));
 }
 
@@ -181,9 +186,9 @@ char	*new_float_ld(t_double d, int prs)
 int main()
 {
 	t_double d;
-	d.numld = LDBL_MAX;
+	d.numld = LDBL_MIN;
 	// new_float_d(d, 5);
 	// printf("%Lf\n", d.numld);
 	printf("%s\n", new_float_ld(d, 6));
-	printf("%Lf\n", d.numld);
+	// printf("%Lf\n", d.numld);
 }
