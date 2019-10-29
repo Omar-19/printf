@@ -396,17 +396,15 @@ int		main()
 	//		0100011100100111110111001011110111011011100110000100
 	//		0100011100100111110111001011110111011011100110000100
 	t_double d;
-	d.numd = 0.000039;
-	printf("%f\n", d.numd);
-	for (int i = 51; i >= 0 ; i--)
-		printf("%d", ((*(__uint128_t*)(&d.numd) >> i) & (__uint128_t)1));
-	printf("\n");
-	printf("\n%s\n", new_float_d(d, 6));
-	printf("\n%s\n", new_float_d(d, 6));
-	printf("\n%s\n", new_float_d(d, 6));
-	printf("\n%s\n", new_float_d(d, 6));
-	printf("\n%s\n", new_float_d(d, 6));
-	printf("\n%s\n", new_float_d(d, 6));
+	d.numd = 0.00000000000039;
+	int prs = 21;
+	printf("%.*lf\n", prs, d.numd);
+	printf("%s\n", new_float_d(d, prs));
+	printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
 
 	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("\n%s\n", new_float_d(d, 6));

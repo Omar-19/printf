@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_dopfunction2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:08:03 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/20 16:12:55 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/29 15:51:05 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,14 @@ char	*del(uint64_t *tmp, int deg, int ndb, int t)
 
 int		search_non(uint64_t *tmp, int ndb)
 {
-	while (ndb >= 0)
+	int i;
+
+	i = 0;
+	while (i <= ndb)
 	{
-		if (tmp[ndb])
-			return (ndb);
-		ndb--;
+		if (tmp[i])
+			return (i);
+		++i;
 	}
 	return (0);
 }
