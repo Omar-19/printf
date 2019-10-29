@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_dopfunction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:01:44 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/28 19:39:10 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/29 22:54:58 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ int		check_c(char *s)
 	return (0);
 }
 
-void	okrug1(char **d, int t)
+int	okrug1(char **d, int t)
 {
 	char	*point;
 	char	*s;
 	int		i;
+	int 	ch;
 
+	ch = 0;
 	s = *d;
 	point = strchr(s, '.');
 	i = point - s + t + 1;
@@ -59,11 +61,13 @@ void	okrug1(char **d, int t)
 		{
 			*(s - 1) = '1';
 			*d = s - 1;
+			ch = 1;
 		}
 	}
 	memset(point + t + 1, '\0', strlen(point));
 	if (t == 0)
 		memset(point, '\0', strlen(point));
+	return (ch);
 }
 
 char	*drob(char *s, int t)
@@ -104,8 +108,5 @@ char	*drob1(char *s, size_t m1, int max_d, int t)
 			tmp_n = m1 - 1;
 		}
 	}
-	// for (int k = tmp_n; k < m1; k++)
-	// 	printf("%llu\n", res[i]);
-	// return(strdup("0000"));
 	return (del(res, max_d, m1, t));
 }

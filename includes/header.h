@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/28 20:59:21 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/29 22:55:51 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ char			*float_d(t_double d, int prs, int *sign);
 char			*float_ld(t_double d, int prs, int *sign);
 void			init_massiv(uint64_t *res, uint64_t *tmp, size_t m1);
 void			umn1(uint64_t *tmp, int deg, int *min, int ndb);
-void			okrug1(char **d, int t);
+int				okrug1(char **d, int t);
 void			init_help_del1(__uint128_t *a, int *o, int deg);
 int				search_non(uint64_t *tmp, int ndb);
 void			ret_byties_float(t_double d, int *a, int type, char *l);

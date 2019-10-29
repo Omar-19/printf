@@ -18,7 +18,7 @@ void	get_mantis_d(t_double d, char *s, int type)
 		--j;
 	}
 	s[i] = 0;
-	// (n != NULL) ? *n = 0 : 0;
+	(n != NULL) ? *n = 0 : 0;
 }
 
 void	get_mm(void *a, char *s)
@@ -39,7 +39,7 @@ void	get_mm(void *a, char *s)
 		--j;
 	}
 	s[i] = 0;
-	// (n != NULL) ? *n = 0 : 0;
+	(n != NULL) ? *n = 0 : 0;
 }
 
 char	*get_point_part2(char *m, int t)
@@ -54,16 +54,16 @@ char	*get_point_part2(char *m, int t)
 	m1 = (n1 * 3) / 19 + 1;
 	return (drob1(m, m1 + 1, max_deg, t));
 }
-
+//11011011100011001110110001100000101000110110100100101
 char	*get_point_part(char *m, int p, int t)
 {
 	int		max_deg[2];
 	int		n1;
 	size_t	m1;
 
-	max_deg[0] = -1 * p + strlen(m) - 1;
-	max_deg[1] = strlen(m);
-	n1 = (max_deg[0] - strlen(m) + 1) / 10 + 1;
+	max_deg[0] = (-1 * p) + strlen(m) - 1;
+	max_deg[1] = max_deg[0] - (-1) * p;
+	n1 = (max_deg[0] - (-1) * p) / 10 + 1;
 	(t < 17) ? t = 18 : t++;
 	m1 = (n1 * 3) / 19 + 1;
 	return (drob1_new(m, m1 + 1, max_deg, t));
@@ -85,13 +85,16 @@ char	*drob1_new(char *s, size_t m1, int *max_d, int t)
 	{
 		if (s[i] == '1')
 		{
-			umn(tmp, max_d[1] - i - 1, &tmp_n, m1 - 1);
+			umn(tmp, max_d[1] - i, &tmp_n, m1 - 1);
 			res_n = sum_m(res, tmp, min_i(&res_n, &tmp_n), m1 - 1);
 			toone(tmp, m1);
 			tmp[m1 - 1] = 1;
 			tmp_n = m1 - 1;
 		}
 	}
+	// for (int i = 0; i < m1;i++)
+	// 	printf("%llu\n", res[i]);
+	// printf("%d\n", max_d[0]);
 	return (del(res, max_d[0], m1, t));
 }
 
@@ -134,17 +137,23 @@ char	*get_dec_part(char *m, int p)
 
 char	*res_last_new(char *dec, char *point, int prs, int sign)
 {
-	char *rs;
+	char rs[ft_strlen(dec) + (size_t)3 + ft_strlen(point) + 1];
 	char *jk;
+	int ck;
 
-	rs = ft_strnew(strlen(dec) + 3 + strlen(point));
+	memset(rs, 0, ft_strlen(dec) + (size_t)3 + ft_strlen(point));
 	jk = rs + 2;
 	strcat(rs + 2, dec);
 	strcat(rs + 2, ".");
 	strcat(rs + 2, point);
-	okrug1(&jk, prs);
+	ck = okrug1(&jk, prs);
 	(sign == 1) ? set_min(&jk, '-') : 0;
-	return (jk);
+	if (ck && sign)
+	{
+		printf("dd");
+		return (strdup(rs));
+	}
+	return (strdup(jk));
 }
 
 char	*get_float_all(char *m, int p, int prs, int sign)
@@ -154,7 +163,7 @@ char	*get_float_all(char *m, int p, int prs, int sign)
 
 	if (p < 0)
 	{
-		dec = "0";
+		dec = strdup("0");
 		point = get_point_part(m, p, prs);
 	}
 	else if (p >= 0 && (size_t)p < strlen(m) - 1)

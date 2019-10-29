@@ -396,21 +396,24 @@ int		main()
 	//		0100011100100111110111001011110111011011100110000100
 	//		0100011100100111110111001011110111011011100110000100
 	t_double d;
-	d.numd = 0.00000000000039;
-	int prs = 21;
+	d.numd = (double)-0.00039;
+	int prs = 50;
+	int sign;
+	//
+	// close(1);
 	printf("%.*lf\n", prs, d.numd);
 	printf("%s\n", new_float_d(d, prs));
 	printf("%s\n", new_float_d(d, prs));
-	// printf("%s\n", new_float_d(d, prs));
-	// printf("%s\n", new_float_d(d, prs));
-	// printf("%s\n", new_float_d(d, prs));
-	// printf("%s\n", new_float_d(d, prs));
-
+	printf("%s\n", new_float_d(d, prs));
+	printf("%s\n", new_float_d(d, prs));
+	printf("%s\n", new_float_d(d, prs));
+	printf("%s\n", new_float_d(d, prs));
+	printf("%s\n", new_float_d(d, prs));
+	printf("%s\n", new_float_d(d, prs));
 	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("\n%s\n", new_float_d(d, 6));
-	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("%s\n", new_float_d(d, 6));
 	// printf("%s\n", new_float_d(d, 6));
 	// printf("%s\n", new_float_d(d, 6));
@@ -422,27 +425,27 @@ int		main()
 	// printf("%s\n", new_float_d(d, 6));
 	// printf("%s\n", new_float_d(d, 6));
 	// printf("%s\n", new_float_d(d, 6));
-// 100000000000
-// printf("|%0100000000000x|\n", 1);
+	// 100000000000
+	// printf("|%0100000000000x|\n", 1);
 
-// test_func(printf("|%08.5x|\n", 34), ft_printf("|%08.5x|\n", 34));
+	// test_func(printf("|%08.5x|\n", 34), ft_printf("|%08.5x|\n", 34));
 
-// test_func(printf("|%#08.5x|\n", 7), ft_printf("|%#08.5x|\n", 7));
+	// test_func(printf("|%#08.5x|\n", 7), ft_printf("|%#08.5x|\n", 7));
 
-// test_func(printf("|%#-3x|\n", 0), ft_printf("|%#-3x|\n", 0));
+	// test_func(printf("|%#-3x|\n", 0), ft_printf("|%#-3x|\n", 0));
 
-// test_func(printf("|%#010.x|\n", 0), ft_printf("|%#010.x|\n", 0));
+	// test_func(printf("|%#010.x|\n", 0), ft_printf("|%#010.x|\n", 0));
 
-// test_func(printf("abc%M"), ft_printf("abc%M"));
-// printf("abc%M");
+	// test_func(printf("abc%M"), ft_printf("abc%M"));
+	// printf("abc%M");
 
-// 	//printf("%+u\n", (unsigned)4294967295);
+	// 	//printf("%+u\n", (unsigned)4294967295);
 
-// 	// printf("%.0g\n", 16.01234567890);
+	// 	// printf("%.0g\n", 16.01234567890);
 
-// 	// printf("|%+05d|\n", -7);
-// 	// ft_printf("|%+05d|\n", -7);
-// 	// ft_printf("%#08o", 42);
+	// 	// printf("|%+05d|\n", -7);
+	// 	// ft_printf("|%+05d|\n", -7);
+	// 	// ft_printf("%#08o", 42);
 	return (0);
 }
 // // %#o 0 = 0
