@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:01:44 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/31 18:31:08 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/31 19:13:42 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,13 @@ char	*drob1(char *s, size_t m1, int max_d, int t)
 	tmp_n = m1 - 1;
 	i = -1;
 	init_massiv(res, tmp, m1);
+	printf("%s\n", s);
 	while (s[++i])
 	{
 		if (s[i] == '1')
 		{
-			umn(tmp, max_d - (i + 1), &tmp_n, m1 - 1);
+			umn1(res, -1, &res_n, m1);
+			umn5(tmp, i + 1, &tmp_n, m1 - 1);
 			res_n = sum_m(res, tmp, min_i(&res_n, &tmp_n), m1 - 1);
 			toone(tmp, m1);
 			tmp[m1 - 1] = 1;
@@ -110,6 +112,5 @@ char	*drob1(char *s, size_t m1, int max_d, int t)
 	}
 	// for (int k = 0; k < m1; k++)
 	// 	printf("%llu\n", res[k]);
-	// printf("%d\n", max_d);
 	return (strdup("1"));
 }

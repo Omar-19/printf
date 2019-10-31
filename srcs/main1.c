@@ -20,20 +20,23 @@ static void test_func(int a, int b)
 		printf("(sist)%d != %d-------------------------------------------------%s\n", a, b, "FAIL");
 }
 
+
 int		main()
 {
-	int a01;
-	int a02;
-	int a03;
-	int a04;
-	int a05;
-	int a06;
-	int a07;
-	int a08;
-	int a09;
-	int a10;
-	int a11;
-	int a12;
+	ft_printf("%lf\n", 0.05);
+	// printf("%d\n", binpow(5,1));
+// 	int a01;
+// 	int a02;
+// 	int a03;
+// 	int a04;
+// 	int a05;
+// 	int a06;
+// 	int a07;
+// 	int a08;
+// 	int a09;
+// 	int a10;
+// 	int a11;
+// 	int a12;
 // // 	int b;
 // // 	int *a;
 // // 	char *n;
@@ -447,6 +450,7 @@ int		main()
 
 	// ft_printf("|%f|\n", -8000.0);
 
+	// printf("%d\n", 5 << 3);
 	//"%ju", 4999999999
 
 	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
