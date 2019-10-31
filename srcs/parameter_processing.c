@@ -297,9 +297,18 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 	else
 		return (0);
 	(*form_place_spc).len = ft_strlen(ptr);
-	// printf("F = %s\n", ptr);
-	ft_result_len(form_place_spc, 0);
-	ft_flag_correction_1(&form_place_spc);
+	if (form_place_spc->is_hash && form_place_spc->is_pres &&
+		!form_place_spc->precision)
+	{
+		//printf("if %d && %d && !%d\n", form_place_spc->is_hash, form_place_spc->is_pres,
+	//form_place_spc->precision);
+		// printf("\n len = %d\n", form_place_spc->len);
+		*(ptr + form_place_spc->len) = '.';
+		// *(ptr + form_place_spc->len + 1) = '\0';
+		++(form_place_spc->len);
+	}
+	ft_result_len_float(form_place_spc, *ptr);
+	ft_flag_correction_1(form_place_spc);
 	ft_write_tail(form_place_spc, *ptr, ptr);
 	if (!ptr)
 		free(ptr);

@@ -44,7 +44,7 @@ void		ft_write1(t_param *f_p_s, char c, char *ptr)
 		++f_p_s->result;
 		write(1, "+", 1);
 	}
-	else if (ft_strchr((*f_p_s).flags, ' '))
+	else if (f_p_s->is_space)
 	{
 		++f_p_s->result;
 		write(1, " ", 1);
@@ -63,14 +63,14 @@ void		ft_write2(t_param *f_p_s, char c, char *ptr, int i)
 		++ptr;
 	}
 	str = ft_strnew_char(i, '0');
-	if (ft_strchr((*f_p_s).flags, '+'))
+	if (f_p_s->is_plus)
 	{
 		if (c == '-')
 			str[0] = '-';
 		else
 			str[0] = '+';
 	}
-	else if (ft_strchr((*f_p_s).flags, ' '))
+	else if (f_p_s->is_space)
 		str[0] = ' ';
 	write(1, str, i);
 	write(1, ptr, (*f_p_s).len);
@@ -82,14 +82,14 @@ void		ft_write3(t_param *f_p_s, char c, char *ptr, int i)
 	char *str;
 
 	str = ft_strnew_char(i, ' ');
-	if (ft_strchr((*f_p_s).flags, '+'))
+	if (f_p_s->is_plus)
 	{
 		if (c == '-')
 			str[i - 1] = ' ';
 		else
 			str[i - 1] = '+';
 	}
-	if (ft_strchr((*f_p_s).flags, '-'))
+	if (f_p_s->is_minus)
 		ft_write_min(str, i, ptr, f_p_s);
 	else
 	{
@@ -110,8 +110,8 @@ void		ft_write_tail(t_param *f_p_s, char c, char *ptr)
 	}
 	i = f_p_s->result - f_p_s->len;
 	if (c == '-')
-		ft_flag_correction(&f_p_s);
-	if (ft_strchr((*f_p_s).flags, '0'))
+		ft_flag_correction(f_p_s);
+	if (f_p_s->is_zero)
 		ft_write2(f_p_s, c, ptr, i);
 	else
 		ft_write3(f_p_s, c, ptr, i);

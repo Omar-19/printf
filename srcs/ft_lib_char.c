@@ -36,7 +36,10 @@ void		ft_write_tail_str(t_param *f_p_s, char *ptr)
 	char *str;
 
 	ft_result_len_str(f_p_s);
-	str = ft_strnew_char(f_p_s->width, ' ');
+	if (!f_p_s->is_minus && f_p_s->is_zero)
+		str = ft_strnew_char(f_p_s->width, '0');
+	else
+		str = ft_strnew_char(f_p_s->width, ' ');
 	if (f_p_s->is_minus)
 	{
 		write(1, ptr, f_p_s->len);
@@ -55,7 +58,10 @@ void		ft_write_tail_char(t_param *f_p_s, char c)
 	char *str;
 
 	ft_result_len_char(f_p_s);
-	str = ft_strnew_char((f_p_s->result - f_p_s->len), ' ');
+	if (!f_p_s->is_minus && f_p_s->is_zero)
+		str = ft_strnew_char((f_p_s->result - f_p_s->len), '0');
+	else
+		str = ft_strnew_char((f_p_s->result - f_p_s->len), ' ');
 	if (f_p_s->is_minus)
 	{
 		write(1, &c, 1);

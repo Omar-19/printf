@@ -395,21 +395,21 @@ int		main()
 	//		10100011100100111110111001011110111011011100110000100
 	//		0100011100100111110111001011110111011011100110000100
 	//		0100011100100111110111001011110111011011100110000100
-	t_double d;
-	d.numd = (double)-0.00039;
-	int prs = 50;
-	int sign;
-	//
-	// close(1);
-	printf("%.*lf\n", prs, d.numd);
-	printf("%s\n", new_float_d(d, prs));
-	printf("%s\n", new_float_d(d, prs));
-	printf("%s\n", new_float_d(d, prs));
-	printf("%s\n", new_float_d(d, prs));
-	printf("%s\n", new_float_d(d, prs));
-	printf("%s\n", new_float_d(d, prs));
-	printf("%s\n", new_float_d(d, prs));
-	printf("%s\n", new_float_d(d, prs));
+	// t_double d;
+	// d.numd = (double)-0.00039;
+	// int prs = 50;
+	// int sign;
+	// //
+	// // close(1);
+	// printf("%.*lf\n", prs, d.numd);
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
+	// printf("%s\n", new_float_d(d, prs));
 	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("\n%s\n", new_float_d(d, 6));
 	// printf("\n%s\n", new_float_d(d, 6));
@@ -443,7 +443,8 @@ int		main()
 
 	// 	// printf("%.0g\n", 16.01234567890);
 
-	// 	// printf("|%+05d|\n", -7);
+	test_func(printf("|% 010s is a string|\n", "this"), ft_printf("|% 010s is a string|\n", "this"));
+	// printf("|%#.0f|\n", -7.0);
 	// 	// ft_printf("|%+05d|\n", -7);
 	// 	// ft_printf("%#08o", 42);
 	return (0);

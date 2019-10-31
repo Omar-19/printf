@@ -12,38 +12,42 @@
 
 #include "header.h"
 
-int		ft_result_len(t_param *f_p_s, int flag)
+int		ft_result_len_float(t_param *f_p_s, char c)
 {
-	int f;
-
-	f = 0;
-	if (flag)
-		f = 1;
+	// printf("\nIS_SPACE = %d\n", f_p_s->is_space);
+	if (c == '-' || f_p_s->is_plus)
+		f_p_s->is_space = 0;
+	// printf("\nIS_SPACE = %d\n", f_p_s->is_space);
 	if ((*f_p_s).precision > (*f_p_s).len)
-		(*f_p_s).len = (*f_p_s).precision + f;
+		(*f_p_s).len = (*f_p_s).precision;
 	(*f_p_s).result = (*f_p_s).len;
 	if ((*f_p_s).result < (*f_p_s).width)
 		(*f_p_s).result = (*f_p_s).width;
-	if (ft_only_space((*f_p_s).flags) && (*f_p_s).width == 0
+	// if (ft_only_space((*f_p_s).flags) && (*f_p_s).width == 0
+	// 	&& (*f_p_s).precision == 0)
+	if (f_p_s->is_space && (*f_p_s).width == 0
 		&& (*f_p_s).precision == 0)
 		++(*f_p_s).result;
 	return ((*f_p_s).result);
 }
 
-void	ft_flag_correction_1(t_param **f_p_s)
+void	ft_flag_correction_1(t_param *f_p_s)
 {
-	int i;
+	// int i;
 
-	if (ft_strchr((**f_p_s).flags, '-'))
-	{
-		i = 0;
-		while ((**f_p_s).flags[i] != '\0')
-		{
-			if ((**f_p_s).flags[i] == '0')
-				(**f_p_s).flags[i] = '-';
-			++i;
-		}
-	}
+	if (f_p_s->is_minus)
+		f_p_s->is_zero = 0;
+
+	// if (ft_strchr((**f_p_s).flags, '-'))
+	// {
+	// 	i = 0;
+	// 	while ((**f_p_s).flags[i] != '\0')
+	// 	{
+	// 		if ((**f_p_s).flags[i] == '0')
+	// 			(**f_p_s).flags[i] = '-';
+	// 		++i;
+	// 	}
+	// }
 }
 
 char	*ft_strnew_char(int size, char c)
