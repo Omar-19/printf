@@ -146,6 +146,8 @@ char	*res_last_new(char *dec, char *point, int prs, int sign)
 	strcat(rs + 2, dec);
 	strcat(rs + 2, ".");
 	strcat(rs + 2, point);
+	free(dec);
+	free(point);
 	ck = okrug1(&jk, prs);
 	(sign == 1) ? set_min(&jk, '-') : 0;
 	if (ck && sign)

@@ -94,6 +94,8 @@ void		ft_write_tail_int(t_param *f_p_s, char *ptr)
 	// (f_p_s->is_plus &&
 	// 	(f_p_s->result == (f_p_s->len - 1 + f_p_s->width +
 	// 		f_p_s->precision + f_p_s->is_space))) ? (++f_p_s->result) : 0;
+	free (str[0]);
+	free (str[1]);
 }
 
 // void		ft_string_processing1(t_param *f_p_s, int *i, int flag, char *str)

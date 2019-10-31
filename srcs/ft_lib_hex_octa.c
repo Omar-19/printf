@@ -117,4 +117,6 @@ void	ft_write_tail_xo(t_param *f_p_s, char *ptr, char ho)
 		ft_xo_write_min(f_p_s, ptr, ho, str);
 	else
 		ft_xo_write(f_p_s, ptr, ho, str);
+	free(str[0]);
+	free(str[1]);
 }

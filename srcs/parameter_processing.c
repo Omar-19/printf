@@ -162,43 +162,67 @@ int					read_variable_int(const char *str, size_t len, va_list elem, t_param *fo
 
 	// printf("FLAGs = |%s|\n", form_place_spc->flags);
 	ptr = NULL;
-	if (ft_strstr_num(str, "j\0", len) || ft_strstr_num(str, "z\0", len) ||
-		ft_strstr_num(str, "lld\0", len) || ft_strstr_num(str, "lli\0", len))
-		ptr = ft_itoa_d(va_arg(elem, long long int), 0, form_place_spc, 0);
-	else if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
-		ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc, 0);
-	else if (ft_strstr_num(str, "hd\0", len) || ft_strstr_num(str, "hi\0", len))
-		ptr = ft_itoa_d((short int)va_arg(elem, int), 0, form_place_spc, 0);
-	else if (ft_strstr_num(str, "ld\0", len) || ft_strstr_num(str, "li\0", len))
-		ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc, 0);
-	else if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "i\0", len))
-		ptr = ft_itoa_d(va_arg(elem, int), 0, form_place_spc, 0);
-	else if (ft_strstr_num(str, "llu\0", len) || ft_strstr_num(str, "U\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), form_place_spc, 1);
-	else if (ft_strstr_num(str, "lu\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), form_place_spc, 1);
-	else if (ft_strstr_num(str, "hhu\0", len))
-		ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), form_place_spc, 1);
-	else if (ft_strstr_num(str, "hu\0", len))
-		ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc, 1);
-	else if (ft_strstr_num(str, "u\0", len))
-		ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc, 1);
-	// else if (ft_strstr_num(str, "llx\0", len))
-	// 	ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
-	// else if (ft_strstr_num(str, "llX\0", len))
-	// 	ptr = hex_oct_main(elem, form_place_spc, 'X', 1);
-	// else if (ft_strstr_num(str, "x\0", len))
-	// 	ptr = hex_oct_main(elem, form_place_spc, 'x', 0);
-	// else if (ft_strstr_num(str, "X\0", len))
-	// 	ptr = hex_oct_main(elem, form_place_spc, 'X', 0);
-	// else if (ft_strstr_num(str, "llo\0", len))
-	// 	ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
-	// else if (ft_strstr_num(str, "o\0", len))
-	// 	ptr = hex_oct_main(elem, form_place_spc, 'o', 0);
+	if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "i\0", len))
+	{
+		if (ft_strstr_num(str, "j\0", len) || ft_strstr_num(str, "z\0", len) ||
+			ft_strstr_num(str, "ll\0", len))
+			ptr = ft_itoa_d(va_arg(elem, long long int), 0, form_place_spc, 0);
+		else if (ft_strstr_num(str, "hh\0", len))
+			ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc, 0);
+		else if (ft_strstr_num(str, "h\0", len))
+			ptr = ft_itoa_d((short int)va_arg(elem, int), 0, form_place_spc, 0);
+		else if (ft_strstr_num(str, "l\0", len))
+			ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc, 0);
+		else
+			ptr = ft_itoa_d(va_arg(elem, int), 0, form_place_spc, 0);
+	}
+	else if (ft_strstr_num(str, "u\0", len) || ft_strstr_num(str, "U\0", len))
+	{
+		if (ft_strstr_num(str, "ll\0", len) || ft_strstr_num(str, "U\0", len))
+			ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), form_place_spc, 1);
+		else if (ft_strstr_num(str, "l\0", len))
+			ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), form_place_spc, 1);
+		else if (ft_strstr_num(str, "hh\0", len))
+			ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), form_place_spc, 1);
+		else if (ft_strstr_num(str, "h\0", len))
+			ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc, 1);
+		else
+			ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc, 1);
+	}
+	// if (ft_strstr_num(str, "j\0", len) || ft_strstr_num(str, "z\0", len) ||
+	// 	ft_strstr_num(str, "lld\0", len) || ft_strstr_num(str, "lli\0", len))
+	// 	ptr = ft_itoa_d(va_arg(elem, long long int), 0, form_place_spc, 0);
+	
+	// else if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
+	// 	ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc, 0);
+	
+	// else if (ft_strstr_num(str, "hd\0", len) || ft_strstr_num(str, "hi\0", len))
+	// 	ptr = ft_itoa_d((short int)va_arg(elem, int), 0, form_place_spc, 0);
+	
+	// else if (ft_strstr_num(str, "ld\0", len) || ft_strstr_num(str, "li\0", len))
+	// 	ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc, 0);
+	
+	// else if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "i\0", len))
+	// 	ptr = ft_itoa_d(va_arg(elem, int), 0, form_place_spc, 0);
+	
+	// else if (ft_strstr_num(str, "llu\0", len) || ft_strstr_num(str, "U\0", len))
+	// 	ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), form_place_spc, 1);
+	
+	// else if (ft_strstr_num(str, "lu\0", len))
+	// 	ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), form_place_spc, 1);
+	
+	// else if (ft_strstr_num(str, "hhu\0", len))
+	// 	ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), form_place_spc, 1);
+	
+	// else if (ft_strstr_num(str, "hu\0", len))
+	// 	ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc, 1);
+	
+	// else if (ft_strstr_num(str, "u\0", len))
+	// 	ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc, 1);
 	else
 		return (0);
 	//write(1, ptr, form_place_spc->result);
-	if (!ptr)
+	if (ptr)
 		free(ptr);
 	return ((*form_place_spc).result);
 }
@@ -209,24 +233,41 @@ int					read_variable_int1(const char *str, size_t len, va_list elem, t_param *f
 
 	ptr = NULL;
 	//printf("\nFLAGS = |%s|\n", form_place_spc->flags);
-	if (ft_strstr_num(str, "llx\0", len) || ft_strstr_num(str, "lx\0", len) ||
-		ft_strstr_num(str, "jx\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
-	else if (ft_strstr_num(str, "llX\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'X', 1);
-	else if (ft_strstr_num(str, "x\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'x', 0);
+	if (ft_strstr_num(str, "x\0", len))
+	{
+		if (ft_strstr_num(str, "ll\0", len) || ft_strstr_num(str, "l\0", len) ||
+			ft_strstr_num(str, "j\0", len))
+			ptr = hex_oct_main(elem, form_place_spc, 'x', 1);
+		else
+			ptr = hex_oct_main(elem, form_place_spc, 'x', 0);
+	}
 	else if (ft_strstr_num(str, "X\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'X', 0);
-	else if (ft_strstr_num(str, "llo\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
+	{
+		if (ft_strstr_num(str, "ll\0", len) || ft_strstr_num(str, "l\0", len) ||
+			ft_strstr_num(str, "j\0", len))
+			ptr = hex_oct_main(elem, form_place_spc, 'X', 1);
+		else
+			ptr = hex_oct_main(elem, form_place_spc, 'X', 0);
+	}
 	else if (ft_strstr_num(str, "o\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
+	{
+		if (ft_strstr_num(str, "ll\0", len) || ft_strstr_num(str, "l\0", len) ||
+			ft_strstr_num(str, "j\0", len))
+			ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
+		else
+			ptr = hex_oct_main(elem, form_place_spc, 'o', 1);
+	}
 	else if (ft_strstr_num(str, "b\0", len))
-		ptr = hex_oct_main(elem, form_place_spc, 'b', 1);
+	{
+		if (ft_strstr_num(str, "ll\0", len) || ft_strstr_num(str, "l\0", len) ||
+			ft_strstr_num(str, "j\0", len))
+			ptr = hex_oct_main(elem, form_place_spc, 'b', 1);
+		else
+			ptr = hex_oct_main(elem, form_place_spc, 'b', 1);
+	}
 	else
 		return (0);
-	if (!ptr)
+	if (ptr)
 		free(ptr);
 	return (form_place_spc->result);
 }
@@ -260,6 +301,8 @@ int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f
 		(!ptr) ? (ptr = "0x0") : (ptr = point_hex(&ptr));
 		f_p_s->len = ft_strlen(ptr);
 		ft_write_tail_str(f_p_s, ptr);
+		if (ptr)
+			free(ptr);
 		return (f_p_s->result);
 	}
 	return (0);
@@ -312,7 +355,7 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 	ft_result_len_float(form_place_spc, *ptr);
 	ft_flag_correction_1(form_place_spc);
 	ft_write_tail(form_place_spc, *ptr, ptr);
-	if (!ptr)
+	if (ptr)
 		free(ptr);
 	return ((*form_place_spc).result);
 }

@@ -35,6 +35,7 @@ void		ft_write_tail_str(t_param *f_p_s, char *ptr)
 {
 	char *str;
 
+	str = NULL;
 	ft_result_len_str(f_p_s);
 	if (!f_p_s->is_minus && f_p_s->is_zero)
 		str = ft_strnew_char(f_p_s->width, '0');
@@ -50,13 +51,15 @@ void		ft_write_tail_str(t_param *f_p_s, char *ptr)
 		write(1, str, f_p_s->width);
 		write(1, ptr, f_p_s->len);
 	}
-	free(str);
+	if (str)
+		free(str);
 }
 
 void		ft_write_tail_char(t_param *f_p_s, char c)
 {
 	char *str;
 
+	str = NULL;
 	ft_result_len_char(f_p_s);
 	if (!f_p_s->is_minus && f_p_s->is_zero)
 		str = ft_strnew_char((f_p_s->result - f_p_s->len), '0');
@@ -72,13 +75,15 @@ void		ft_write_tail_char(t_param *f_p_s, char c)
 		write(1, str, (f_p_s->result - f_p_s->len));
 		write(1, &c, 1);
 	}
-	free(str);
+	if (str)
+		free(str);
 }
 
 void		ft_write_tail_percent(t_param *f_p_s)
 {
 	char *str;
 
+	str = NULL;
 	f_p_s->len = 1;
 	(f_p_s->width) ? (f_p_s->result = f_p_s->width) :
 		 ((f_p_s->result = 1) && (f_p_s->width = 1));
@@ -87,5 +92,6 @@ void		ft_write_tail_percent(t_param *f_p_s)
 	(f_p_s->is_minus) ? (str[0] = '%') :
 		(str[f_p_s->width - 1] = '%');
 	write(1, str, f_p_s->width);
-	free(str);
+	if (str)
+		free(str);
 }

@@ -39,7 +39,7 @@ void	toone(uint64_t *tmp, int m1)
 }
 
 char	*cr_sdc(uint64_t *a, int min, size_t m1)
-{
+{	//???
 	char *res;
 
 	if (!(res = ft_strnew(19 * (m1 - min))))
