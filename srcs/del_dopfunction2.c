@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_dopfunction2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:08:03 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/29 22:30:59 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/31 17:56:33 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ char	*del(uint64_t *tmp, int deg, int ndb, int t)
 	min1 = search_non(tmp, ndb);
 	i = -1;
 	if (deg <= 64)
+	{
 		return (del1_one(tmp, deg, ndb, t));
+	}
 	else
 	{
 		if (deg % 64)
 		{
 			del_m(tmp, deg % 64, &min1, ndb);
 		}
-		// for (int i = 0; i < ndb;i++)
-		// 	printf("%llu\n", tmp[i]);
 		min1 = search_non(tmp, ndb);
 		while (++i < deg / 64 - 1)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:07:16 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/29 22:30:34 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/31 17:56:37 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@ char	*del1_one(uint64_t *tmp, int deg, int ndb, int t)
 	int			d[t + ndb];
 	__uint128_t	a[3];
 	int			i;
+	int			ch;
 
+	ch = 0;
 	init_help_del1(a, &o, deg);
 	i = search_non(tmp, ndb) - 1;
 	if (i == -1)
 		return (ft_strnewc(t + 1, '0'));
-	umn1(tmp, -1, &i, ndb);
 	while (++i < ndb)
 	{
 		a[2] = (__uint128_t)tmp[i] + (a[1] * 10000000000000000000UL);
 		tmp[i] = a[2] / a[0];
-		d[++o] = tmp[i];
+		(ch == 0 && tmp[i] != 0 ) ? (d[++o] = tmp[i] && ++ch) : 0;
 		if (tmp[i] == 10)
 			d[o] = 0;
 		a[1] = a[2] % a[0];

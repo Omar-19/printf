@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/28 21:13:47 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/31 18:04:51 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,8 +275,9 @@ int					read_variable_int1(const char *str, size_t len, va_list elem, t_param *f
 int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s)
 {
 	char	*ptr;
+	int		i;
 
-
+	i = 0;
 	if (ft_strstr_num(str, "c\0", len))
 	{
 		f_p_s->len = 1;
@@ -298,7 +299,7 @@ int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f
 		f_p_s->is_pres = 0;
 		f_p_s->precision = 0;
 		ptr = va_arg(elem, void *);
-		(!ptr) ? (ptr = "0x0") : (ptr = point_hex(&ptr));
+		(!ptr) ? (ptr = strdup("0x0")) : (ptr = point_hex(&ptr));
 		f_p_s->len = ft_strlen(ptr);
 		ft_write_tail_str(f_p_s, ptr);
 		if (ptr)

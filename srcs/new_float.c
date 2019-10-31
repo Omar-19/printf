@@ -54,7 +54,7 @@ char	*get_point_part2(char *m, int t)
 	m1 = (n1 * 3) / 19 + 1;
 	return (drob1(m, m1 + 1, max_deg, t));
 }
-//11011011100011001110110001100000101000110110100100101
+
 char	*get_point_part(char *m, int p, int t)
 {
 	int		max_deg[2];
@@ -92,9 +92,6 @@ char	*drob1_new(char *s, size_t m1, int *max_d, int t)
 			tmp_n = m1 - 1;
 		}
 	}
-	// for (int i = 0; i < m1;i++)
-	// 	printf("%llu\n", res[i]);
-	// printf("%d\n", max_d[0]);
 	return (del(res, max_d[0], m1, t));
 }
 
@@ -146,8 +143,6 @@ char	*res_last_new(char *dec, char *point, int prs, int sign)
 	strcat(rs + 2, dec);
 	strcat(rs + 2, ".");
 	strcat(rs + 2, point);
-	free(dec);
-	free(point);
 	ck = okrug1(&jk, prs);
 	(sign == 1) ? set_min(&jk, '-') : 0;
 	if (ck && sign)
@@ -176,11 +171,7 @@ char	*get_float_all(char *m, int p, int prs, int sign)
 	else
 	{
 		dec = get_dec_part(m, p);
-		if (prs == 0)
-			return (strdup(dec));
-		point = ft_strnewc(prs + 1, '0');
-		point[0] = '.';
-		return (ft_strjoin(dec, point));
+		point = ft_strnewc(prs, '0');
 	}
 	return (res_last_new(dec, point, prs, sign));
 }
@@ -209,16 +200,3 @@ char	*new_float_ld(t_double d, int prs)
 	p = RETLD(d.numld);
 	return (get_float_all(mantis, p, prs, sign));
 }
-
-// int main()
-// {
-// 	// t_double d;
-// 	// d.numld = 1313.3131;
-// 	// new_float_d(d, 5);
-// 	// printf("%Lf\n", d.numld);
-// 	// printf("%s\n", new_float_ld(d, 6));
-// 	printf("%llo\n", UINT64_MAX);
-// 	long long a = UINT64_MAX;
-// 	printf("%s\n", octa_int(&a));
-// 	// printf("%Lf\n", d.numld);
-// }
