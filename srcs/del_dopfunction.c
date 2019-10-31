@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:01:44 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/31 19:13:42 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/31 20:27:03 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,35 @@ char	*drob(char *s, int t)
 	return (drob1(s, m1 + 1, max_deg, t));
 }
 
+int		col_zero(uint64_t *a, int min, size_t m1, int max_deg)
+{
+	int b;
+
+	b = raz(a[min]);
+	return (max_deg - b - 19 * (m1 - min - 1));
+}
+
+char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg)
+{
+	char *res;
+	int len;
+	int l;
+
+	l = col_zero(a, min, m1, max_deg);
+	len = 19 * (m1 - min) + l;
+	if (!(res = ft_strnew(len)))
+		return (NULL);
+	memset(res, '0', len);
+	res[l] = '\0';
+	strcat(res, ft_uint64toa(a[min++], 0));
+	while ((size_t)min < m1)
+	{
+		strcat(res, ft_uint64toa(a[min], 1));
+		++min;
+	}
+	return (res);
+}
+
 char	*drob1(char *s, size_t m1, int max_d, int t)
 {
 	uint64_t	res[m1];
@@ -97,7 +126,6 @@ char	*drob1(char *s, size_t m1, int max_d, int t)
 	tmp_n = m1 - 1;
 	i = -1;
 	init_massiv(res, tmp, m1);
-	printf("%s\n", s);
 	while (s[++i])
 	{
 		if (s[i] == '1')

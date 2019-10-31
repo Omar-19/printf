@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:21:52 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/26 18:59:48 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/31 20:17:45 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	toone(uint64_t *tmp, int m1)
 }
 
 char	*cr_sdc(uint64_t *a, int min, size_t m1)
-{	//???
+{
 	char *res;
 
 	if (!(res = ft_strnew(19 * (m1 - min))))

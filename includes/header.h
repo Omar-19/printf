@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/31 18:56:19 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/31 20:17:41 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,5 +209,6 @@ __uint128_t pow_5(int n);
 void	init_help5(__uint128_t *s, __uint128_t *c, int *i, int deg);
 void	umn5_1(uint64_t *tmp, int deg, int *min, int ndb);
 void	umn5(uint64_t *tmp, int deg, int *min, int ndb);
+char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg);
 
 #endif

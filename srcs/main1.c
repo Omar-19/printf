@@ -23,7 +23,7 @@ static void test_func(int a, int b)
 
 int		main()
 {
-	ft_printf("%lf\n", 0.05);
+	ft_printf("%lf\n", 0.00625);
 	// printf("%d\n", binpow(5,1));
 // 	int a01;
 // 	int a02;
