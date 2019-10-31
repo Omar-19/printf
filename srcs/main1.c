@@ -443,7 +443,27 @@ int		main()
 
 	// 	// printf("%.0g\n", 16.01234567890);
 
-	test_func(printf("|% 010s is a string|\n", "this"), ft_printf("|% 010s is a string|\n", "this"));
+	test_func(printf("|%zd|\n", -9223372036854775808), ft_printf("|%zd|\n", -9223372036854775808));
+
+	//"%ju", 4999999999
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
+
+	// test_func(printf("|% |\n"), ft_printf("|% |\n"));
 	// printf("|%#.0f|\n", -7.0);
 	// 	// ft_printf("|%+05d|\n", -7);
 	// 	// ft_printf("%#08o", 42);

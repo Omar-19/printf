@@ -20,7 +20,7 @@ void		ft_write_str(const char *str, size_t len)
 
 inline int	ft_is_conversion(const char c)
 {
-	return (!(ft_strchr("diuoxXfFeEgGaAcsSpbn%", c) == NULL));
+	return (!(ft_strchr("diuoxXfFeEgGaAcsSpbnZU%", c) == NULL));
 }
 
 int			print_elem(const char *format, va_list elem)
@@ -68,12 +68,12 @@ int			print_elem(const char *format, va_list elem)
 				++j;
 				if (!str[++i])
 				{
-					res += j;
-					write(1, (str + i - 1), 1);
+					// res += j;
+					//write(1, (str + i - 1), 1);
 					// ft_write_str(ptr, len);
 					//--i;
 					// break;
-					return res;
+					return (0);
 				}
 			}
 			len = str + i - ptr + 1;
