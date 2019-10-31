@@ -61,14 +61,14 @@ char	*get_point_part(char *m, int p, int t)
 	int		n1;
 	size_t	m1;
 
-	printf("d %d\n", p);
+	// printf("d %d\n", p);
 	max_deg[0] = (-1 * p) + strlen(m) - 1;
 	max_deg[1] = strlen(m);
-	printf("max = %d\n", max_deg[0]);
+	// printf("max = %d\n", max_deg[0]);
 	n1 = max_deg[0] / 4 + 1;
 	(t < 17) ? t = 18 : t++;
 	m1 = (n1 * 3) / 19 + 1;
-	printf("%s\n", ft_strnewc(-p, '0'));
+	// printf("%s\n", ft_strnewc(-p - 1, '0'));
 	return (drob1_new(m, m1 + 1 + max_deg[0], max_deg, t));
 }
 
@@ -84,26 +84,53 @@ char	*drob1_new(char *s, size_t m1, int *max_d, int t)
 	tmp_n = m1 - 1;
 	i = -1;
 	init_massiv(res, tmp, m1);
-	printf("bit %s\n", s);
+	// printf("bit %s\n", s);
 	while (s[++i])
-	{ 
-		umn1(res, -1, &res_n, m1);
+	{
+
+		printf("bef bit + \n");
+		for (int k = res_n; k < m1; k++)
+			printf("%.19llu ", res[k]);
+		printf("\n");
+		sleep (1);
 		if (s[i] == '1')
 		{
-			printf("s %d\n", max_d[0] - max_d[1] + i + 1);
 			umn5(tmp, max_d[0] - max_d[1] + i + 1, &tmp_n, m1 - 1);
+			printf("5 ^ %d = ", max_d[0] - max_d[1] + i + 1);
+			for (int k = tmp_n; k < m1; k++)
+				printf("%.19llu ", tmp[k]);
+			printf("\n");
+			sleep (1);
 			res_n = sum_m(res, tmp, min_i(&res_n, &tmp_n), m1 - 1);
 			toone(tmp, m1);
 			tmp[m1 - 1] = 1;
 			tmp_n = m1 - 1;
 		}
+		printf("bef umn 10 \n");
+		for (int k = res_n; k < m1; k++)
+			printf("%.19llu ", res[k]);
+		printf("\n");
+		sleep (1);
+		res_n = search_non(res, m1);
+		umn1(res, -1, &res_n, m1);
+		res_n = search_non(res, m1);
+		printf("after umn 10 \n");
+		for (int k = res_n; k < m1; k++)
+			printf("%.19llu ", res[k]);
+		printf("\n");
+		sleep (1);
 	}
-	for (int k = 0; k < m1; k++)
-		printf("%llu\n", res[k]);
-	// return (del(res, max_d[0], m1, t));
+	for (int k = res_n; k < m1; k++)
+			printf("%.19llu ", res[k]);
+	printf("\n");
+	// res_n = search_non(res, m1);
 	return (cr_sdc_drob(res, res_n, m1, max_d[0]));
 }
-
+//0500000000000000027 7555756156289135105 9079170227050781250 
+//0500000000000000027 7555756156289135105 9079170227050781250
+//  49 9997138977050781250
+//0 49 9997138977050781250
+//  499 9995231628417968750
 char	*cr_dc_new(char *s, size_t m1, int max_deg, int i)
 {
 	uint64_t	res[m1];

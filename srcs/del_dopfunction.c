@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_dopfunction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:01:44 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/31 20:27:03 by btheia           ###   ########.fr       */
+/*   Updated: 2019/10/31 23:10:05 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg)
 	int len;
 	int l;
 
-	l = col_zero(a, min, m1, max_deg);
+	// for (int k = min; k < m1; k++)
+	// 		printf("%.19llu ", a[k]);
+	// printf("\n");
+	l = col_zero(a, min, m1, max_deg) + 1;
 	len = 19 * (m1 - min) + l;
 	if (!(res = ft_strnew(len)))
 		return (NULL);
