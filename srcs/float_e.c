@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_e.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:26:02 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 23:04:28 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/03 00:32:37 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*res_last3(char *point, int prs, int sign)
 {
 	int		sp;
-	char	*rs;
 	char	*jk;
+	int		ck;
 
 	sp = 0;
 	while (*point == '0')
@@ -24,49 +24,48 @@ char	*res_last3(char *point, int prs, int sign)
 		++sp;
 		++point;
 	}
-	rs = ft_strnew(ft_strlen(point) + 4 + raz(sp));
+	char	rs[ft_strlen(point) + 4 + raz(sp)];
+	memset(rs, 0, ft_strlen(point) + 4 + raz(sp));
 	jk = rs + 1;
 	ft_strncat(rs + 1, point, 1);
 	ft_strcat(rs + 1, ".");
 	ft_strcat(rs + 1, point + 1);
-	okrug1(&jk, prs);
+	ck = okrug1(&jk, prs);
 	if (*(jk + 1) != '\0' && *(jk + 1) != '.')
 	{
 		--sp;
 		*(jk + 1) = '\0';
 	}
-	if (sign == 1)
-		set_min(&jk, '-');
+	(sign == 1) ? set_min(&jk, '-'): 0;
 	ft_strcat(jk, "e-");
 	ft_strcat(jk, ft_uint64toa2(sp + 1, 0));
-	return (jk);
+	if (ck && sign)
+		return(strdup(rs));	
+	return (strdup(jk));
 }
 
 char	*res_last2(char *dc, char *point, int prs, int sign)
 {
-	char 	*rs;
+	char 	rs[ft_strlen(dc) + 5 + ft_strlen(point)+ raz(ft_strlen(dc)) + prs];
 	char 	*jk;
 	int		ck;
 
 	if (strcmp(dc, "0") == 0)
 		return (res_last3(point, prs, sign));
-	rs = ft_strnew(ft_strlen(dc) + 5 + ft_strlen(point)
-		+ raz(ft_strlen(dc)));
-	jk = rs + 1;
-	ft_strncat(rs + 1, dc, 1);
-	ft_strcat(rs + 1, ".");
-	ft_strcat(rs + 1, dc + 1);
-	ft_strcat(rs + 1, point);
-	free(dc);
-	free(point);
+	memset(rs, 0, ft_strlen(dc) + 5 + ft_strlen(point)+ raz(ft_strlen(dc)) + prs);
+	jk = rs + 2;
+	ft_strncat(rs + 2, dc, 1);
+	ft_strcat(rs + 2, ".");
+	ft_strcat(rs + 2, dc + 1);
+	ft_strcat(rs + 2, point);
 	ck = okrug1(&jk, prs);
 	(sign == 1) ? set_min(&jk, '-'): 0;
 	ft_strcat(jk, "e+");
 	ft_strcat(jk, ft_uint64toa2(strlen(dc) - 1, 0));
+	free(dc);
+	free(point);
 	if (ck && sign)
-	{
 		return(strdup(rs));	
-	}
 	return (strdup(jk));
 }
 

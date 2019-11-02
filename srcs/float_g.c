@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_g.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 16:34:45 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 19:04:06 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/03 00:34:39 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ char	*res_last_g(char *dc, char *point, int prs, int sign)
 	char *jk;
 	char *dec_x;
 
-	resdec = main_c(dc);
-	dec_x = drob(point + 1, prs);
+	resdec = dc;
+	dec_x = point;
 	if (strcmp(resdec, "0") == 0)
 		return (res_last3_g(dec_x, 6, sign));
 	if (strlen(resdec) < 6)
