@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:21:52 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/31 20:17:45 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 15:22:34 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ void	toone(uint64_t *tmp, int m1)
 char	*cr_sdc(uint64_t *a, int min, size_t m1)
 {
 	char *res;
+	char *r;
 
 	if (!(res = ft_strnew(19 * (m1 - min))))
 		return (NULL);
-	strcat(res, ft_uint64toa(a[min++], 0));
+	r = ft_uint64toa(a[min++], 0);
+	strcat(res, r);
+	free(r);
 	while ((size_t)min < m1)
 	{
-		strcat(res, ft_uint64toa(a[min], 1));
+		r = ft_uint64toa(a[min], 1);
+		strcat(res, r);
+		free(r);
 		++min;
 	}
 	return (res);

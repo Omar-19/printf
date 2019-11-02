@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/31 22:59:17 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 17:25:03 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ void			umn(uint64_t *tmp, int deg, int *min, int ndb);
 int				min_i(int *a, int *b);
 int				sum_m(uint64_t *res, uint64_t *tmp, int min, int ndb);
 char			*drob(char *s, int t);
-char			*drob1(char *s, size_t m1, int max_d, int t);
+char			*drob1(char *s, size_t m1, int max_d);
 char			*drob2(uint64_t *res, int t, int m1, int res_n, int max_d);
-void			umn10(uint64_t *tmp, int *min, int ndb);
+// void			umn10(uint64_t *tmp, int *min, int ndb);
 char			*del(uint64_t *tmp, int deg, int ndb, int t);
 char			*del1_one(uint64_t *tmp, int deg, int ndb, int t);
 char			*mastos(int *a, int t);
@@ -190,7 +190,7 @@ char			*res_last_g(char *dc, char *point, int prs, int sign);
 char			*res_last3_g(char *point, int prs, int sign);
 char			*res_last4_g(char *des, char *point, int sign);
 
-char	*drob1_new(char *s, size_t m1, int *max_d, int t);
+char	*drob1_new(char *s, size_t m1, int *max_d);
 char	*get_point_part(char *m, int p, int t);
 char	*res_last_new(char *dec, char *point, int prs, int sign);
 
@@ -200,7 +200,7 @@ char	*get_float_all(char *m, int p, int prs, int sign);
 char	*res_last_new(char *dec, char *point, int prs, int sign);
 char	*get_dec_part(char *m, int p);
 char	*cr_dc_new(char *s, size_t m1, int max_deg, int i);
-char	*drob1_new(char *s, size_t m1, int *max_d, int t);
+char	*drob1_new(char *s, size_t m1, int *max_d);
 char	*get_point_part(char *m, int p, int t);
 char	*get_point_part2(char *m, int t);
 void	get_mantis_d(t_double d, char *s, int type);
@@ -211,5 +211,6 @@ void	umn5_1(uint64_t *tmp, int deg, int *min, int ndb);
 void	umn5(uint64_t *tmp, int deg, int *min, int ndb);
 char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg);
 int 	col_zero(uint64_t *a, int min, size_t m1, int max_deg);
+void	umn10(uint64_t *tmp, int deg, int *min, int ndb);
 
 #endif

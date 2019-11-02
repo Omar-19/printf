@@ -26,8 +26,29 @@ int		main()
 {
 	// 0000000000000000499
 	// printf("%.19llu\n", (uint64_t)499);
-	printf("%.7lf\n", 0.062152);
-	ft_printf("%.7lf\n", 0.062152);
+	// printf("%.7lf\n", 0.062152);
+	// printf("%f", 0.00041);
+	// printf("\n");
+	ft_printf("%f", 23.00041);
+	printf("\n");
+	// ft_printf("%f", 999.999999);
+	// printf("\n");
+	// ft_printf("%f", -99.999999);
+	// printf("\n");
+	// ft_printf("%f", 0.999999);
+	// printf("\n");
+	// ft_printf("%f", -0.999999);
+	// printf("\n");
+	// ft_printf("%f", -5.0299999);
+	// printf("\n");
+	// printf("\n");
+	// ft_printf("%f", 573.924);
+	// printf("\n");
+	// ft_printf("%f", 573.924);
+	// printf("\n");
+	// ft_printf("%f", 573.924);
+	// printf("\n");
+	// ft_printf("%ju", 4999999999);
 	// printf("%d\n", binpow(5,1));
 	// 	int a01;
 	// 	int a02;
@@ -48,7 +69,7 @@ int		main()
 	// // 	char *s = "dd";
 	// // 	n = &m;
 	// // 	a = &b;
-	// //  	test_func(printf("x%fx\n", 0.1234567), ft_printf("x%fx\n", 0.1234567));
+	 	// test_func(printf("|%f|\n", 7.5), ft_printf("|%f|\n", 7.5));
 
 	// // 	test_func(printf("%+d\n", -10), ft_printf("%+d\n", -10));
 

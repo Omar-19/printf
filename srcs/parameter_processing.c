@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/31 18:04:51 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 16:06:30 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,12 +167,12 @@ int					read_variable_int(const char *str, size_t len, va_list elem, t_param *fo
 		if (ft_strstr_num(str, "j\0", len) || ft_strstr_num(str, "z\0", len) ||
 			ft_strstr_num(str, "ll\0", len))
 			ptr = ft_itoa_d(va_arg(elem, long long int), 0, form_place_spc, 0);
+		else if (ft_strstr_num(str, "l\0", len))
+			ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc, 0);
 		else if (ft_strstr_num(str, "hh\0", len))
 			ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc, 0);
 		else if (ft_strstr_num(str, "h\0", len))
 			ptr = ft_itoa_d((short int)va_arg(elem, int), 0, form_place_spc, 0);
-		else if (ft_strstr_num(str, "l\0", len))
-			ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc, 0);
 		else
 			ptr = ft_itoa_d(va_arg(elem, int), 0, form_place_spc, 0);
 	}
@@ -180,7 +180,7 @@ int					read_variable_int(const char *str, size_t len, va_list elem, t_param *fo
 	{
 		if (ft_strstr_num(str, "ll\0", len) || ft_strstr_num(str, "U\0", len))
 			ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), form_place_spc, 1);
-		else if (ft_strstr_num(str, "l\0", len))
+		else if (ft_strstr_num(str, "l\0", len) || (ft_strstr_num(str, "j\0", len)))
 			ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), form_place_spc, 1);
 		else if (ft_strstr_num(str, "hh\0", len))
 			ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), form_place_spc, 1);

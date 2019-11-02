@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lib_int.c                                       :+:      :+:    :+:   */
+/*   ft_lib_float.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:32 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/22 14:34:35 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/11/02 16:55:15 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,21 @@ void		ft_write_min(char *str, int i, char *ptr, t_param *f_p_s)
 
 void		ft_write1(t_param *f_p_s, char c, char *ptr)
 {
-	if (ft_strchr((*f_p_s).flags, '+') && c != '-')
+	char *ci;
+
+	ci = f_p_s->flags; 
+	if (ft_strchr(ci, '+') != NULL && c != '-')
 	{
-		++f_p_s->result;
+		++(f_p_s->result);
 		write(1, "+", 1);
 	}
 	else if (f_p_s->is_space)
 	{
-		++f_p_s->result;
+		++(f_p_s->result);
 		write(1, " ", 1);
 	}
 	write(1, ptr, (*f_p_s).len);
+	// write(1, "g\n", 2);
 }
 
 void		ft_write2(t_param *f_p_s, char c, char *ptr, int i)

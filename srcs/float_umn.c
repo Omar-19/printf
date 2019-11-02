@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_umn.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:08:48 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/31 22:31:13 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 17:51:46 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	break_umn(uint64_t *tmp, int pos, int *min, __uint128_t s)
 {
-	tmp[pos] = s;
+	tmp[pos] = (uint64_t)s;
 	--(*min);
 }
-
+//     62408447265625
+//624847412109375
+//
 int		help_umn(uint64_t *tmp, int pos, __uint128_t f, __uint128_t *s)
 {
-	tmp[pos] = f % RAZR;
-	*s = f / RAZR;
+	tmp[pos] = (uint64_t)(f % RAZR);
+	*s = (uint64_t)(f / RAZR);
 	return (1);
 }
 
@@ -45,9 +47,12 @@ void	umn1(uint64_t *tmp, int deg, int *min, int ndb)
 	init_help(&a[1], &a[2], &i, deg);
 	while (*min <= ndb - (++i))
 	{
+		// printf("os %llu\n", (uint64_t)a[1]);
 		if (a[1])
 		{
-			if ((a[0] = (__uint128_t)tmp[ndb - i] * a[2] + a[1]) > RAZR - 1)
+			a[0] = (__uint128_t)tmp[ndb - i] * a[2] + a[1];
+			a[1] = 0;
+			if (a[0] > RAZR - 1)
 			{
 				if ((help_umn(tmp, ndb - i, a[0], &a[1])) && *min == ndb - i)
 					return (break_umn(tmp, ndb - i - 1, min, a[1]));
@@ -55,8 +60,11 @@ void	umn1(uint64_t *tmp, int deg, int *min, int ndb)
 			}
 			else if (*min == ndb - i)
 				return (break_umn(tmp, ndb - i, min, a[0]));
+
 		}
-		if ((a[0] = (__uint128_t)tmp[ndb - i] * a[2] + a[1]) > RAZR - 1)
+		a[0] = (__uint128_t)tmp[ndb - i] * a[2] + a[1];
+		a[1] = 0;
+		if (a[0] > RAZR - 1)
 		{
 			if ((help_umn(tmp, ndb - i, a[0], &a[1])) && *min == ndb - i)
 				return (break_umn(tmp, ndb - i - 1, min, a[1]));
@@ -65,9 +73,58 @@ void	umn1(uint64_t *tmp, int deg, int *min, int ndb)
 			tmp[ndb - i] = a[0];
 	}
 }
-//49999713897705078125
-//4999995231628417968750
-//94999995231628417968750
+//0000000000000000004 0999999987434421200 3052234649658203125
+//3 0522346496582031250
+//
+void	umn10(uint64_t *tmp, int deg, int *min, int ndb)
+{
+	int			i;
+	__uint128_t	f;
+	__uint128_t	s;
+	__uint128_t	c;
+	
+	deg++;
+	f = 0;
+	s = 0;
+	c = 10;
+	i = -1;
+	while(*min <= ndb - (++i))
+	{
+		if (s)
+		{
+			f = (__uint128_t)tmp[ndb - i] * c + s;
+			s = 0;
+			if (f > RAZR - 1)
+			{
+				tmp[ndb - i] = (uint16_t)(f % RAZR);
+				s = (uint64_t)(f / RAZR);
+				if (*min == ndb - i)
+				{
+					tmp[ndb - i - 1] = s;
+					*min = *min - 1;
+					return ;
+				}
+			}
+			// --i;
+			// continue;
+		}
+		f = (__uint128_t)tmp[ndb - i] * c + s;
+		s = 0;
+		if (f > RAZR - 1)
+		{
+			tmp[ndb - i] = (uint16_t)(f % RAZR);
+			s = (uint64_t)(f / RAZR);
+			if (*min == ndb - i)
+			{
+				tmp[ndb - i - 1] = s;
+				*min = *min - 1;
+				return ;
+			}
+		}
+	}
+}
+
+
 void	umn(uint64_t *tmp, int deg, int *min, int ndb)
 {
 	int i;
