@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 16:34:45 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/27 18:04:16 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 19:04:06 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*res_last4_g(char *des, char *point, int sign)
 {
-	char *jk;
-	char *rs;
-	int i;
+	char	*jk;
+	char	*rs;
+	int		i;
 
 	rs = ft_strnew(7);
 	jk = rs + 1;
@@ -35,9 +35,9 @@ char	*res_last4_g(char *des, char *point, int sign)
 
 char	*res_last3_g(char *point, int prs, int sign)
 {
-	char *jk;
-	char *rs;
-	int i;
+	char	*jk;
+	char	*rs;
+	int		i;
 
 	rs = ft_strnew(ft_strlen(point) + 2);
 	jk = rs + 1;
@@ -67,7 +67,8 @@ char	*res_last_g(char *dc, char *point, int prs, int sign)
 		return (res_last3_g(dec_x, 6, sign));
 	if (strlen(resdec) < 6)
 		return (res_last4_g(resdec, dec_x, sign));
-	rs = ft_strnew(ft_strlen(resdec) + 5 + ft_strlen(dec_x)+ raz(ft_strlen(resdec)));
+	rs = ft_strnew(ft_strlen(resdec) + 5 + ft_strlen(dec_x)
+		+ raz(ft_strlen(resdec)));
 	jk = rs + 1;
 	ft_strncat(rs + 1, resdec, 1);
 	ft_strcat(rs + 1, ".");
@@ -79,7 +80,6 @@ char	*res_last_g(char *dc, char *point, int prs, int sign)
 	ft_strcat(jk, ft_uint64toa2(strlen(resdec) - 1, 0));
 	return (jk);
 }
-
 
 char	*float_dg(t_double d, int prs, int *sign)
 {

@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_symbol.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:33:05 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/22 14:33:11 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/11/02 18:21:02 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-// int					ft_is_conversion(const char c)
-// {
-// 	return (!(ft_strchr("diuoxXfFeEgGaAcsSpn", c) == NULL));
-// }
 
 static inline int	ft_is_length(const char c)
 {

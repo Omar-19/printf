@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:49 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/28 21:06:19 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 19:47:16 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			print_elem(const char *format, va_list elem)
 	ptr = str;
 	i = 0;
 	len = 0;
-	while(str[i])
+	while (str[i])
 	{
 		j = 0;
 		if (str[i] == '%')
@@ -51,35 +51,19 @@ int			print_elem(const char *format, va_list elem)
 			}
 			else
 				ptr = str + ++i;
-			// if (str[i] == '%')
-			// 	++i;
-			// else
-			// {
 			if (!str[i])
 			{
-				// res += len;
-				// ft_write_str(ptr, len);
-				// // --i;
-				// // break;
 				return res;
 			}
-			while(!(ft_is_conversion(str[i])))
+			while (!(ft_is_conversion(str[i])))
 			{
 				++j;
 				if (!str[++i])
-				{
-					// res += j;
-					//write(1, (str + i - 1), 1);
-					// ft_write_str(ptr, len);
-					//--i;
-					// break;
 					return (0);
-				}
 			}
 			len = str + i - ptr + 1;
 			res += ft_param_processing(ptr, len, elem);
 			ptr = str + ++i;
-			// }
 			continue;
 		}
 		++i;

@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:01:44 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 17:49:32 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 18:56:17 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,55 +19,6 @@ void	set_min(char **d, char c)
 	res = *d - 1;
 	res[0] = c;
 	*d = res;
-}
-
-int		check_c(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] != '0')
-			return (1);
-		++i;
-	}
-	return (0);
-}
-
-int	okrug1(char **d, int t)
-{
-	char	*point;
-	char	*s;
-	int		i;
-	int 	ch;
-
-	ch = 0;
-	s = *d;
-	point = strchr(s, '.');
-	i = point - s + t + 1;
-	if (check_c(point + 1) == 1 && s[i] >= '5')
-	{
-		while (--i >= 0)
-		{
-			if (s[i] != '9' && s[i] != '.')
-			{
-				s[i] += 1;
-				break ;
-			}
-			(s[i] != '.') ? s[i] = '0' : 0;
-		}
-		if (i == -1)
-		{
-			*(s - 1) = '1';
-			*d = s - 1;
-			ch = 1;
-		}
-	}
-	memset(point + t + 1, '\0', strlen(point));
-	if (t == 0)
-		memset(point, '\0', strlen(point));
-	return (ch);
 }
 
 char	*drob(char *s, int t)
@@ -95,9 +46,9 @@ int		col_zero(uint64_t *a, int min, size_t m1, int max_deg)
 
 char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg)
 {
-	char *res;
-	int len;
-	int l;
+	char	*res;
+	int		len;
+	int		l;
 
 	l = col_zero(a, min, m1, max_deg) + 1;
 	len = 19 * (m1 - min) + l;
@@ -128,36 +79,17 @@ char	*drob1(char *s, size_t m1, int max_d)
 	init_massiv(res, tmp, m1);
 	while (s[++i])
 	{
-		// printf("bef bit + \n");
-		// for (int k = res_n; k < m1; k++)
-		// 	printf("%.19llu ", res[k]);
-		// printf("\n");
-		// sleep (1);
 		if (s[i] == '1')
 		{
 			umn5(tmp, i + 1, &tmp_n, m1 - 1);
-			// printf("5 ^ %d = ", i + 1);
-			// for (int k = tmp_n; k < m1; k++)
-			// 	printf("%.19llu ", tmp[k]);
-			// printf("\n");
-			// sleep (1);
 			res_n = sum_m(res, tmp, min_i(&res_n, &tmp_n), m1 - 1);
 			toone(tmp, m1);
 			tmp[m1 - 1] = 1;
 			tmp_n = m1 - 1;
 		}
-		// printf("bef umn 10 \n");
-		// for (int k = res_n; k < m1; k++)
-		// 	printf("%.19llu ", res[k]);
-		// printf("\n");
-		// sleep (1);
 		res_n = search_non(res, m1);
 		umn1(res, -1, &res_n, m1 - 1);
-		// umn10(res, -1, &res_n, m1 - 1);
 		res_n = search_non(res, m1);
 	}
-	// for (int k = res_n; k < m1; k++)
-	// 		printf("%.19llu ", res[k]);
-	// printf("\n");
 	return (cr_sdc_drob(res, res_n, m1, max_d));
 }

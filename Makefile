@@ -6,7 +6,7 @@
 #    By: btheia <btheia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/28 18:36:22 by angavrel          #+#    #+#              #
-#    Updated: 2019/10/28 20:56:22 by btheia           ###   ########.fr        #
+#    Updated: 2019/11/02 19:22:19 by btheia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ HEADER = includes
 
 SOURCES =	bit_out.c \
 check_symbol.c \
-del.c \
 del_dopfunction.c \
 del_dopfunction2.c \
 dop_func_float.c \
@@ -35,6 +34,7 @@ float_g.c \
 float_e.c \
 float_my.c \
 float_umn.c \
+float_umn_help.c \
 ft_lib_char.c \
 ft_lib_float.c \
 ft_lib_hex_octa.c \

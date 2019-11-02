@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:32 by fyuko             #+#    #+#             */
-/*   Updated: 2019/11/02 16:55:15 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 19:26:27 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_write1(t_param *f_p_s, char c, char *ptr)
 {
 	char *ci;
 
-	ci = f_p_s->flags; 
+	ci = f_p_s->flags;
 	if (ft_strchr(ci, '+') != NULL && c != '-')
 	{
 		++(f_p_s->result);
@@ -53,7 +53,6 @@ void		ft_write1(t_param *f_p_s, char c, char *ptr)
 		write(1, " ", 1);
 	}
 	write(1, ptr, (*f_p_s).len);
-	// write(1, "g\n", 2);
 }
 
 void		ft_write2(t_param *f_p_s, char c, char *ptr, int i)

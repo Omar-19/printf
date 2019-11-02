@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   float_eg.c                                         :+:      :+:    :+:   */
+/*   float_e.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:26:02 by btheia            #+#    #+#             */
-/*   Updated: 2019/10/27 16:33:35 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 19:03:07 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*res_last3(char *point, int prs, int sign)
 {
-	int sp;
-	char *rs;
-	char *jk;
+	int		sp;
+	char	*rs;
+	char	*jk;
 
 	sp = 0;
 	while (*point == '0')
@@ -30,7 +30,7 @@ char	*res_last3(char *point, int prs, int sign)
 	ft_strcat(rs + 1, ".");
 	ft_strcat(rs + 1, point + 1);
 	okrug1(&jk, prs);
-	if	(*(jk + 1) != '\0' && *(jk + 1) != '.')
+	if (*(jk + 1) != '\0' && *(jk + 1) != '.')
 	{
 		--sp;
 		*(jk + 1) = '\0';
@@ -53,7 +53,8 @@ char	*res_last2(char *dc, char *point, int prs, int sign)
 	dec_x = drob(point + 1, prs);
 	if (strcmp(resdec, "0") == 0)
 		return (res_last3(dec_x, prs, sign));
-	rs = ft_strnew(ft_strlen(resdec) + 5 + ft_strlen(dec_x)+ raz(ft_strlen(resdec)));
+	rs = ft_strnew(ft_strlen(resdec) + 5 + ft_strlen(dec_x)
+		+ raz(ft_strlen(resdec)));
 	jk = rs + 1;
 	ft_strncat(rs + 1, resdec, 1);
 	ft_strcat(rs + 1, ".");
