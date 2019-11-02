@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/11/02 22:32:47 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 22:50:33 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,8 @@ int					read_variable_int1(const char *str, size_t len,
 	return (form_place_spc->result);
 }
 
-int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s)
+int					read_variable_char(const char *str, size_t len,
+	va_list elem, t_param *f_p_s)
 {
 	char	*ptr;
 
@@ -241,7 +242,8 @@ int					read_variable_char(const char *str, size_t len, va_list elem, t_param *f
 	return (0);
 }
 
-int					read_variable_float(const char *str, size_t len, va_list elem, t_param *form_place_spc)
+int					read_variable_float(const char *str, size_t len,
+	va_list elem, t_param *form_place_spc)
 {
 	char			*ptr;
 	t_double		d;
@@ -287,7 +289,8 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 	return ((*form_place_spc).result);
 }
 
-int					ft_param_processing(const char *str, size_t len, va_list elem)
+int					ft_param_processing(const char *str,
+	size_t len, va_list elem)
 {
 	int		l;
 	t_param	form_place_spc;
@@ -297,7 +300,6 @@ int					ft_param_processing(const char *str, size_t len, va_list elem)
 		write(1, "Z", 1);
 		return (1);
 	}
-	//if(ft_strstr_num(str, "02LLf\0", len) || ft_strstr_num(str, "Z\0", len))
 	ft_format_specification_description(str, len, elem, &form_place_spc);
 	if ((l = read_variable_percent(str, len, &form_place_spc)))
 		return (l);

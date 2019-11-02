@@ -29,7 +29,7 @@ int		main()
 	// printf("%.7lf\n", 0.062152);
 	// printf("%f", 0.00041);
 	// printf("\n");
-	ft_printf("%f", 23.00041);
+	ft_printf("%fe", 23.00041);
 	printf("\n");
 	// ft_printf("%f", 999.999999);
 	// printf("\n");

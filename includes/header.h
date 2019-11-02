@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 22:30:45 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 22:45:18 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,4 +239,7 @@ char	*read_hex_help1(const char *str, size_t *i,
 	va_list elem, t_param *form_place_spc);
 void	read_char_help(char *ptr, va_list elem, t_param *f_p_s);
 
+char	*get_float_all_e(char *m, int p, int prs, int sign);
+inline void			par_help3(const char *str, size_t *i,
+	t_param *f_p_s, va_list elem);
 #endif
