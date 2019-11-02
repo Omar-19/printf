@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:35:29 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/26 19:56:15 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 20:45:58 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char	*main_p(char **s, int pos)
 		res = ft_strnewc(pos + strlen(*s) + 1, '0');
 		memmove(res, *s, strlen(*s));
 		res[pos + 1] = ',';
-		//if (pos < strlen(*s) - 1)
 		if (pos < 0 || ((unsigned long)pos < strlen(*s) - 1))
 			memmove(res + pos + 2, *s + pos + 1, strlen(*s + pos));
 		free(*s);

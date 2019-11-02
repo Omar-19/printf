@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 20:29:16 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 20:59:48 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ char			*ft_itoa_d(long long int value_i, unsigned long long value_u,
 int				ft_strstr_num(const char *str, const char *to_find, size_t len);
 void			ft_write_str(const char *str, size_t len);
 int				read_variable_int(const char *str, size_t len, va_list elem,
-	t_param *form_place_spc);
+	t_param *f_p_s);
 int				ft_param_processing(const char *str, size_t len, va_list elem);
 char			*ft_nitoa(int n);
 int				ft_is_conversion(const char c);
@@ -225,5 +225,12 @@ void		printf_help1(size_t *len, const char **ptr,
 	const char **str, size_t *i);
 void		printf_help(size_t *i, size_t *len);
 void		printf_help2(size_t *i, const char **str, va_list elem);
+void	help_octa1(char *buf);
+char	octa_intc(char *s);
+void	get_mm(void *a, char *s);
+char	*get_point_part(char *m, int p, int t);
+char	*drob1_new(char *s, size_t m1, int *max_d);
+char	*cr_dc_new(char *s, size_t m1, int max_deg, int i);
+
 
 #endif

@@ -1,159 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   new_float.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/02 20:47:08 by btheia            #+#    #+#             */
+/*   Updated: 2019/11/02 20:50:04 by btheia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
-
-void	get_mantis_d(t_double d, char *s, int type)
-{
-	int		i;
-	int		j;
-	char 	*n;
-
-	n = NULL;
-	j = 63 - 12 * type;
-	i = type;
-	while (j >= 0)
-	{
-		s[i] = ((*(__uint128_t *)(&d.numld) >> j) & 1) + '0';
-		(s[i] == '0' && !n) ? (n = &s[i]) : 0;
-		(s[i] == '1') ? (n = NULL) : 0;
-		++i;
-		--j;
-	}
-	s[i] = 0;
-	(n != NULL) ? *n = 0 : 0;
-}
-
-void	get_mm(void *a, char *s)
-{
-	int		i;
-	int		j;
-	char 	*n;
-
-	n = NULL;
-	j = 51;
-	i = 1;
-	while (j >= 0)
-	{
-		s[i] = ((*(uint64_t*)(a) >> j) & 1) + '0';
-		(s[i] == '0' && !n) ? (n = &s[i]) : 0;
-		(s[i] == '1') ? (n = NULL) : 0;
-		++i;
-		--j;
-	}
-	s[i] = 0;
-	(n != NULL) ? *n = 0 : 0;
-}
-
-char	*get_point_part2(char *m, int t)
-{
-	int		max_deg;
-	int		n1;
-	size_t	m1;
-
-	t++;
-	max_deg = strlen(m);
-	n1 = max_deg/ 4 + 1;
-	(t < 17) ? t = 18 : t++;
-	m1 = (n1 * 3) / 19 + 1;
-	return (drob1(m, m1 + 1 + max_deg, max_deg));
-}
-
-char	*get_point_part(char *m, int p, int t)
-{
-	int		max_deg[2];
-	int		n1;
-	size_t	m1;
-
-	t++;
-	// printf("d %d\n", p);
-	max_deg[0] = (-1 * p) + strlen(m) - 1;
-	max_deg[1] = strlen(m);
-	// printf("max = %d\n", max_deg[0]);
-	n1 = max_deg[0] / 4 + 1;
-	(t < 17) ? t = 18 : t++;
-	m1 = (n1 * 3) / 19 + 1;
-	// printf("%s\n", ft_strnewc(-p - 1, '0'));
-	return (drob1_new(m, m1 + 1 + max_deg[0], max_deg));
-}
-
-char	*drob1_new(char *s, size_t m1, int *max_d)
-{
-	uint64_t	res[m1];
-	uint64_t	tmp[m1];
-	int			i;
-	int			res_n;
-	int			tmp_n;
-
-	res_n = m1 - 1;
-	tmp_n = m1 - 1;
-	i = -1;
-	init_massiv(res, tmp, m1);
-	// printf("bit %s\n", s);
-	while (s[++i])
-	{
-
-		// printf("bef bit + \n");
-		// for (int k = res_n; k < m1; k++)
-		// 	printf("%.19llu ", res[k]);
-		// printf("\n");
-		// sleep (1);
-		if (s[i] == '1')
-		{
-			umn5(tmp, max_d[0] - max_d[1] + i + 1, &tmp_n, m1 - 1);
-			// printf("5 ^ %d = ", max_d[0] - max_d[1] + i + 1);
-			// for (int k = tmp_n; k < m1; k++)
-			// 	printf("%.19llu ", tmp[k]);
-			// printf("\n");
-			// sleep (1);
-			res_n = sum_m(res, tmp, min_i(&res_n, &tmp_n), m1 - 1);
-			toone(tmp, m1);
-			tmp[m1 - 1] = 1;
-			tmp_n = m1 - 1;
-		}
-		// printf("bef umn 10 \n");
-		// for (int k = res_n; k < m1; k++)
-		// 	printf("%.19llu ", res[k]);
-		// printf("\n");
-		// sleep (1);
-		res_n = search_non(res, m1);
-		umn1(res, -1, &res_n, m1 - 1);
-		// umn10(res, -1, &res_n, m1 - 1);
-		res_n = search_non(res, m1);
-		// printf("after umn 10 \n");
-		// for (int k = res_n; k < m1; k++)
-		// 	printf("%.19llu ", res[k]);
-		// printf("\n");
-		// sleep (1);
-	}
-	// for (int k = res_n; k < m1; k++)
-	// 		printf("%.19llu ", res[k]);
-	// printf("\n");
-	// res_n = search_non(res, m1);
-	return (cr_sdc_drob(res, res_n, m1, max_d[0]));
-}
-
-char	*cr_dc_new(char *s, size_t m1, int max_deg, int i)
-{
-	uint64_t	res[m1];
-	uint64_t	tmp[m1];
-	int			res_n;
-	int			tmp_n;
-
-	res_n = m1 - 1;
-	tmp_n = m1 - 1;
-	init_massiv(res, tmp, m1);
-	while (s[i] && i < max_deg + 1)
-	{
-		if (s[i] == '1')
-		{
-			umn(tmp, max_deg - i, &tmp_n, m1 - 1);
-			res_n = sum_m(res, tmp, min_i(&res_n, &tmp_n), m1 - 1);
-			toone(tmp, m1);
-			tmp[m1 - 1] = 1;
-			tmp_n = m1 - 1;
-		}
-		++i;
-	}
-	return (cr_sdc(res, res_n, m1));
-}
 
 char	*get_dec_part(char *m, int p)
 {
@@ -169,10 +26,10 @@ char	*get_dec_part(char *m, int p)
 
 char	*res_last_new(char *dec, char *point, int prs, int sign)
 {
-	char rs[ft_strlen(dec) + (size_t)3 + ft_strlen(point) + 1 + prs];
-	char *jk;
-	int ck;
-	char *k;
+	char	rs[ft_strlen(dec) + (size_t)3 + ft_strlen(point) + 1 + prs];
+	char	*jk;
+	int		ck;
+	char	*k;
 
 	memset(rs, 0, ft_strlen(dec) + (size_t)3 + ft_strlen(point) + prs);
 	jk = rs + 2;

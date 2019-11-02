@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/11/02 16:06:30 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 20:59:11 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static inline void	ft_null_f_p_s(t_param *f_p_s, size_t *i, int *j)
 	f_p_s->is_width = 1;
 }
 
-void				ft_format_specification_description(const char *str, size_t len, va_list elem, t_param *f_p_s)
+void				ft_format_specification_description(const char *str,
+	size_t len, va_list elem, t_param *f_p_s)
 {
 	size_t	i;
 	int		j;
@@ -70,7 +71,6 @@ void				ft_format_specification_description(const char *str, size_t len, va_list
 		}
 		++i;
 	}
-	// printf("FLAGs = |%s|\n", f_p_s->flags);
 	k = j;
 	j = i;
 	while (i < len)
@@ -82,7 +82,6 @@ void				ft_format_specification_description(const char *str, size_t len, va_list
 			*((*f_p_s).flags + k + 1) = '\0';
 			++k;
 		}
-		//  *(str + i) == '#'
 		if (*(str + i) == '#')
 		{
 			f_p_s->is_hash = 1;
@@ -90,25 +89,8 @@ void				ft_format_specification_description(const char *str, size_t len, va_list
 			*((*f_p_s).flags + k + 1) = '\0';
 			++k;
 		}
-			// (*(str + i) == ' ') ? (f_p_s->is_space = 1) : 0;
-			// (*(str + i) == '+') ? (f_p_s->is_plus = 1) : 0;
-			// (*(str + i) == '-') ? (f_p_s->is_minus = 1) : 0;
-			// (*(str + i) == '#') ? (f_p_s->is_hash = 1) : 0;
-			// (*(str + i) == '0') ? (f_p_s->is_zero = 1) : 0;
-			// *((*f_p_s).flags + k) = *(str + i);
-			// *((*f_p_s).flags + k + 1) = '\0';
-			// ++j;
-		// }
 		++i;
 	}
-	// i = 0;
-	// if (ft_strchr((*f_p_s).flags, '+'))
-	// 	while ((*f_p_s).flags[i] != '\0')
-	// 	{
-	// 		if ((*f_p_s).flags[i] == ' ')
-	// 			(*f_p_s).flags[i] = '+';
-	// 		++i;
-	// 	}
 	if (*(str + j) == '*')
 	{
 		(*f_p_s).width = va_arg(elem, int);
@@ -131,97 +113,54 @@ void				ft_format_specification_description(const char *str, size_t len, va_list
 	}
 	else
 		(*f_p_s).precision = 0;
-	// printf("FLAGs = |%s|\n", f_p_s->flags);
-	// printf("PRES = |%d|\n", f_p_s->precision);
-	// printf("# = |%d|\n", f_p_s->is_hash);
-	// printf("- = |%d|\n", f_p_s->is_minus);
-	// printf("+ = |%d|\n", f_p_s->is_plus);
-	// printf("pres = |%d|\n", f_p_s->is_pres);
-	// printf("space = |%d|\n", f_p_s->is_space);
-	// printf("0 = |%d|\n", f_p_s->is_zero);
 }
 
-int					read_variable_percent(const char *str, size_t len, t_param *form_place_spc)
+int					read_variable_percent(const char *str,
+	size_t len, t_param *form_place_spc)
 {
 	form_place_spc->len = 1;
-	// printf("--------------------------%c", '\n');
 	if (ft_strstr_num(str, "%\0", len))
-	{
-		// printf("--------------------------%c", '\n');
-		ft_write_tail_percent(form_place_spc);//ft_write_tail_percent(form_place_spc);
-	}
+		ft_write_tail_percent(form_place_spc);
 	else
 		return (0);
 	return (form_place_spc->result);
 }
 
-int					read_variable_int(const char *str, size_t len, va_list elem, t_param *form_place_spc)
+int					read_variable_int(const char *str, size_t len,
+	va_list elem, t_param *f_p_s)
 {
 	char	*ptr;
-	//long long	a;
 
-	// printf("FLAGs = |%s|\n", form_place_spc->flags);
 	ptr = NULL;
 	if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "i\0", len))
 	{
 		if (ft_strstr_num(str, "j\0", len) || ft_strstr_num(str, "z\0", len) ||
 			ft_strstr_num(str, "ll\0", len))
-			ptr = ft_itoa_d(va_arg(elem, long long int), 0, form_place_spc, 0);
+			ptr = ft_itoa_d(va_arg(elem, long long int), 0, f_p_s, 0);
 		else if (ft_strstr_num(str, "l\0", len))
-			ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc, 0);
+			ptr = ft_itoa_d(va_arg(elem, long int), 0, f_p_s, 0);
 		else if (ft_strstr_num(str, "hh\0", len))
-			ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc, 0);
+			ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, f_p_s, 0);
 		else if (ft_strstr_num(str, "h\0", len))
-			ptr = ft_itoa_d((short int)va_arg(elem, int), 0, form_place_spc, 0);
+			ptr = ft_itoa_d((short int)va_arg(elem, int), 0, f_p_s, 0);
 		else
-			ptr = ft_itoa_d(va_arg(elem, int), 0, form_place_spc, 0);
+			ptr = ft_itoa_d(va_arg(elem, int), 0, f_p_s, 0);
 	}
 	else if (ft_strstr_num(str, "u\0", len) || ft_strstr_num(str, "U\0", len))
 	{
 		if (ft_strstr_num(str, "ll\0", len) || ft_strstr_num(str, "U\0", len))
-			ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), form_place_spc, 1);
+			ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), f_p_s, 1);
 		else if (ft_strstr_num(str, "l\0", len) || (ft_strstr_num(str, "j\0", len)))
-			ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), form_place_spc, 1);
+			ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), f_p_s, 1);
 		else if (ft_strstr_num(str, "hh\0", len))
-			ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), form_place_spc, 1);
+			ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), f_p_s, 1);
 		else if (ft_strstr_num(str, "h\0", len))
-			ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc, 1);
+			ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), f_p_s, 1);
 		else
-			ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc, 1);
+			ptr = ft_itoa_d(0, va_arg(elem, unsigned int), f_p_s, 1);
 	}
-	// if (ft_strstr_num(str, "j\0", len) || ft_strstr_num(str, "z\0", len) ||
-	// 	ft_strstr_num(str, "lld\0", len) || ft_strstr_num(str, "lli\0", len))
-	// 	ptr = ft_itoa_d(va_arg(elem, long long int), 0, form_place_spc, 0);
-	
-	// else if (ft_strstr_num(str, "hhd\0", len) || ft_strstr_num(str, "hhi\0", len))
-	// 	ptr = ft_itoa_d((signed char)va_arg(elem, int), 0, form_place_spc, 0);
-	
-	// else if (ft_strstr_num(str, "hd\0", len) || ft_strstr_num(str, "hi\0", len))
-	// 	ptr = ft_itoa_d((short int)va_arg(elem, int), 0, form_place_spc, 0);
-	
-	// else if (ft_strstr_num(str, "ld\0", len) || ft_strstr_num(str, "li\0", len))
-	// 	ptr = ft_itoa_d(va_arg(elem, long int), 0, form_place_spc, 0);
-	
-	// else if (ft_strstr_num(str, "d\0", len) || ft_strstr_num(str, "i\0", len))
-	// 	ptr = ft_itoa_d(va_arg(elem, int), 0, form_place_spc, 0);
-	
-	// else if (ft_strstr_num(str, "llu\0", len) || ft_strstr_num(str, "U\0", len))
-	// 	ptr = ft_itoa_d(0, va_arg(elem, unsigned long long int), form_place_spc, 1);
-	
-	// else if (ft_strstr_num(str, "lu\0", len))
-	// 	ptr = ft_itoa_d(0, va_arg(elem, unsigned long int), form_place_spc, 1);
-	
-	// else if (ft_strstr_num(str, "hhu\0", len))
-	// 	ptr = ft_itoa_d(0, (unsigned char)va_arg(elem, int), form_place_spc, 1);
-	
-	// else if (ft_strstr_num(str, "hu\0", len))
-	// 	ptr = ft_itoa_d(0, (unsigned short int)va_arg(elem, int), form_place_spc, 1);
-	
-	// else if (ft_strstr_num(str, "u\0", len))
-	// 	ptr = ft_itoa_d(0, va_arg(elem, unsigned int), form_place_spc, 1);
 	else
 		return (0);
-	//write(1, ptr, form_place_spc->result);
 	if (ptr)
 		free(ptr);
 	return ((*form_place_spc).result);
@@ -232,7 +171,6 @@ int					read_variable_int1(const char *str, size_t len, va_list elem, t_param *f
 	char *ptr;
 
 	ptr = NULL;
-	//printf("\nFLAGS = |%s|\n", form_place_spc->flags);
 	if (ft_strstr_num(str, "x\0", len))
 	{
 		if (ft_strstr_num(str, "ll\0", len) || ft_strstr_num(str, "l\0", len) ||
@@ -326,9 +264,7 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 	else if (ft_strstr_num(str, "f\0", len))
 	{
 		d.numd = va_arg(elem, double);
-		// printf("ddd %f\n",d.numd );
 		ptr = new_float_d(d, (*form_place_spc).precision);
-		// printf("F = %s\n", ptr);
 	}
 	else if (ft_strstr_num(str, "Le\0", len))
 	{
@@ -346,11 +282,7 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 	if (form_place_spc->is_hash && form_place_spc->is_pres &&
 		!form_place_spc->precision)
 	{
-		//printf("if %d && %d && !%d\n", form_place_spc->is_hash, form_place_spc->is_pres,
-	//form_place_spc->precision);
-		// printf("\n len = %d\n", form_place_spc->len);
 		*(ptr + form_place_spc->len) = '.';
-		// *(ptr + form_place_spc->len + 1) = '\0';
 		++(form_place_spc->len);
 	}
 	ft_result_len_float(form_place_spc, *ptr);
@@ -364,7 +296,6 @@ int					read_variable_float(const char *str, size_t len, va_list elem, t_param *
 int					ft_param_processing(const char *str, size_t len, va_list elem)
 {
 	int		l;
-	// Format placeholder specification
 	t_param	form_place_spc;
 
 	if (ft_strstr_num(str, "Z\0", len))
@@ -373,7 +304,6 @@ int					ft_param_processing(const char *str, size_t len, va_list elem)
 		return (1);
 	}
 	ft_format_specification_description(str, len, elem, &form_place_spc);
-	// printf("fps->res = %d\n", form_place_spc.width);
 	if ((l = read_variable_percent(str, len, &form_place_spc)))
 		return (l);
 	else if ((l = read_variable_int1(str, len, elem, &form_place_spc)))

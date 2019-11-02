@@ -6,7 +6,7 @@
 #    By: btheia <btheia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/28 18:36:22 by angavrel          #+#    #+#              #
-#    Updated: 2019/11/02 19:22:19 by btheia           ###   ########.fr        #
+#    Updated: 2019/11/02 20:52:38 by btheia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ help_func.c \
 help_func1.c \
 help_function2.c \
 help_function3.c \
+help_function_float.c \
 hex_octa_int.c \
 main.c \
 parameter_processing.c \

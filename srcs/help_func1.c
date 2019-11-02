@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 16:19:07 by fyuko             #+#    #+#             */
-/*   Updated: 2019/10/26 19:36:37 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 20:38:40 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,41 +49,12 @@ void	ft_flag_correction(t_param *f_p_s)
 		f_p_s->is_plus = 1;
 		f_p_s->is_space = 0;
 	}
-	// int i;
-
-	// i = 0;
-	// if (!(ft_strchr((**f_p_s).flags, '+')))
-	// {
-	// 	while ((**f_p_s).flags[i] != '\0')
-	// 		++i;
-	// 	(**f_p_s).flags[i++] = '+';
-	// 	(**f_p_s).flags[i] = '\0';
-	// 	i = 0;
-	// 	while ((**f_p_s).flags[i] != '\0')
-	// 	{
-	// 		if ((**f_p_s).flags[i] == ' ')
-	// 			(**f_p_s).flags[i] = '+';
-	// 		++i;
-	// 	}
-	// }
 }
 
 void	ft_flag_correction3(t_param *f_p_s)
 {
-	// int i;
-
 	if (f_p_s->is_plus)
 		f_p_s->is_space = 0;
-	// i = 0;
-	// if (ft_strchr((*f_p_s).flags, '+'))
-	// {
-		// while ((*f_p_s).flags[i] != '\0')
-		// {
-		// 	if ((*f_p_s).flags[i] == ' ')
-		// 		(*f_p_s).flags[i] = '+';
-		// 	++i;
-		// }
-	// }
 }
 
 void	ft_flag_correction2(t_param **f_p_s)
