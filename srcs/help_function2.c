@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 19:40:19 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 19:40:48 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 20:36:35 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,31 @@ char		*ft_itoa_d(long long int value_i,
 	ft_result_len_int(f_p_s);
 	ft_write_tail_int(f_p_s, par.str);
 	return (par.str);
+}
+
+void		printf_help(size_t *i, size_t *len)
+{
+	i[0] = 0;
+	i[1] = 0;
+	*len = 0;
+}
+
+void		printf_help1(size_t *len, const char **ptr,
+	const char **str, size_t *i)
+{
+	*len = *str + (i[0]) - *ptr;
+	if (len != 0)
+	{
+		ft_write_str(*ptr, *len);
+		i[1] += *len;
+		*ptr = *str + ++(i[0]);
+	}
+	else
+		*ptr = *str + ++(i[0]);
+}
+
+void		printf_help2(size_t *i, const char **str, va_list elem)
+{
+	(i[2]) = (str[0]) + (i[0]) - (str[1]) + 1;
+	i[1] += ft_param_processing((str[1]), (i[2]), elem);
 }

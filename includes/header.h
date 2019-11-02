@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 19:38:47 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 20:29:16 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,5 +221,9 @@ int		help_umn(uint64_t *tmp, int pos, __uint128_t f, __uint128_t *s);
 void	init_help(__uint128_t *s, __uint128_t *c, int *i, int deg);
 void	ft_free_str(char *s1, char *s2);
 void		lib_int_help(int *i, t_param *f_p_s, int u);
+void		printf_help1(size_t *len, const char **ptr,
+	const char **str, size_t *i);
+void		printf_help(size_t *i, size_t *len);
+void		printf_help2(size_t *i, const char **str, va_list elem);
 
 #endif

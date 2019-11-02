@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:34:49 by fyuko             #+#    #+#             */
-/*   Updated: 2019/11/02 19:47:16 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 20:36:48 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,57 +23,43 @@ inline int	ft_is_conversion(const char c)
 	return (!(ft_strchr("diuoxXfFeEgGaAcsSpbnZU%", c) == NULL));
 }
 
+int			printf_help3(size_t *i, const char **str)
+{
+	if (((i[2]) = (str[0]) + (i[0]) - (str[1])))
+	{
+		i[1] += (i[2]);
+		ft_write_str((str[1]), (i[2]));
+	}
+	return (i[1]);
+}
+
 int			print_elem(const char *format, va_list elem)
 {
-	const char	*ptr;
-	const char	*str;
-	size_t		len;
-	int			res;
-	int			i;
-	int			j;
+	const char	*str[2];
+	size_t		i[3];
 
-	str = format;
-	res = 0;
-	ptr = str;
-	i = 0;
-	len = 0;
-	while (str[i])
+	(str[0]) = format;
+	(str[1]) = (str[0]);
+	printf_help(i, &(i[2]));
+	while ((str[0])[(i[0])])
 	{
-		j = 0;
-		if (str[i] == '%')
+		if ((str[0])[(i[0])] == '%')
 		{
-			len = str + i - ptr;
-			if (len != 0)
+			printf_help1(&(i[2]), &(str[1]), &(str[0]), i);
+			if (!(str[0])[(i[0])])
+				return (i[1]);
+			while (!(ft_is_conversion((str[0])[(i[0])])))
 			{
-				ft_write_str(ptr, len);
-				res += len;
-				ptr = str + ++i;
-			}
-			else
-				ptr = str + ++i;
-			if (!str[i])
-			{
-				return res;
-			}
-			while (!(ft_is_conversion(str[i])))
-			{
-				++j;
-				if (!str[++i])
+				if (!(str[0])[++(i[0])])
 					return (0);
 			}
-			len = str + i - ptr + 1;
-			res += ft_param_processing(ptr, len, elem);
-			ptr = str + ++i;
+			printf_help2(i, str, elem);
+			(str[1]) = (str[0]) + ++(i[0]);
 			continue;
 		}
-		++i;
+		++(i[0]);
 	}
-	if ((len = str + i - ptr))
-	{
-		res += len;
-		ft_write_str(ptr, len);
-	}
-	return (res);
+	return (printf_help3(i, str));
 }
 
 int			ft_printf(const char *format, ...)
