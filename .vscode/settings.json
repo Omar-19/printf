@@ -3,6 +3,8 @@
 		"algorithm": "c",
 		"chrono": "c",
 		"limits": "c",
-		"ratio": "c"
+		"ratio": "c",
+		"__functional_03": "c",
+		"functional": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 20:59:48 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/02 22:30:45 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ size_t			ft_strlen(const char *s);
 int				read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s);
 void			ft_string_processing(t_param *f_p_s, char *str, int flag);
 int				ft_result_len_float(t_param *f_p_s, char c);
-int				ft_atoi_n(const char *str, int *j);
+int				ft_atoi_n(const char *str, size_t *j);
 char			*ft_strchr(const char *s, int c);
 void			itoa_flag_handling(long long int value_i,
 	unsigned long long value_u, t_param *f_p_s, t_intp *par);
@@ -231,6 +231,12 @@ void	get_mm(void *a, char *s);
 char	*get_point_part(char *m, int p, int t);
 char	*drob1_new(char *s, size_t m1, int *max_d);
 char	*cr_dc_new(char *s, size_t m1, int max_deg, int i);
-
+inline void			par_help3(const char *str, size_t *i,
+	t_param *f_p_s, va_list elem);
+char	*read_help_1(const char *str, size_t len,
+	va_list elem, t_param *f_p_s);
+char	*read_hex_help1(const char *str, size_t *i,
+	va_list elem, t_param *form_place_spc);
+void	read_char_help(char *ptr, va_list elem, t_param *f_p_s);
 
 #endif
