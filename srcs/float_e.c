@@ -6,7 +6,7 @@
 /*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:26:02 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/03 00:32:37 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/03 13:28:06 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ char	*float_de(t_double d, int prs, int *sign)
 	char	mantis[54];
 	int		p;
 
-	printf("dadad");
 	mantis[0] = '1';
 	get_mm(&d.numd, mantis);
 	*sign = (*(__uint128_t *)(&d.numld) >> 63 & 1);
