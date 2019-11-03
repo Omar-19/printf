@@ -6,7 +6,7 @@
 /*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 16:34:45 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/03 13:30:23 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/03 13:34:12 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*res_last4_g(char *des, char *point, int sign)
 {
 	char	*jk;
-	char	rs[8];
+	char	rs[8 + strlen(point)];
 	int		i;
 
 	memset(rs, 0, 8);
