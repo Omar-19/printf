@@ -35,15 +35,16 @@ char	hex_intc(char *s, int p)
 	return (c);
 }
 
-char	*point_hex(void *a)
+char	*point_hex(void *a, int prs)
 {
 	char	res[17];
 	char	buf[5];
+	char	r[17 + prs];
 	int		j;
 	int		i;
 
 	i = 63;
-	j = 2;
+	j = 0;
 	memset(res, '0', 17);
 	while (i >= 0)
 	{
@@ -57,9 +58,14 @@ char	*point_hex(void *a)
 	j = 0;
 	while (res[j] == '0')
 		j++;
-	res[j - 2] = '0';
-	res[j - 1] = 'x';
-	return (strdup(res + j - 2));
+	ft_memset(r, '0', 17 + prs);
+	r[0] = '0';
+	r[1] = 'x';
+	if ((size_t)prs > ft_strlen(res + j))
+		ft_strcpy(r + 2 + prs - ft_strlen(res + j), res + j);
+	else
+		ft_strcpy(r + 2, res + j);
+	return (strdup(r));
 }
 
 char	*hex_int(void *a, int p, int type)

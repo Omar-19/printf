@@ -98,7 +98,7 @@ void			ft_flag_correction_1(t_param *f_p_s);
 void			ft_flag_correction(t_param *f_p_s);
 void			ft_write_tail(t_param *f_p_s, char c, char *ptr);
 char			hex_intc(char *s, int p);
-char			*point_hex(void *a);
+char			*point_hex(void *a, int prs);
 char			octa_intc(char *s);
 char			*octa_int(void *a, int ltype);
 char			*ft_strnew_char(int size, char c);

@@ -46,8 +46,8 @@ void	read_char_help(char *ptr, va_list elem, t_param *f_p_s)
 	else
 	{
 		f_p_s->is_pres = 0;
+		ptr = point_hex(&ptr, f_p_s->precision);
 		f_p_s->precision = 0;
-		ptr = point_hex(&ptr);
 		// printf("ptr = %s\n", ptr);
 	}
 	if (f_p_s->is_pres)
