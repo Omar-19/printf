@@ -48,11 +48,9 @@ void	read_char_help(char *ptr, va_list elem, t_param *f_p_s)
 		f_p_s->is_pres = 0;
 		ptr = point_hex(&ptr, f_p_s->precision);
 		f_p_s->precision = 0;
-		// printf("ptr = %s\n", ptr);
 	}
 	if (f_p_s->is_pres)
 	{
-		// printf("--------\n");
 		a = ft_strnew(ft_strlen(ptr) + f_p_s->precision);
 		strcat(a, ptr);
 		st = ft_strnewc(f_p_s->precision, '0');

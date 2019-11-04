@@ -87,13 +87,20 @@ void	ft_free_str(char *s1, char *s2)
 	free(s2);
 }
 
+void	hhelp_hex_oc(t_param *f_p_s, char *ptr, char ho)
+{
+	if (f_p_s->is_hash && (ho == 'o'))
+	{
+		f_p_s->is_hash = 0;
+		if (f_p_s->len >= f_p_s->precision)
+			(*ptr != '0') ? (f_p_s->precision = f_p_s->len + 1) : 0;
+	}
+}
+
 void	ft_write_tail_xo(t_param *f_p_s, char *ptr, char ho)
 {
 	char	*str[2];
 
-
-	//printf("str = %s\n", ptr);
-	// printf("f_p_s->is_pres = %d\n", f_p_s->is_pres);
 	if (f_p_s->is_pres && (f_p_s->precision == 0))
 	{
 		f_p_s->is_pres = 0;
@@ -103,12 +110,7 @@ void	ft_write_tail_xo(t_param *f_p_s, char *ptr, char ho)
 			ptr = "";
 		}
 	}
-	if (f_p_s->is_hash && (ho == 'o'))
-	{
-		f_p_s->is_hash = 0;
-		if (f_p_s->len >= f_p_s->precision)
-			(*ptr != '0') ? (f_p_s->precision = f_p_s->len + 1) : 0;
-	}
+	hhelp_hex_oc(f_p_s, ptr, ho);
 	ft_result_len_xo(f_p_s);
 	if (f_p_s->is_hash && (*ptr == '0'))
 		f_p_s->is_hash = 0;

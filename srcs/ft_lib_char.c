@@ -14,7 +14,6 @@
 
 void		ft_result_len_str(t_param *f_p_s)
 {
-	// printf("f_p_s->precision = %d f_p_s->is_pres = %d\n", f_p_s->precision, f_p_s->is_pres);
 	(f_p_s->is_pres && !f_p_s->precision) ? (f_p_s->len = 0) : 0;
 	(f_p_s->is_pres && (f_p_s->precision < f_p_s->len)) ?
 		(f_p_s->len = f_p_s->precision) : 0;
@@ -23,7 +22,6 @@ void		ft_result_len_str(t_param *f_p_s)
 		f_p_s->result = f_p_s->width;
 	((f_p_s->width = f_p_s->result - f_p_s->len) > 0) ?
 		0 : (f_p_s->width = 0);
-	// printf("RL = %d\n", f_p_s->result);
 }
 
 void		ft_result_len_char(t_param *f_p_s)
@@ -37,7 +35,6 @@ void		ft_write_tail_str(t_param *f_p_s, char *ptr)
 {
 	char *str;
 
-	// printf("------\n");
 	str = NULL;
 	ft_result_len_str(f_p_s);
 	if (!f_p_s->is_minus && f_p_s->is_zero)
