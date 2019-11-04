@@ -12,27 +12,6 @@
 
 #include "header.h"
 
-char	*res_last4_g(char *des, char *point, int sign)
-{
-	char	*jk;
-	char	rs[8 + strlen(point)];
-	int		i;
-
-	memset(rs, 0, 8);
-	jk = rs + 1;
-	ft_strcat(rs + 1, des);
-	ft_strcat(rs + 1, ".");
-	ft_strcat(rs + 1, point);
-	okrug1(&jk, 6 - strlen(des));
-	if (sign == 1)
-		set_min(&jk, '-');
-	i = strlen(jk) - 1;
-	while (jk[i] == '0')
-		i--;
-	jk[i + 1] = '\0';
-	return (strdup(jk));
-}
-
 char	*res_last3_g(char *point, int prs, int sign)
 {
 	char	*jk;
@@ -54,27 +33,27 @@ char	*res_last3_g(char *point, int prs, int sign)
 	return (strdup(jk));
 }
 
-char	*res_last_g(char *dc, char *point, int prs, int sign)
+char	*res_last_g(char *resdec, char *pt, int prs, int sign)
 {
-	char	*resdec;
-	char	rs[ft_strlen(dc) + 5 + ft_strlen(point) + raz(ft_strlen(dc))];
 	char	*jk;
-	char	*dec_x;
 	int		ck;
+	char	rs[ft_strlen(resdec) + 5 + ft_strlen(pt) + raz(ft_strlen(resdec))];
 
-	resdec = dc;
-	dec_x = point;
 	if (strcmp(resdec, "0") == 0)
-		return (res_last3_g(dec_x, 6, sign));
-	if (strlen(resdec) < 6)
-		return (res_last4_g(resdec, dec_x, sign));
-	memset(rs, 0, ft_strlen(dc) + 5 + ft_strlen(point)
-		+ raz(ft_strlen(dc)));
+		return (res_last3_g(pt, 6, sign));
+	if (strlen(resdec) <= 6)
+		return (res_last4_g(resdec, pt, sign));
+	memset(rs, 0, ft_strlen(resdec) + 5 + ft_strlen(pt)
+		+ raz(ft_strlen(resdec)));
 	jk = rs + 1;
 	ft_strncat(rs + 1, resdec, 1);
-	ft_strcat(rs + 1, ".");
-	ft_strncat(rs + 1, resdec + 1, 5);
-	ck = okrug1(&jk, prs);
+	ck = 0;
+	if (num_zer(resdec + 1) <= 5)
+	{
+		ft_strcat(rs + 1, ".");
+		ft_strncat(rs + 1, resdec + 1, 5);
+		ck = okrug1(&jk, prs);
+	}
 	(sign == 1) ? set_min(&jk, '-') : 0;
 	ft_strcat(jk, "e+");
 	ft_strcat(jk, ft_uint64toa2(strlen(resdec) - 1, 0));

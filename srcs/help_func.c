@@ -61,3 +61,13 @@ int		ft_only_space(char *str)
 	}
 	return (1);
 }
+
+int		num_zer(char *point)
+{
+	int sp;
+
+	sp = 0;
+	while (point[sp] == '0')
+		++sp;
+	return (sp);
+}

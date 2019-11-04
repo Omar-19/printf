@@ -100,7 +100,7 @@ void			ft_write_tail(t_param *f_p_s, char c, char *ptr);
 char			hex_intc(char *s, int p);
 char			*point_hex(void *a);
 char			octa_intc(char *s);
-char			*octa_int(void *a);
+char			*octa_int(void *a, int ltype);
 char			*ft_strnew_char(int size, char c);
 int				ft_only_space(char *str);
 int				read_variable_float(const char *str, size_t len,
@@ -188,7 +188,7 @@ char			*float_lde(t_double d, int prs, int *sign);
 char			*bit_help(va_list elem);
 char			*float_ldg(t_double d, int prs, int *sign);
 char			*float_dg(t_double d, int prs, int *sign);
-char			*res_last_g(char *dc, char *point, int prs, int sign);
+char			*res_last_g(char *dc, char *pt, int prs, int sign);
 char			*res_last3_g(char *point, int prs, int sign);
 char			*res_last4_g(char *des, char *point, int sign);
 char			*drob1_new(char *s, size_t m1, int *max_d);
@@ -240,5 +240,5 @@ void			read_char_help(char *ptr, va_list elem, t_param *f_p_s);
 char			*get_float_all_e(char *m, int p, int prs, int sign);
 int				read_variable_int1(const char *str, size_t len,
 	va_list elem, t_param *form_place_spc);
-
+int				num_zer(char *point);
 #endif

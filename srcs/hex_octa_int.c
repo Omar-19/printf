@@ -55,7 +55,7 @@ char	*point_hex(void *a)
 	}
 	res[++j] = 0;
 	j = 0;
-	while (res[j] == '0' && j < 15)
+	while (res[j] == '0')
 		j++;
 	res[j - 2] = '0';
 	res[j - 1] = 'x';
@@ -89,14 +89,14 @@ char	*hex_int(void *a, int p, int type)
 	return (strdup(res + j));
 }
 
-char	*octa_int(void *a)
+char	*octa_int(void *a, int ltype)
 {
 	char	res[23];
 	char	buf[4];
 	int		j;
 	int		i;
 
-	i = 64 - 1;
+	i = ltype - 1;
 	j = -1;
 	ft_memset(res, '0', 22);
 	ft_memset(buf, '0', 3);
@@ -112,8 +112,11 @@ char	*octa_int(void *a)
 		--i;
 	}
 	res[++j] = 0;
+	(ltype == 32) ? (i = 10) : 0;
+	(ltype != 32) ? (i = 21) : 0;
 	j = 0;
-	while (res[j] == '0' && j < 21)
+	i = strlen(res) - 1;
+	while (res[j] == '0' && j < i)
 		j++;
 	return (strdup(res + j));
 }
@@ -125,15 +128,35 @@ char	*hex_oct_main(va_list elem, t_param *f_p_s, char ho, int ltype)
 
 	if (ltype == 1)
 		a = va_arg(elem, long long);
+	else if (ltype == -1)
+	{
+		a = (unsigned char)va_arg(elem, long long);
+		if (a == -1)
+			a = 255;
+	}
+	else if (ltype == -2)
+		a = (unsigned short)va_arg(elem, long long);
 	else
+	{
 		a = va_arg(elem, long long);
+		if (a == -1)
+			a = 4294967295;
+	}	
 	if (ho == 'X' || ho == 'x')
+	{
+		(ltype== -1) ? ltype = 1: 0;
 		ptr = hex_int(&a, 'x' - ho, 32 + 32 * ltype);
+	}
 	else if (ho == 'o')
-		ptr = octa_int(&a);
+	{
+		(ltype == -2) ? ltype = 0: 0;
+		(ltype == -1) ? ltype = 0: 0;
+		ptr = octa_int(&a, 32 + 32 * ltype);
+	}
 	else
 		ptr = bit_out(&a);
 	(*f_p_s).len = ft_strlen(ptr);
+	// printf("---------------%s\n", ptr);
 	ft_write_tail_xo(f_p_s, ptr, ho);
 	return (ptr);
 }

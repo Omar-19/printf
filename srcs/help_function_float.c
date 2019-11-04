@@ -80,3 +80,24 @@ char	*cr_dc_new(char *s, size_t m1, int max_deg, int i)
 	}
 	return (cr_sdc(res, res_n, m1));
 }
+
+char	*res_last4_g(char *des, char *point, int sign)
+{
+	char	*jk;
+	char	rs[8 + strlen(point)];
+	int		i;
+
+	memset(rs, 0, 8);
+	jk = rs + 1;
+	ft_strcat(rs + 1, des);
+	ft_strcat(rs + 1, ".");
+	ft_strcat(rs + 1, point);
+	okrug1(&jk, 6 - strlen(des));
+	if (sign == 1)
+		set_min(&jk, '-');
+	i = strlen(jk) - 1;
+	while (jk[i] == '0')
+		i--;
+	jk[i + 1] = '\0';
+	return (strdup(jk));
+}

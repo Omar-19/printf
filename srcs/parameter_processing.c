@@ -33,18 +33,20 @@ int			ft_atoi_n(const char *str, size_t *j)
 void		par_help3(const char *str, size_t *i,
 	t_param *f_p_s, va_list elem)
 {
+	f_p_s->is_width = 0;
+	f_p_s->width = 0;
 	if (*(str + (i[1])) == '*')
 	{
 		(*f_p_s).width = va_arg(elem, int);
+		if (f_p_s->width < 0)
+		{
+			f_p_s->width *= -1;
+			f_p_s->is_minus = 1;
+		}
 		++(i[1]);
 	}
-	else if (*(str + (i[1])) >= '0' && *(str + (i[1])) <= '9')
+	if (*(str + (i[1])) >= '0' && *(str + (i[1])) <= '9')
 		(*f_p_s).width = ft_atoi_n(str + (i[1]), &(i[1]));
-	else
-	{
-		f_p_s->is_width = 0;
-		(*f_p_s).width = 0;
-	}
 }
 
 char		*read_help_1(const char *str, size_t len,
@@ -79,6 +81,7 @@ int			ft_param_processing(const char *str,
 		return (1);
 	}
 	ft_format_specification_description(str, len, elem, &form_place_spc);
+	
 	if ((l = read_variable_percent(str, len, &form_place_spc)))
 		return (l);
 	else if ((l = read_variable_int1(str, len, elem, &form_place_spc)))

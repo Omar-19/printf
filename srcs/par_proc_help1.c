@@ -80,8 +80,10 @@ int					read_variable_char(const char *str, size_t len,
 	{
 		ptr = va_arg(elem, char*);
 		if (!ptr)
+		{
 			(f_p_s->is_pres && !f_p_s->precision) ? (ptr = "") :
 				(ptr = "(null)");
+		}
 		f_p_s->len = ft_strlen(ptr);
 		ft_write_tail_str(f_p_s, ptr);
 		return (f_p_s->result);

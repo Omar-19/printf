@@ -91,10 +91,17 @@ void	ft_write_tail_xo(t_param *f_p_s, char *ptr, char ho)
 {
 	char	*str[2];
 
+
+	//printf("str = %s\n", ptr);
+	// printf("f_p_s->is_pres = %d\n", f_p_s->is_pres);
 	if (f_p_s->is_pres && (f_p_s->precision == 0))
 	{
-		f_p_s->len = 0;
-		ptr = "";
+		f_p_s->is_pres = 0;
+		if (*ptr == '0')
+		{
+			f_p_s->len = 0;
+			ptr = "";
+		}
 	}
 	if (f_p_s->is_hash && (ho == 'o'))
 	{

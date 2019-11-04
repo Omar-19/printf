@@ -12,19 +12,12 @@
 
 #include "header.h"
 
-char	*res_last3(char *point, int prs, int sign)
+char	*res_last3(char *point, int prs, int sign, int sp)
 {
-	int		sp;
 	char	*jk;
 	int		ck;
-
-	sp = 0;
-	while (*point == '0')
-	{
-		++sp;
-		++point;
-	}
 	char	rs[ft_strlen(point) + 4 + raz(sp)];
+
 	memset(rs, 0, ft_strlen(point) + 4 + raz(sp));
 	jk = rs + 1;
 	ft_strncat(rs + 1, point, 1);
@@ -51,7 +44,7 @@ char	*res_last2(char *dc, char *point, int prs, int sign)
 	int		ck;
 
 	if (strcmp(dc, "0") == 0)
-		return (res_last3(point, prs, sign));
+		return (res_last3(point, prs, sign, num_zer(point)));
 	memset(rs, 0, ft_strlen(dc) + 5
 		+ ft_strlen(point) + raz(ft_strlen(dc)) + prs);
 	jk = rs + 2;
