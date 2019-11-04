@@ -53,6 +53,9 @@ parameter_processing.c \
 sum_funchelp.c \
 sum_function.c \
 new_float.c \
+par_proc_help.c \
+par_proc_help1.c \
+par_proc_help2.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

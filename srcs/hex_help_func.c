@@ -31,7 +31,10 @@ void	read_char_help(char *ptr, va_list elem, t_param *f_p_s)
 	f_p_s->is_pres = 0;
 	f_p_s->precision = 0;
 	ptr = va_arg(elem, void *);
-	(!ptr) ? (ptr = strdup("0x0")) : (ptr = point_hex(&ptr));
+	if (!ptr)
+		ptr = strdup("0x0");
+	else
+		ptr = point_hex(&ptr);
 	f_p_s->len = ft_strlen(ptr);
 	ft_write_tail_str(f_p_s, ptr);
 	(ptr) ? free(ptr) : 0;

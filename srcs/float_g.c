@@ -56,12 +56,11 @@ char	*res_last3_g(char *point, int prs, int sign)
 
 char	*res_last_g(char *dc, char *point, int prs, int sign)
 {
-	char *resdec;
-	char rs[ft_strlen(dc) + 5 + ft_strlen(point)
-		+ raz(ft_strlen(dc))];
-	char *jk;
-	char *dec_x;
-	int ck;
+	char	*resdec;
+	char	rs[ft_strlen(dc) + 5 + ft_strlen(point) + raz(ft_strlen(dc))];
+	char	*jk;
+	char	*dec_x;
+	int		ck;
 
 	resdec = dc;
 	dec_x = point;
@@ -80,7 +79,7 @@ char	*res_last_g(char *dc, char *point, int prs, int sign)
 	ft_strcat(jk, "e+");
 	ft_strcat(jk, ft_uint64toa2(strlen(resdec) - 1, 0));
 	if (ck && sign)
-		return(strdup(rs));	
+		return (strdup(rs));
 	return (strdup(jk));
 }
 

@@ -83,12 +83,14 @@ void			ft_result_len_char(t_param *f_p_s);
 void			ft_write_tail_char(t_param *f_p_s, char c);
 void			ft_write_tail_str(t_param *f_p_s, char *ptr);
 void			ft_result_len_xo(t_param *f_p_s);
-void			ft_xo_write_min(t_param *f_p_s, char *ptr, char ho, char *str[2]);
+void			ft_xo_write_min(t_param *f_p_s, char *ptr,
+	char ho, char *str[2]);
 void			ft_xo_write(t_param *f_p_s, char *ptr, char ho, char *str[2]);
 void			ft_write_tail_xo(t_param *f_p_s, char *ptr, char ho);
 void			ft_flag_correction3(t_param *f_p_s);
 void			ft_flag_correction2(t_param **f_p_s);
-void			ft_string_processing1(t_param *f_p_s, int i[3], int flag, char *str);
+void			ft_string_processing1(t_param *f_p_s, int i[3],
+	int flag, char *str);
 void			ft_write1(t_param *f_p_s, char c, char *ptr);
 void			ft_write2(t_param *f_p_s, char c, char *ptr, int i);
 void			ft_write_min(char *str, int i, char *ptr, t_param *f_p_s);
@@ -121,7 +123,6 @@ int				sum_m(uint64_t *res, uint64_t *tmp, int min, int ndb);
 char			*drob(char *s, int t);
 char			*drob1(char *s, size_t m1, int max_d);
 char			*drob2(uint64_t *res, int t, int m1, int res_n, int max_d);
-// void			umn10(uint64_t *tmp, int *min, int ndb);
 char			*del(uint64_t *tmp, int deg, int ndb, int t);
 char			*del1_one(uint64_t *tmp, int deg, int ndb, int t);
 char			*mastos(int *a, int t);
@@ -150,7 +151,8 @@ int				sum_mhelp6(__uint128_t *a, uint64_t *res, int pos);
 char			*ft_strnewc(size_t n, char c);
 char			*get_val(char *s);
 size_t			ft_strlen(const char *s);
-int				read_variable_char(const char *str, size_t len, va_list elem, t_param *f_p_s);
+int				read_variable_char(const char *str, size_t len,
+	va_list elem, t_param *f_p_s);
 void			ft_string_processing(t_param *f_p_s, char *str, int flag);
 int				ft_result_len_float(t_param *f_p_s, char c);
 int				ft_atoi_n(const char *str, size_t *j);
@@ -172,74 +174,71 @@ int				ft_is_conversion(const char c);
 int				ft_is_valid_param(const char c);
 int				print_elem(const char *format, va_list elem);
 int				ft_printf(const char *format, ...);
-char			*hex_oct_main(va_list elem, t_param *form_place_spc, char ho, int ltype);
-char            *bit_out(void *a);
-char            *create_mantisfd(char *s);
-char            *res_last(char *dc, char *point, int prs, int sign);
-char            *float_de(t_double d, int prs, int *sign);
-char            *res_last2(char *dc, char *point, int prs, int sign);
-int                raz(__uint128_t num);
-char            *ft_uint64toa(uint64_t a, int d);
+char			*hex_oct_main(va_list elem, t_param *form_place_spc,
+	char ho, int ltype);
+char			*bit_out(void *a);
+char			*create_mantisfd(char *s);
+char			*res_last(char *dc, char *point, int prs, int sign);
+char			*float_de(t_double d, int prs, int *sign);
+char			*res_last2(char *dc, char *point, int prs, int sign);
+int				raz(__uint128_t num);
+char			*ft_uint64toa(uint64_t a, int d);
 char			*ft_uint64toa2(uint64_t a, int d);
 char			*float_lde(t_double d, int prs, int *sign);
 char			*bit_help(va_list elem);
-
 char			*float_ldg(t_double d, int prs, int *sign);
 char			*float_dg(t_double d, int prs, int *sign);
 char			*res_last_g(char *dc, char *point, int prs, int sign);
 char			*res_last3_g(char *point, int prs, int sign);
 char			*res_last4_g(char *des, char *point, int sign);
-
-char	*drob1_new(char *s, size_t m1, int *max_d);
-char	*get_point_part(char *m, int p, int t);
-char	*res_last_new(char *dec, char *point, int prs, int sign);
-
-char	*new_float_ld(t_double d, int prs);
-char	*new_float_d(t_double d, int prs);
-char	*get_float_all(char *m, int p, int prs, int sign);
-char	*res_last_new(char *dec, char *point, int prs, int sign);
-char	*get_dec_part(char *m, int p);
-char	*cr_dc_new(char *s, size_t m1, int max_deg, int i);
-char	*drob1_new(char *s, size_t m1, int *max_d);
-char	*get_point_part(char *m, int p, int t);
-char	*get_point_part2(char *m, int t);
-void	get_mantis_d(t_double d, char *s, int type);
-
-__uint128_t pow_5(int n);
-void	init_help5(__uint128_t *s, __uint128_t *c, int *i, int deg);
-void	umn5_1(uint64_t *tmp, int deg, int *min, int ndb);
-void	umn5(uint64_t *tmp, int deg, int *min, int ndb);
-char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg);
-int 	col_zero(uint64_t *a, int min, size_t m1, int max_deg);
-void	umn10(uint64_t *tmp, int deg, int *min, int ndb);
-void	pres2(int *a, char **s, char **d);
-void	pres1(int *a, char *s, char *p, int t);
-int		check_c(char *s);
-int		umpres(__uint128_t *a, uint64_t *tmp, int pos);
-void	break_umn(uint64_t *tmp, int pos, int *min, __uint128_t s);
-int		help_umn(uint64_t *tmp, int pos, __uint128_t f, __uint128_t *s);
-void	init_help(__uint128_t *s, __uint128_t *c, int *i, int deg);
-void	ft_free_str(char *s1, char *s2);
-void		lib_int_help(int *i, t_param *f_p_s, int u);
-void		printf_help1(size_t *len, const char **ptr,
+char			*drob1_new(char *s, size_t m1, int *max_d);
+char			*get_point_part(char *m, int p, int t);
+char			*res_last_new(char *dec, char *point, int prs, int sign);
+char			*new_float_ld(t_double d, int prs);
+char			*new_float_d(t_double d, int prs);
+char			*get_float_all(char *m, int p, int prs, int sign);
+char			*res_last_new(char *dec, char *point, int prs, int sign);
+char			*get_dec_part(char *m, int p);
+char			*cr_dc_new(char *s, size_t m1, int max_deg, int i);
+char			*drob1_new(char *s, size_t m1, int *max_d);
+char			*get_point_part(char *m, int p, int t);
+char			*get_point_part2(char *m, int t);
+void			get_mantis_d(t_double d, char *s, int type);
+__uint128_t		pow_5(int n);
+void			init_help5(__uint128_t *s, __uint128_t *c, int *i, int deg);
+void			umn5_1(uint64_t *tmp, int deg, int *min, int ndb);
+void			umn5(uint64_t *tmp, int deg, int *min, int ndb);
+char			*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg);
+int				col_zero(uint64_t *a, int min, size_t m1, int max_deg);
+void			umn10(uint64_t *tmp, int deg, int *min, int ndb);
+void			pres2(int *a, char **s, char **d);
+void			pres1(int *a, char *s, char *p, int t);
+int				check_c(char *s);
+int				umpres(__uint128_t *a, uint64_t *tmp, int pos);
+void			break_umn(uint64_t *tmp, int pos, int *min, __uint128_t s);
+int				help_umn(uint64_t *tmp, int pos, __uint128_t f, __uint128_t *s);
+void			init_help(__uint128_t *s, __uint128_t *c, int *i, int deg);
+void			ft_free_str(char *s1, char *s2);
+void			lib_int_help(int *i, t_param *f_p_s, int u);
+void			printf_help1(size_t *len, const char **ptr,
 	const char **str, size_t *i);
-void		printf_help(size_t *i, size_t *len);
-void		printf_help2(size_t *i, const char **str, va_list elem);
-void	help_octa1(char *buf);
-char	octa_intc(char *s);
-void	get_mm(void *a, char *s);
-char	*get_point_part(char *m, int p, int t);
-char	*drob1_new(char *s, size_t m1, int *max_d);
-char	*cr_dc_new(char *s, size_t m1, int max_deg, int i);
-inline void			par_help3(const char *str, size_t *i,
+void			printf_help(size_t *i, size_t *len);
+void			printf_help2(size_t *i, const char **str, va_list elem);
+void			help_octa1(char *buf);
+char			octa_intc(char *s);
+void			get_mm(void *a, char *s);
+char			*get_point_part(char *m, int p, int t);
+char			*drob1_new(char *s, size_t m1, int *max_d);
+char			*cr_dc_new(char *s, size_t m1, int max_deg, int i);
+void			par_help3(const char *str, size_t *i,
 	t_param *f_p_s, va_list elem);
-char	*read_help_1(const char *str, size_t len,
+char			*read_help_1(const char *str, size_t len,
 	va_list elem, t_param *f_p_s);
-char	*read_hex_help1(const char *str, size_t *i,
+char			*read_hex_help1(const char *str, size_t *i,
 	va_list elem, t_param *form_place_spc);
-void	read_char_help(char *ptr, va_list elem, t_param *f_p_s);
+void			read_char_help(char *ptr, va_list elem, t_param *f_p_s);
+char			*get_float_all_e(char *m, int p, int prs, int sign);
+int				read_variable_int1(const char *str, size_t len,
+	va_list elem, t_param *form_place_spc);
 
-char	*get_float_all_e(char *m, int p, int prs, int sign);
-inline void			par_help3(const char *str, size_t *i,
-	t_param *f_p_s, va_list elem);
 #endif
