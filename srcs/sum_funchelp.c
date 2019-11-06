@@ -29,9 +29,9 @@ char	*get_val(char *s)
 	char *res;
 	char *l;
 
-	l = strrchr(s, '1');
+	l = ft_strrchr(s, '1');
 	res = ft_strnew(l - s + 1);
-	memmove(res, s, l - s + 1);
+	ft_memmove(res, s, l - s + 1);
 	return (res);
 }
 
@@ -40,6 +40,6 @@ char	*ft_strnewc(size_t n, char c)
 	char *res;
 
 	res = ft_strnew(n);
-	memset(res, c, n);
+	ft_memset(res, c, n);
 	return (res);
 }

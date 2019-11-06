@@ -16,10 +16,10 @@ char	*create_mantisfd(char *s)
 {
 	char	*res;
 
-	if (!(res = ft_strnew(strlen(s) + 1)))
+	if (!(res = ft_strnew(ft_strlen(s) + 1)))
 		return (NULL);
 	res[0] = '1';
-	memmove(res + 1, s, strlen(s));
+	ft_memmove(res + 1, s, ft_strlen(s));
 	return (res);
 }
 
@@ -32,11 +32,11 @@ char	*res_last(char *dc, char *point, int prs, int sign)
 
 	resdec = main_c(dc);
 	dec_x = drob(point + 1, prs);
-	rs = ft_strnew(strlen(resdec) + 3 + strlen(dec_x));
+	rs = ft_strnew(ft_strlen(resdec) + 3 + ft_strlen(dec_x));
 	jk = rs + 1;
-	strcat(rs + 1, resdec);
-	strcat(rs + 1, ".");
-	strcat(rs + 1, dec_x);
+	ft_strcat(rs + 1, resdec);
+	ft_strcat(rs + 1, ".");
+	ft_strcat(rs + 1, dec_x);
 	okrug1(&jk, prs);
 	if (sign == 1)
 		set_min(&jk, '-');
@@ -54,7 +54,7 @@ char	*float_f(t_double d, int prs, int *sign)
 	ret_byties_float(d, sign, 32, l);
 	o1 = create_mantisfd(l + 9);
 	point = main_p(&o1, RETF(d.numf));
-	dc = memmove(ft_strnew(point - o1), o1, point - o1);
+	dc = ft_memmove(ft_strnew(point - o1), o1, point - o1);
 	return (res_last(dc, point, prs, *sign));
 }
 
@@ -69,7 +69,7 @@ char	*float_d(t_double d, int prs, int *sign)
 	ret_byties_float(d, sign, 64, l);
 	o1 = create_mantisfd(l + 12);
 	point = main_p(&o1, RETD(d.numd));
-	dc = memmove(ft_strnew(point - o1), o1, point - o1);
+	dc = ft_memmove(ft_strnew(point - o1), o1, point - o1);
 	return (res_last(dc, point, prs, *sign));
 }
 
@@ -82,8 +82,8 @@ char	*float_ld(t_double d, int prs, int *sign)
 
 	*sign = 0;
 	ret_byties_float(d, sign, 80, l);
-	o1 = strdup(l + 16);
+	o1 = ft_strdup(l + 16);
 	point = main_p(&o1, RETLD(d.numld));
-	dc = memmove(ft_strnew(point - o1), o1, point - o1);
+	dc = ft_memmove(ft_strnew(point - o1), o1, point - o1);
 	return (res_last(dc, point, prs, *sign));
 }

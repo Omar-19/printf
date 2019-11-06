@@ -20,7 +20,7 @@ char	*bit_out(void *a)
 
 	i = 63;
 	j = -1;
-	memset(res, '0', 64);
+	ft_memset(res, '0', 64);
 	while (i >= 0)
 	{
 		res[++j] = ((*(__uint128_t *)a >> i) & 1) + '0';
@@ -30,7 +30,7 @@ char	*bit_out(void *a)
 	j = 0;
 	while (res[j] == '0' && j < 63)
 		j++;
-	return (strdup(res + j));
+	return (ft_strdup(res + j));
 }
 
 int		check_c(char *s)
@@ -82,7 +82,7 @@ int		okrug1(char **d, int t)
 		if (i[0] == -1 && (*(s - 1) = '1'))
 			pres2(&i[1], &s, d);
 	}
-	memset(point + t + 1, '\0', strlen(point));
-	(t == 0) ? (memset(point, '\0', strlen(point))) : 0;
+	ft_memset(point + t + 1, '\0', ft_strlen(point));
+	(t == 0) ? (ft_memset(point, '\0', ft_strlen(point))) : 0;
 	return (i[1]);
 }

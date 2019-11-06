@@ -27,9 +27,9 @@ char	*drob(char *s, int t)
 	int		n1;
 	size_t	m1;
 
-	max_deg = strlen(s);
+	max_deg = ft_strlen(s);
 	n1 = max_deg / 4 + 1;
-	if (max_deg == 0 || !strrchr(s, '1'))
+	if (max_deg == 0 || !ft_strrchr(s, '1'))
 		return (ft_strnewc(t, '0'));
 	(t < 17) ? t = 18 : t++;
 	m1 = (n1 * 3) / 19 + 1;
@@ -54,12 +54,12 @@ char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg)
 	len = 19 * (m1 - min) + l;
 	if (!(res = ft_strnew(len)))
 		return (NULL);
-	memset(res, '0', len);
+	ft_memset(res, '0', len);
 	res[l] = '\0';
-	strcat(res, ft_uint64toa(a[min++], 0));
+	ft_strcat(res, ft_uint64toa(a[min++], 0));
 	while ((size_t)min < m1)
 	{
-		strcat(res, ft_uint64toa(a[min], 1));
+		ft_strcat(res, ft_uint64toa(a[min], 1));
 		++min;
 	}
 	return (res);

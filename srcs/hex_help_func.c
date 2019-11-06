@@ -39,9 +39,9 @@ void	read_char_help(char *ptr, va_list elem, t_param *f_p_s)
 	if (!ptr)
 	{
 		if (f_p_s->is_pres)
-			ptr = strdup("0x");
+			ptr = ft_strdup("0x");
 		else
-			ptr = strdup("0x0");
+			ptr = ft_strdup("0x0");
 	}
 	else
 	{
@@ -52,10 +52,10 @@ void	read_char_help(char *ptr, va_list elem, t_param *f_p_s)
 	if (f_p_s->is_pres)
 	{
 		a = ft_strnew(ft_strlen(ptr) + f_p_s->precision);
-		strcat(a, ptr);
+		ft_strcat(a, ptr);
 		st = ft_strnewc(f_p_s->precision, '0');
 		free(ptr);
-		ptr = strdup(ft_strcat(a, st));
+		ptr = ft_strdup(ft_strcat(a, st));
 		free(a);
 		free(st);
 		f_p_s->is_pres = 0;

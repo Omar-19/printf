@@ -18,11 +18,11 @@ char	*main_p(char **s, int pos)
 
 	if (pos >= 0)
 	{
-		res = ft_strnewc(pos + strlen(*s) + 1, '0');
-		memmove(res, *s, strlen(*s));
+		res = ft_strnewc(pos + ft_strlen(*s) + 1, '0');
+		ft_memmove(res, *s, ft_strlen(*s));
 		res[pos + 1] = ',';
-		if (pos < 0 || ((unsigned long)pos < strlen(*s) - 1))
-			memmove(res + pos + 2, *s + pos + 1, strlen(*s + pos));
+		if (pos < 0 || ((unsigned long)pos < ft_strlen(*s) - 1))
+			ft_memmove(res + pos + 2, *s + pos + 1, ft_strlen(*s + pos));
 		free(*s);
 		*s = res;
 		return (&res[pos + 1]);
@@ -30,8 +30,8 @@ char	*main_p(char **s, int pos)
 	else
 	{
 		pos = -pos + 1;
-		res = ft_strnewc(strlen(*s) + pos, '0');
-		memmove(res + pos, *s, strlen(*s));
+		res = ft_strnewc(ft_strlen(*s) + pos, '0');
+		ft_memmove(res + pos, *s, ft_strlen(*s));
 		res[1] = ',';
 		free(*s);
 		*s = res;
@@ -44,12 +44,12 @@ char	*set_p(char *s, int pos)
 	char	*l;
 	int		i;
 
-	l = ft_strnew(strlen(s) + pos + 1);
+	l = ft_strnew(ft_strlen(s) + pos + 1);
 	i = -1;
 	while (++i < pos)
 		l[i] = s[i];
 	l[pos] = ',';
-	memmove(l + pos + 1, s + i, strlen(s + i));
+	ft_memmove(l + pos + 1, s + i, ft_strlen(s + i));
 	return (l);
 }
 
@@ -65,12 +65,12 @@ char	*float_c(va_list a, int prs, char *type)
 	t_double		d;
 	int				sign;
 
-	if (!strncmp("Lf", type, 2))
+	if (!ft_strncmp("Lf", type, 2))
 	{
 		d.numld = va_arg(a, long double);
 		return (float_ld(d, prs, &sign));
 	}
-	else if (!strncmp("lf", type, 2))
+	else if (!ft_strncmp("lf", type, 2))
 	{
 		d.numd = va_arg(a, double);
 		return (float_d(d, prs, &sign));

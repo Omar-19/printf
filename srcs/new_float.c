@@ -31,15 +31,15 @@ char	*res_last_new(char *dec, char *point, int prs, int sign)
 	int		ck;
 	char	*k;
 
-	memset(rs, 0, ft_strlen(dec) + (size_t)3 + ft_strlen(point) + prs);
+	ft_memset(rs, 0, ft_strlen(dec) + (size_t)3 + ft_strlen(point) + prs);
 	jk = rs + 2;
-	strcat(rs + 2, dec);
-	strcat(rs + 2, ".");
-	strcat(rs + 2, point);
-	if ((int)strlen(point) < prs)
+	ft_strcat(rs + 2, dec);
+	ft_strcat(rs + 2, ".");
+	ft_strcat(rs + 2, point);
+	if ((int)ft_strlen(point) < prs)
 	{
-		k = ft_strnewc(prs - strlen(point), '0');
-		strcat(rs + 2, k);
+		k = ft_strnewc(prs - ft_strlen(point), '0');
+		ft_strcat(rs + 2, k);
 		free(k);
 	}
 	free(dec);
@@ -47,10 +47,8 @@ char	*res_last_new(char *dec, char *point, int prs, int sign)
 	ck = okrug1(&jk, prs);
 	(sign == 1) ? set_min(&jk, '-') : 0;
 	if (ck && sign)
-	{
-		return (strdup(rs));
-	}
-	return (strdup(jk));
+		return (ft_strdup(rs));
+	return (ft_strdup(jk));
 }
 
 char	*get_float_all(char *m, int p, int prs, int sign)
@@ -60,10 +58,10 @@ char	*get_float_all(char *m, int p, int prs, int sign)
 
 	if (p < 0)
 	{
-		dec = strdup("0");
+		dec = ft_strdup("0");
 		point = get_point_part(m, p, prs);
 	}
-	else if (p >= 0 && (size_t)p < strlen(m) - 1)
+	else if (p >= 0 && (size_t)p < ft_strlen(m) - 1)
 	{
 		dec = get_dec_part(m, p);
 		point = get_point_part2(m + p + 1, prs);

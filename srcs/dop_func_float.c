@@ -18,9 +18,9 @@ char	*main_c(char *s)
 	size_t	m1;
 	int		n1;
 
-	if (strcmp(s, "0") == 0)
-		return (strdup(s));
-	max_deg = strlen(s) - 1;
+	if (ft_strcmp(s, "0") == 0)
+		return (ft_strdup(s));
+	max_deg = ft_strlen(s) - 1;
 	n1 = max_deg / 10 + 1;
 	m1 = (n1 * 3) / 19 + 1;
 	return (cr_dc(s, m1 + 1, max_deg, max_deg));
@@ -46,12 +46,12 @@ char	*cr_sdc(uint64_t *a, int min, size_t m1)
 	if (!(res = ft_strnew(19 * (m1 - min))))
 		return (NULL);
 	r = ft_uint64toa(a[min++], 0);
-	strcat(res, r);
+	ft_strcat(res, r);
 	free(r);
 	while ((size_t)min < m1)
 	{
 		r = ft_uint64toa(a[min], 1);
-		strcat(res, r);
+		ft_strcat(res, r);
 		free(r);
 		++min;
 	}

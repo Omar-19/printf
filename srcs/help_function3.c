@@ -84,7 +84,7 @@ char	*get_point_part2(char *m, int t)
 	size_t	m1;
 
 	t++;
-	max_deg = strlen(m);
+	max_deg = ft_strlen(m);
 	n1 = max_deg / 4 + 1;
 	(t < 17) ? t = 18 : t++;
 	m1 = (n1 * 3) / 19 + 1;

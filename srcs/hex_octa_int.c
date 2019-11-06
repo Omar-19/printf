@@ -45,7 +45,7 @@ char	*point_hex(void *a, int prs)
 
 	i = 63;
 	j = 0;
-	memset(res, '0', 17);
+	ft_memset(res, '0', 17);
 	while (i >= 0)
 	{
 		buf[3 - (i % 4)] = ((*(long long *)a >> i) & 1) + '0';
@@ -65,7 +65,7 @@ char	*point_hex(void *a, int prs)
 		ft_strcpy(r + 2 + prs - ft_strlen(res + j), res + j);
 	else
 		ft_strcpy(r + 2, res + j);
-	return (strdup(r));
+	return (ft_strdup(r));
 }
 
 char	*hex_int(void *a, int p, int type)
@@ -77,7 +77,7 @@ char	*hex_int(void *a, int p, int type)
 
 	i = type - 1;
 	j = -1;
-	memset(res, '0', 16);
+	ft_memset(res, '0', 16);
 	while (i >= 0)
 	{
 		buf[3 - (i % 4)] = ((*(__uint128_t *)a >> i) & 1) + '0';
@@ -92,7 +92,7 @@ char	*hex_int(void *a, int p, int type)
 	j = 0;
 	while (res[j] == '0' && j < i)
 		j++;
-	return (strdup(res + j));
+	return (ft_strdup(res + j));
 }
 
 char	*octa_int(void *a, int ltype)
@@ -121,10 +121,10 @@ char	*octa_int(void *a, int ltype)
 	(ltype == 32) ? (i = 10) : 0;
 	(ltype != 32) ? (i = 21) : 0;
 	j = 0;
-	i = strlen(res) - 1;
+	i = ft_strlen(res) - 1;
 	while (res[j] == '0' && j < i)
 		j++;
-	return (strdup(res + j));
+	return (ft_strdup(res + j));
 }
 
 char	*hex_oct_main(va_list elem, t_param *f_p_s, char ho, int ltype)
@@ -162,7 +162,6 @@ char	*hex_oct_main(va_list elem, t_param *f_p_s, char ho, int ltype)
 	else
 		ptr = bit_out(&a);
 	(*f_p_s).len = ft_strlen(ptr);
-	// printf("---------------%s\n", ptr);
 	ft_write_tail_xo(f_p_s, ptr, ho);
 	return (ptr);
 }

@@ -19,8 +19,8 @@ char	*get_point_part(char *m, int p, int t)
 	size_t	m1;
 
 	t++;
-	max_deg[0] = (-1 * p) + strlen(m) - 1;
-	max_deg[1] = strlen(m);
+	max_deg[0] = (-1 * p) + ft_strlen(m) - 1;
+	max_deg[1] = ft_strlen(m);
 	n1 = max_deg[0] / 4 + 1;
 	(t < 17) ? t = 18 : t++;
 	m1 = (n1 * 3) / 19 + 1;
@@ -84,20 +84,20 @@ char	*cr_dc_new(char *s, size_t m1, int max_deg, int i)
 char	*res_last4_g(char *des, char *point, int sign)
 {
 	char	*jk;
-	char	rs[8 + strlen(point)];
+	char	rs[8 + ft_strlen(point)];
 	int		i;
 
-	memset(rs, 0, 8);
+	ft_memset(rs, 0, 8);
 	jk = rs + 1;
 	ft_strcat(rs + 1, des);
 	ft_strcat(rs + 1, ".");
 	ft_strcat(rs + 1, point);
-	okrug1(&jk, 6 - strlen(des));
+	okrug1(&jk, 6 - ft_strlen(des));
 	if (sign == 1)
 		set_min(&jk, '-');
-	i = strlen(jk) - 1;
+	i = ft_strlen(jk) - 1;
 	while (jk[i] == '0')
 		i--;
 	jk[i + 1] = '\0';
-	return (strdup(jk));
+	return (ft_strdup(jk));
 }

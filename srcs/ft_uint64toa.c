@@ -58,7 +58,7 @@ char	*ft_uint64toa2(uint64_t a, int d)
 		rs[0] = '0';
 		rs[1] = a + '0';
 		rs[2] = '\0';
-		return (strdup(rs));
+		return (ft_strdup(rs));
 	}
 	num = a;
 	ras = 19;
