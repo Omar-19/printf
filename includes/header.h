@@ -241,4 +241,11 @@ char			*get_float_all_e(char *m, int p, int prs, int sign);
 int				read_variable_int1(const char *str, size_t len,
 	va_list elem, t_param *form_place_spc);
 int				num_zer(char *point);
+void			form_spec_help01(const char *str, va_list elem,
+	t_param *f_p_s, size_t *i);
+void			check_null_ptr(char **ptr, t_param *f_p_s);
+void			point_hex_help(int *i, char *res, char *buf, void *a);
+void			octa_int_help(int ltype, int *i, char *res, char *buf);
+void			hex_oct_main_help(char ho, int ltype, long long a, char **ptr);
+
 #endif

@@ -12,26 +12,6 @@
 
 #include "header.h"
 
-void	ft_result_len_xo(t_param *f_p_s)
-{
-	if (!f_p_s->len)
-	{
-		f_p_s->is_hash = 0;
-		f_p_s->is_zero = 0;
-		f_p_s->len = 0;
-	}
-	(f_p_s->is_minus || f_p_s->is_pres) ? (f_p_s->is_zero = 0) : 0;
-	(*f_p_s).result = (*f_p_s).len;
-	if (f_p_s->precision > f_p_s->result)
-		f_p_s->result = f_p_s->precision;
-	if (f_p_s->width > f_p_s->result)
-		f_p_s->result = f_p_s->width;
-	((f_p_s->precision = f_p_s->precision - f_p_s->len) > 0) ?
-		0 : (f_p_s->precision = 0);
-	((f_p_s->width = f_p_s->result - f_p_s->len - f_p_s->precision) > 0) ?
-		0 : (f_p_s->width = 0);
-}
-
 void	ft_xo_write_min(t_param *f_p_s, char *ptr, char ho, char *str[2])
 {
 	int a;

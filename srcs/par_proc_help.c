@@ -83,20 +83,7 @@ void				ft_format_specification_description(const char *str,
 	par_help2(i, f_p_s, len, str);
 	par_help3(str, i, f_p_s, elem);
 	if (*(str + (i[1])) == '.')
-	{
-		f_p_s->is_pres = 1;
-		if (*(str + ++(i[1])) == '*')
-		{
-			(*f_p_s).precision = va_arg(elem, int);
-			if (f_p_s->precision < 0)
-			{
-				f_p_s->precision = f_p_s->width;
-				(f_p_s->precision == 0) ? (f_p_s->is_pres = 0) : 0;
-			}
-		}
-		else
-			(*f_p_s).precision = ft_atoi_n(str + (i[1]), &(i[1]));
-	}
+		form_spec_help01(str, elem, f_p_s, i);
 	else
 		(*f_p_s).precision = 0;
 }

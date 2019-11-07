@@ -12,6 +12,23 @@
 
 #include "header.h"
 
+void				form_spec_help01(const char *str, va_list elem,
+	t_param *f_p_s, size_t *i)
+{
+	f_p_s->is_pres = 1;
+	if (*(str + ++(i[1])) == '*')
+	{
+		(*f_p_s).precision = va_arg(elem, int);
+		if (f_p_s->precision < 0)
+		{
+			f_p_s->precision = f_p_s->width;
+			(f_p_s->precision == 0) ? (f_p_s->is_pres = 0) : 0;
+		}
+	}
+	else
+		(*f_p_s).precision = ft_atoi_n(str + (i[1]), &(i[1]));
+}
+
 int					read_variable_int(const char *str, size_t len,
 	va_list elem, t_param *f_p_s)
 {
@@ -50,13 +67,13 @@ int					read_variable_int1(const char *str, size_t len,
 	i[0] = len;
 	ptr = NULL;
 	if (ft_strstr_num(str, "x\0", len) && (i[1] = 'x'))
-		read_hex_help1(str, i, elem, form_place_spc);
+		ptr = read_hex_help1(str, i, elem, form_place_spc);
 	else if (ft_strstr_num(str, "X\0", len) && (i[1] = 'X'))
-		read_hex_help1(str, i, elem, form_place_spc);
+		ptr = read_hex_help1(str, i, elem, form_place_spc);
 	else if (ft_strstr_num(str, "o\0", len) && (i[1] = 'o'))
-		read_hex_help1(str, i, elem, form_place_spc);
+		ptr = read_hex_help1(str, i, elem, form_place_spc);
 	else if (ft_strstr_num(str, "b\0", len) && (i[1] = 'b'))
-		read_hex_help1(str, i, elem, form_place_spc);
+		ptr = read_hex_help1(str, i, elem, form_place_spc);
 	else
 		return (0);
 	if (ptr)
@@ -80,10 +97,7 @@ int					read_variable_char(const char *str, size_t len,
 	{
 		ptr = va_arg(elem, char*);
 		if (!ptr)
-		{
-			(f_p_s->is_pres && !f_p_s->precision) ? (ptr = "") :
-				(ptr = "(null)");
-		}
+			check_null_ptr(&ptr, f_p_s);
 		f_p_s->len = ft_strlen(ptr);
 		ft_write_tail_str(f_p_s, ptr);
 		return (f_p_s->result);

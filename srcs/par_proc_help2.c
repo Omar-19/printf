@@ -12,6 +12,12 @@
 
 #include "header.h"
 
+void				check_null_ptr(char **ptr, t_param *f_p_s)
+{
+	(f_p_s->is_pres && !f_p_s->precision) ? (*ptr = "") :
+		(*ptr = "(null)");
+}
+
 static inline char	*help_read_float(const char *str, size_t len,
 	va_list elem, t_param *form_place_spc)
 {

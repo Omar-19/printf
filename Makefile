@@ -56,6 +56,7 @@ new_float.c \
 par_proc_help.c \
 par_proc_help1.c \
 par_proc_help2.c \
+hex_help_func2.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

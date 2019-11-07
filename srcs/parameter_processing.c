@@ -81,7 +81,6 @@ int			ft_param_processing(const char *str,
 		return (1);
 	}
 	ft_format_specification_description(str, len, elem, &form_place_spc);
-	
 	if ((l = read_variable_percent(str, len, &form_place_spc)))
 		return (l);
 	else if ((l = read_variable_int1(str, len, elem, &form_place_spc)))
