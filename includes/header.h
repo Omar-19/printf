@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 22:45:18 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/08 00:30:52 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,5 +247,6 @@ void			check_null_ptr(char **ptr, t_param *f_p_s);
 void			point_hex_help(int *i, char *res, char *buf, void *a);
 void			octa_int_help(int ltype, int *i, char *res, char *buf);
 void			hex_oct_main_help(char ho, int ltype, long long a, char **ptr);
+char			okrug_zero(char **r);
 
 #endif

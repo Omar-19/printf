@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sum_funchelp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:14:56 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 16:08:33 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/08 00:41:54 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,34 @@ char	*ft_strnewc(size_t n, char c)
 	res = ft_strnew(n);
 	ft_memset(res, c, n);
 	return (res);
+}
+
+char	okrug_zero(char **r)
+{
+char	*point;
+	char	*s;
+	int		i;
+	int 	ch;
+
+	s = *r;
+	point = ft_strchr(s, '.');
+	i = s - point + 2;
+	if (s[i - 1]>= '5')
+	{
+		while (--i >= 0)
+		{
+			if (s[i] != '9' && s[i] != '.')
+			{
+				if (ch && (s[i] == '2' || s[i] == '4' || s[i] == '6' || s[i] == '8'))
+					break ;
+				s[i] += 1;
+				break ;
+			}
+			(s[i] != '.') ? s[i] = '0' : ++ch;
+		}
+		if (i == -1 && (*(s - 1) = '1'))
+			pres2(&i, &s, r);
+	}
+	ft_memset(point, '\0', ft_strlen(point));
+	return (ft_strdup(*r));
 }
