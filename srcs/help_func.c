@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:35:04 by fyuko             #+#    #+#             */
-/*   Updated: 2019/11/02 20:38:05 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/07 20:43:03 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,11 @@ void	ft_flag_correction_1(t_param *f_p_s)
 
 char	*ft_strnew_char(int size, char c)
 {
-	char	*ptr;
-	int		i;
+	char *res;
 
-	i = 0;
-	if (size <= 0)
-		return (NULL);
-	if (!(ptr = (char *)malloc(sizeof(char) * size + 1)))
-		return (NULL);
-	while (i <= size)
-		ptr[i++] = c;
-	ptr[i] = '\0';
-	return (ptr);
+	res = ft_strnew(size);
+	ft_memset(res, c, size);
+	return (res);
 }
 
 int		ft_only_space(char *str)

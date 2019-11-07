@@ -6,7 +6,7 @@
 /*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:01:44 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/02 18:56:17 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/07 20:51:55 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg)
 	char	*res;
 	int		len;
 	int		l;
+	char	*rk;
 
 	l = col_zero(a, min, m1, max_deg) + 1;
 	len = 19 * (m1 - min) + l;
@@ -56,10 +57,14 @@ char	*cr_sdc_drob(uint64_t *a, int min, size_t m1, int max_deg)
 		return (NULL);
 	ft_memset(res, '0', len);
 	res[l] = '\0';
-	ft_strcat(res, ft_uint64toa(a[min++], 0));
+	rk = ft_uint64toa(a[min++], 0);
+	ft_strcat(res, rk);
+	free(rk);
 	while ((size_t)min < m1)
 	{
-		ft_strcat(res, ft_uint64toa(a[min], 1));
+		rk = ft_uint64toa(a[min], 1);
+		ft_strcat(res, rk);
+		free(rk);
 		++min;
 	}
 	return (res);
