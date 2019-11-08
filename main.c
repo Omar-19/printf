@@ -3,5 +3,6 @@
 
 int	main()
 {
-	printf("%.0f\n", 4.5);
+	printf("%.0f\n", -999.5);
+	ft_printf("%.0f\n", -999.5);
 }
