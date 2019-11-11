@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   par_proc_help2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:18:59 by fyuko             #+#    #+#             */
-/*   Updated: 2019/11/04 13:19:01 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/11/11 19:08:50 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void				help_okrug_zero(int *i, char *s, int key, char *p)
+{
+	if (key && !(i[1] && (s[i[0]] == '2' || s[i[0]] == '4'
+					|| s[i[0]] == '6' || s[i[0]] == '8')))
+	{
+		s[i[0]] += 1;
+		return ;
+	}
+	i[1] = 0;
+	i[0] = p - s + 2;
+}
 
 void				check_null_ptr(char **ptr, t_param *f_p_s)
 {

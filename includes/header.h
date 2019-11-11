@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:44:46 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/08 12:11:17 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/11 19:08:09 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,5 +248,6 @@ void			point_hex_help(int *i, char *res, char *buf, void *a);
 void			octa_int_help(int ltype, int *i, char *res, char *buf);
 void			hex_oct_main_help(char ho, int ltype, long long a, char **ptr);
 char			*okrug_zero(char **r, int sign);
+void			help_okrug_zero(int *i, char *s, int key, char *p);
 
 #endif

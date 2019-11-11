@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sum_funchelp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:14:56 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/08 12:11:36 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/11 19:08:15 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,25 @@ char	*okrug_zero(char **r, int sign)
 {
 	char	*point;
 	char	*s;
-	int		i;
-	int 	ch;
+	int		i[2];
 
 	s = *r;
-	ch = 0;
 	point = ft_strchr(s, '.');
-	i = point - s + 2;
-	if (s[i-- - 1] >= '5')
+	help_okrug_zero(i, s, 0, point);
+	if (s[i[0]-- - 1] >= '5')
 	{
-		while (--i >= 0)
+		while (--i[0] >= 0)
 		{
-			if (s[i] != '9' && s[i] != '.')
+			if (s[i[0]] != '9' && s[i[0]] != '.')
 			{
-				if (ch && (s[i] == '2' || s[i] == '4' || s[i] == '6' || s[i] == '8'))
-					break ;
-				s[i] += 1;
+				help_okrug_zero(i, s, 1, point);
 				break ;
 			}
-			ch = 0;
-			(s[i] != '.') ? s[i] = '0' : ++ch;
+			i[1] = 0;
+			(s[i[0]] != '.') ? s[i[0]] = '0' : ++i[1];
 		}
-		if (i == -1 && (*(s - 1) = '1'))
-			pres2(&i, &s, r);
+		if (i[0] == -1 && (*(s - 1) = '1'))
+			pres2(&i[0], &s, r);
 	}
 	ft_memset(point, '\0', ft_strlen(point));
 	(sign == 1) ? set_min(r, '-') : 0;

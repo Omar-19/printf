@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_float.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btheia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btheia <btheia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 20:47:08 by btheia            #+#    #+#             */
-/*   Updated: 2019/11/08 12:11:23 by btheia           ###   ########.fr       */
+/*   Updated: 2019/11/11 18:31:07 by btheia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*res_last_new(char *dec, char *point, int prs, int sign)
 	free(dec);
 	free(point);
 	if (prs == 0 && !(check_c(ft_strchr(rs + 2, '.') + 2)))
-		return (okrug_zero(&jk, sign));	
+		return (okrug_zero(&jk, sign));
 	ck = okrug1(&jk, prs);
 	(sign == 1) ? set_min(&jk, '-') : 0;
 	if (ck && sign)
